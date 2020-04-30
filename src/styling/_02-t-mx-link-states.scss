@@ -1,0 +1,28 @@
+///
+/// Link Pseudo States
+///
+/// @param {boolean} $parent [true] - Can include the parent selector too if set to
+///
+@mixin link-states($parent: false) {
+    @if ($parent) {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    }
+
+    @else {
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    }
+}
+
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_02-t-mx-link-states.scss

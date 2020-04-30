@@ -1,0 +1,23 @@
+/* ------------------------------------ *\
+    #BORDER BOX
+\* ------------------------------------ */
+
+//
+// Apply global border box.
+//
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    outline: 0;
+}
+
+
+html {
+    box-sizing: border-box;
+}
+
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_03-g-border-box.scss

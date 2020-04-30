@@ -1,0 +1,18 @@
+.c-feature {
+	display: flex;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.c-feature__options, 
+.c-feature__wrapper {
+	flex: 1 1 50%;
+}
+
+.c-feature__options {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: space-around;
+	align-items: center;
+}

@@ -1,0 +1,38 @@
+/* ------------------------------------ *\
+    #CUSTOM FONTS
+\* ------------------------------------ */
+
+//
+// List custom fonts
+//
+
+@font-face {
+    font-family: 'boschsans';
+    src: url('../fonts/boschsans.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/boschsans.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/boschsans.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/boschsans.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/boschsans.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'boschsans-light';
+    src: url('../fonts/boschsans-light.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/boschsans-light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/boschsans-light.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/boschsans-light.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/boschsans-light.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'boschsans-bold';
+    src: url('../fonts/boschsans-bold.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/boschsans-bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/boschsans-bold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/boschsans-bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/boschsans-bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_03-g-fonts.scss

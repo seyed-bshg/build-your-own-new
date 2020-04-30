@@ -1,0 +1,76 @@
+.c-journey {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+
+	@include media('sm') {
+		flex-direction: row;
+	}
+}
+
+.c-journey__text-wrapper {
+	width: 100%;
+
+	@include media('sm') {
+		min-width: 50%;
+		flex-basis: 50%;
+    padding-right: 13%;
+	}
+}
+
+.c-journey__option-wrapper {
+	width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  
+	@include media('sm') {
+		min-width: 50%;
+		flex-basis: 50%;
+	}
+}
+
+.c-journey__option {
+  max-height: 290px;
+  width: 100%;
+  background-position: top left;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.c-journey__option-wrapper .row:first-child {
+	padding-bottom: 50px;
+}
+
+.c-journey__option {
+	position: relative;
+}
+
+.c-journey__option label {
+    position: absolute;
+    left: 0;
+		right: 0;
+		margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 100%;
+    max-width: 180px;
+    text-align: center;
+    padding: 16px 20px;
+    background-color: rgba(68,132,166, 0.7);
+    border-radius: 50px;
+		font-family: 'boschsans-bold';
+		color: white;
+		cursor: pointer;
+		transition: background-color 200ms ease;
+}
+
+.c-journey__option label:hover {
+	background-color: rgba(68,132,166, 1);
+}
+
+.c-journey__option input {
+	display: none;
+}
+

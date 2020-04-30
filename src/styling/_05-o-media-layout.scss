@@ -1,0 +1,73 @@
+/* ------------------------------------ *\
+    #MEDIA LAYOUT
+\* ------------------------------------ */
+
+
+.o-media-layout {
+    @include media('md') {
+        display: flex;
+        flex-wrap: nowrap;
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        grid-gap: 30px;
+    }
+
+    @include media('xl') {
+        grid-gap: 68px;
+        margin-left: 120px;
+    }
+}
+
+.o-media-layout--tight {
+    @include media('md') {
+        grid-template-columns: 1fr 468px;
+        grid-gap: 5px;
+    }
+
+    @include media('xl') {
+        grid-gap: 15px;
+        margin-left: 120px;
+    }
+}
+
+.o-media-layout__content {
+    @include media('md') {
+        flex: 1 1 auto;
+        // margin-right: 30px;
+    }
+}
+
+.o-media-layout__aside {
+
+    @include media('md') {
+        flex: 0 0 420px;
+
+        .no-grid & {
+            padding-left: 50px;
+        }
+    }
+
+    @include media('xl') {
+        // margin-right: 110px;
+    }
+
+    .o-media-layout--tight & {
+
+        @include media('md') {
+            h3 {
+                padding-left: 50px;
+            }
+        }
+
+        @include media('xl') {
+            margin-right: 20px;
+
+
+        }
+    }
+}
+
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_05-o-media-layout.scss

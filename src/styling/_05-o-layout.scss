@@ -1,0 +1,32 @@
+/* ------------------------------------ *\
+    #LAYOUT
+\* ------------------------------------ */
+
+
+.o-layout {
+		display: flex;
+		flex-wrap: wrap;
+    justify-content: center;
+		
+    @include media('md') {
+	    flex-direction: row;
+	    align-items: flex-start;
+	    flex-wrap: nowrap;
+    }
+}
+
+.o-layout--back-next {
+	flex-wrap: nowrap;
+  justify-content: space-evenly;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+
+.o-layout--back-next--wrap {
+	flex-wrap: wrap;
+}
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_05-o-layout.scss

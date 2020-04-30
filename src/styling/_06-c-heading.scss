@@ -1,0 +1,23 @@
+.c-heading-44 {
+	font-size: 31px;
+	line-height: 1.2;
+	letter-spacing: 0px;
+
+	@include media('sm') {
+		font-size: 44px;
+    line-height: 1.2;
+    letter-spacing: 0;
+	}
+}
+
+.c-heading-26 {
+	font-size: 16px;
+	line-height: 21px;
+  letter-spacing: -1px;
+
+	@include media('sm') {
+		font-size: 26px;
+    line-height: 29px;
+    letter-spacing: -1px;
+	}
+}

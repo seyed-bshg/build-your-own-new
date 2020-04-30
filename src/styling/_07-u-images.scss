@@ -1,0 +1,25 @@
+/* ------------------------------------ *\
+    #IMAGE UTILITIES
+\* ------------------------------------ */
+
+//
+// Image's max width conforms to the parent's width.
+//
+.u-img-respond {
+    max-width: 100%;
+    height: auto;
+}
+
+
+//
+// Image matches its container's width
+//
+.u-img-full {
+    width: 100%;
+    height: auto;
+}
+
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_07-u-images.scss

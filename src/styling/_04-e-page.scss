@@ -1,0 +1,25 @@
+/* ------------------------------------ *\
+    #PAGE
+\* ------------------------------------ */
+
+//
+// HTML
+//
+html {
+    background: $base-background;
+    height: 100vh;
+    color: #000000;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// RESET BODY MARGIN 
+body {
+	margin: 0;
+}
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_04-e-page.scss

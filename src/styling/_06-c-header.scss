@@ -1,0 +1,42 @@
+.c-header {
+	margin-top: 60px;
+
+	@include media('sm') {
+		margin-top: 0;
+	}
+}
+
+.c-header__wrapper {
+	position: relative;
+	display: flex;
+
+	@include media('sm') {
+		display: inline-block;	
+	}
+}
+
+.c-header__logo-link--mobile {
+	
+	display: block;
+	width: 151px;
+	margin-bottom: 18.5px;
+	margin-left: auto;
+	
+	& img {
+		margin-left: 36px;
+	}
+
+	@include media('sm') {
+		display: none;
+	}
+}
+.c-header__logo-link--desktop {
+	display: none;
+
+	@include media('sm') {
+		display: block;
+		max-width: 266px;
+		width: 22vw;
+		min-width: 200px;
+	}
+}

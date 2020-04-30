@@ -1,0 +1,17 @@
+///
+/// Hide's content in a screen reader friendly way.
+///
+@mixin sr-only() {
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+    position: absolute;
+}
+
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_02-t-mx-sr-only.scss

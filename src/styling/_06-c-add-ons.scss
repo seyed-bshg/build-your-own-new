@@ -1,0 +1,19 @@
+.c-add-on {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__container {
+  	flex-basis: 100%;
+		padding: 1%;
+		max-width: 400px;
+
+  	@include media('sm') {
+			flex-basis: 50%;
+		}
+
+		@include media('md') {
+			flex-basis: 33.333333333333%;
+		}
+  }
+}	

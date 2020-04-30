@@ -62,9 +62,10 @@ const Feature = ({ name, keyName, items }) => {
   }
 
   return (
-    <div>
-      <div>
-        <p>QUESTION PLACEHOLDER: {name}</p>
+    <div className="c-feature">
+      <div className="c-feature__options">
+        <p>FEATURE DESCRIPTION PLACEHOLDER</p>
+        <span style={{display: 'none'}}>{name}</span>
         {items.map((item) => (
           <Option
             key={item.listItemID}
@@ -76,15 +77,21 @@ const Feature = ({ name, keyName, items }) => {
           />
         ))}
       </div>
-      <div>
-        <p>image</p>
+      <div className="c-feature__wrapper">
+        <div className="c-feature__img">
+          <div className="o-aspect o-aspect--540x960 u-spacing-flush">
+            <img src="https://via.placeholder.com/540x960" alt="placeholder" />
+          </div>
+        </div>
         <p>{choiceCopy}</p>
         {/* Button would be its own component */}
-        <button onClick={clickedPrevHandler}>prev</button>
-        <button disabled={!isDirty} onClick={clickedNextHandler}>
-          next
-        </button>
+        <div className="c-btns">
+          <button onClick={clickedPrevHandler}>prev</button>
+          <button disabled={!isDirty} onClick={clickedNextHandler}>next
+          </button>
+        </div>
       </div>
+      
     </div>
   );
 };

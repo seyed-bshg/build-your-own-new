@@ -1,0 +1,24 @@
+/* ------------------------------------ *\
+    #TEXT UTILITIES
+\* ------------------------------------ */
+
+//
+// Text Alignment
+//
+.u-text-center {
+    text-align: center;
+}
+
+
+.u-font-base {
+    font-family: $base-font-family;
+}
+
+
+.u-type-black {
+	font-family: 'segoeui-black', Arial;
+}
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_07-u-type.scss

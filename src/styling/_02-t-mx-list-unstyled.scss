@@ -1,0 +1,12 @@
+///
+/// Unstyled List
+///
+@mixin list-unstyled() {
+    list-style: none;
+    padding: 0;
+}
+
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_02-t-mx-list-unstyled.scss

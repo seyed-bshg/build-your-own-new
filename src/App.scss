@@ -1,0 +1,57 @@
+.order-wrapper {
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+}
+
+body {
+	background-color: transparent;
+}
+
+// NORMALIZE SCSS
+@import "./node_modules/normalize-scss/sass/normalize";
+
+// ITCSS
+@import './styling/01-s-variables';
+@import './styling/02-t-fn-em';
+@import './styling/02-t-fn-math';
+@import './styling/02-t-fn-spacer';
+@import './styling/02-t-fn-viewport';
+@import './styling/02-t-mx-clearfix';
+@import './styling/02-t-mx-link-states';
+@import './styling/02-t-mx-list-unstyled';
+@import './styling/02-t-mx-loop-breakpoints';
+@import './styling/02-t-mx-media-queries';
+@import './styling/02-t-mx-responsive-font';
+@import './styling/02-t-mx-sr-only';
+@import './styling/03-g-border-box';
+@import './styling/03-g-fonts';
+@import './styling/04-e-forms';
+@import './styling/04-e-images';
+@import './styling/04-e-page';
+@import './styling/04-e-type';
+@import './styling/04-e-fieldset';
+@import './styling/05-o-aspect';
+@import './styling/05-o-container';
+@import './styling/05-o-layout';
+@import './styling/05-o-list-inline';
+@import './styling/05-o-list-unstyled';
+@import './styling/05-o-wrap';
+@import './styling/06-c-btn';
+@import './styling/06-c-journey';
+@import './styling/06-c-header';
+@import './styling/06-c-nav';
+@import './styling/06-c-feature';
+@import './styling/06-c-heading';
+@import './styling/07-u-colors';
+@import './styling/07-u-images';
+@import './styling/07-u-position';
+@import './styling/07-u-spacing';
+@import './styling/07-u-type';
+@import './styling/07-u-visibility';
+
+// third-party framework overrides
+@import './styling/08-v-react-burger-menu';
+@import './styling/08-v-react-modal';
+

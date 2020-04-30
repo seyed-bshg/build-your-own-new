@@ -1,0 +1,25 @@
+/* ------------------------------------ *\
+    #VISIBILITY UTILITIES
+\* ------------------------------------ */
+
+//
+// Visibility classes for all breakpoints
+//
+.u-hidden {
+    @include loop-breakpoints() {
+        display: none;
+    }
+}
+
+
+//
+// Hide the entire tag and its contents except for screen readers
+//
+.u-sr-only {
+    @include sr-only();
+}
+
+
+
+// WEBPACK FOOTER //
+// ./src/scss/global/_07-u-visibility.scss
