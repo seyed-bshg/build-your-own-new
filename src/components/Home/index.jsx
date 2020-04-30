@@ -24,6 +24,7 @@ function Home() {
 
   return (
     <div>
+      <span>title</span>
       <h1>{meta.header}</h1>
       <p>{meta.description}</p>
       
