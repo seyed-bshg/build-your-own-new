@@ -71,6 +71,7 @@ function App() {
                   key={listValue.listItemID}
                   name={listValue.listName}
                   items={listValue.listItems}
+                  listDescription={listValue.listDescription}
                 />
               </Route>
             ))}

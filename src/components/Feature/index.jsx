@@ -4,7 +4,7 @@ import Option from "../../components/Option";
 import { useSelector, useDispatch } from "react-redux";
 import { selectedOption, clickedNext, clickedPrev } from "../../redux/actions";
 
-const Feature = ({ name, keyName, items }) => {
+const Feature = ({ name, keyName, items, listDescription }) => {
   const [choiceCopy, setChoiceCopy] = useState("");
   let isDirty = useSelector((state) => state.requestData.isDirty);
   let order = useSelector((state) => state.requestData.order);
@@ -65,7 +65,7 @@ const Feature = ({ name, keyName, items }) => {
   return (
     <div className="c-feature">
       <div className="c-feature__options">
-        <p>FEATURE DESCRIPTION PLACEHOLDER</p>
+        <p>{listDescription}</p>
         <span style={{display: 'none'}}>{name}</span>
         {items.map((item) => (
           <Option
