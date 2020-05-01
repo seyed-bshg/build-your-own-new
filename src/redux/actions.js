@@ -7,6 +7,7 @@ import {
   SELECTED_OPTION,
   CLICKED_NEXT,
   CLICKED_PREV,
+  CLICKED_PREV_TO_JOURNEY,
   CLICKED_START_OVER,
 } from "./constants";
 
@@ -48,6 +49,11 @@ export const clickedPrev = () => ({
   type: CLICKED_PREV,
   payload: null,
 });
+
+export const clickedPrevToJourney = () =>({
+  type: CLICKED_PREV_TO_JOURNEY,
+  payload: null,
+})
 
 export const clickedStartOver = () => ({
   type: CLICKED_START_OVER,

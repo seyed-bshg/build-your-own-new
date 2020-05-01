@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Option from "../../components/Option";
 import { useSelector, useDispatch } from "react-redux";
-import { selectedOption, clickedNext, clickedPrev } from "../../redux/actions";
+import { selectedOption, clickedNext, clickedPrev, clickedPrevToJourney } from "../../redux/actions";
 
 const Feature = ({ name, keyName, items, listDescription }) => {
   const [choiceCopy, setChoiceCopy] = useState("");
@@ -36,7 +36,7 @@ const Feature = ({ name, keyName, items, listDescription }) => {
 
   const clickedPrevHandler = () => {
     console.log("productLIST FROM PREV", productList);
-    if (step > 1) dispatch(clickedPrev());
+    step > 1 ? dispatch(clickedPrev()) : dispatch(clickedPrevToJourney());
     history.goBack();
   };
 
