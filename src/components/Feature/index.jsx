@@ -24,6 +24,7 @@ const Feature = ({ name, keyName, items }) => {
       const { listTxt } = selectedChoice[0];
       setChoiceCopy(listTxt);
     }
+    window.scrollTo(0, 0);
   }, [choice, items, isDirty]);
 
   //Seleting an Option
