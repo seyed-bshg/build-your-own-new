@@ -23,10 +23,11 @@ const Feature = ({ name, keyName, items, listDescription }) => {
     console.log('items ', items)
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
-      const { listTxt } = selectedChoice[0];
+      const { listTxt, listImg  } = selectedChoice[0];
       setChoiceCopy(listTxt);
+      setChoiceImage(listImg);
     }
-    window.scrollTo(0, 0);
+
   }, [choice, items, isDirty]);
 
   //Seleting an Option
@@ -47,6 +48,7 @@ const Feature = ({ name, keyName, items, listDescription }) => {
     );
     dispatch(clickedNext(reducedProductList, productList));
     setChoiceCopy("");
+    setChoiceImage("");
     step > order.length - 1 ? history.push("summary") : history.push(`${order[step]}`);
   };
 
@@ -85,6 +87,7 @@ const Feature = ({ name, keyName, items, listDescription }) => {
         <div className="c-feature__img">
           <div className="o-aspect o-aspect--536x590 u-spacing-flush">
             <img src="https://via.placeholder.com/540x590" alt="placeholder" />
+            <p>{choiceImage}</p>
           </div>
         </div>
         <p>{choiceCopy}</p>
