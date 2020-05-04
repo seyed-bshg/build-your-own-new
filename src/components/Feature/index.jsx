@@ -37,7 +37,6 @@ const Feature = ({ name, keyName, items, listDescription }) => {
   };
 
   const clickedPrevHandler = () => {
-    console.log("productLIST FROM PREV", productList);
      step > 1 ? dispatch(clickedPrev()) : dispatch(clickedPrevToJourney());
     history.goBack();
   };
@@ -68,7 +67,8 @@ const Feature = ({ name, keyName, items, listDescription }) => {
     <div className="c-feature">
       <div className="c-feature__options">
         <fieldset className="c-feature__description">
-          <p className="c-feature__description-text">{listDescription}</p>
+          <p>{listDescription}</p>
+          <span style={{display: 'none'}}>{name}</span>
         </fieldset>
         {items.map((item) => (
           <Option

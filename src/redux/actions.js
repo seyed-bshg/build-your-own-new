@@ -7,8 +7,8 @@ import {
   SELECTED_OPTION,
   CLICKED_NEXT,
   CLICKED_PREV,
-  CLICKED_START_OVER,
   CLICKED_PREV_TO_JOURNEY,
+  CLICKED_START_OVER
 } from "./constants";
 
 import Axios from "axios";
