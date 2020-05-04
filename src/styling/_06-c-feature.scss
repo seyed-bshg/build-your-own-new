@@ -7,12 +7,120 @@
 .c-feature__options, 
 .c-feature__wrapper {
 	flex: 1 1 50%;
+	margin: 0 14px;
 }
 
 .c-feature__options {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	height: auto;
 	justify-content: space-around;
 	align-items: center;
 }
+
+.c-feature__description {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+.c-feature__option {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	border: 2px solid #4484A6;
+	border-radius: 8px;
+}
+
+.c-feature__option:not(:last-child) {
+	margin-bottom: 12px;
+}
+
+// .c-feature__label,
+// .c-feature__description-text {
+// 	position: relative;
+//   top: 50%;
+// }
+
+.c-feature__label {
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 10;
+}
+
+.c-feature__label input {
+	display: none;
+}
+
+.c-feature__label-bg {
+	position: absolute;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	z-index: -1;
+	transition: background-color 300ms ease;
+}
+
+
+.c-feature__label-text {
+	font-family: $base-font-family;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	font-size: 14px;
+
+	@include media('sm') {
+		font-size: 22px;
+	}
+}
+
+.c-feature__label:hover .c-feature__label-text {
+	font-family: 'boschsans-bold';
+}
+
+
+.c-feature__label:hover input[disabled] ~ .c-feature__label-text {
+	font-family: 'boschsans';
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.c-feature__label input[disabled] ~ .c-feature__label-text {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.c-feature__label input[type="radio"]:checked ~ .c-feature__label-text {
+	color: white;
+	font-family: 'boschsans-bold';
+}
+
+.c-feature__label input[type="radio"]:checked ~ .c-feature__label-bg {
+	background-color: #4484A6;
+}
+
+
+.c-feature__label input[disabled] ~ .c-feature__label-bg {
+	z-index: 10;
+	cursor: default;
+}
+
+// .c-feature__label:hover input[disabled] ~ .c-feature__label-text {
+// 	font-family: $base-font-family;
+// }
+

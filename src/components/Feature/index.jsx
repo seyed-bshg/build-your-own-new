@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Option from "../../components/Option";
+import Button from "../../components/Button";
 import { useSelector, useDispatch } from "react-redux";
-import { selectedOption, clickedNext, clickedPrev } from "../../redux/actions";
+import { selectedOption, clickedNext, clickedPrev, clickedPrevToJourney } from "../../redux/actions";
 
-const Feature = ({ name, keyName, items }) => {
+const Feature = ({ name, keyName, items, listDescription }) => {
   const [choiceCopy, setChoiceCopy] = useState("");
+  const [choiceImage, setChoiceImage] = useState("");
   let isDirty = useSelector((state) => state.requestData.isDirty);
   let order = useSelector((state) => state.requestData.order);
   let step = useSelector((state) => state.requestData.step);
   let choice = useSelector((state) => state.requestData.choiceID);
   let productList = useSelector((state) => state.requestData.reducedProducts);
   const dispatch = useDispatch();
-
   //React Router for Prev/Next buttons
   const history = useHistory();
 
   //ComponentDidMount() and ComponentShouldUpdate() Equivalent
   // Getting the feature copy on selecting an option
   useEffect(() => {
+    console.log('items ', items)
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
       const { listTxt } = selectedChoice[0];
       setChoiceCopy(listTxt);
     }
+    window.scrollTo(0, 0);
   }, [choice, items, isDirty]);
 
   //Seleting an Option
@@ -35,7 +38,7 @@ const Feature = ({ name, keyName, items }) => {
 
   const clickedPrevHandler = () => {
     console.log("productLIST FROM PREV", productList);
-    if (step > 1) dispatch(clickedPrev());
+     step > 1 ? dispatch(clickedPrev()) : dispatch(clickedPrevToJourney());
     history.goBack();
   };
 
@@ -64,8 +67,9 @@ const Feature = ({ name, keyName, items }) => {
   return (
     <div className="c-feature">
       <div className="c-feature__options">
-        <p>FEATURE DESCRIPTION PLACEHOLDER</p>
-        <span style={{display: 'none'}}>{name}</span>
+        <fieldset className="c-feature__description">
+          <p className="c-feature__description-text">{listDescription}</p>
+        </fieldset>
         {items.map((item) => (
           <Option
             key={item.listItemID}
@@ -79,16 +83,22 @@ const Feature = ({ name, keyName, items }) => {
       </div>
       <div className="c-feature__wrapper">
         <div className="c-feature__img">
-          <div className="o-aspect o-aspect--540x960 u-spacing-flush">
-            <img src="https://via.placeholder.com/540x960" alt="placeholder" />
+          <div className="o-aspect o-aspect--536x590 u-spacing-flush">
+            <img src="https://via.placeholder.com/540x590" alt="placeholder" />
           </div>
         </div>
         <p>{choiceCopy}</p>
         {/* Button would be its own component */}
-        <div className="c-btns">
-          <button onClick={clickedPrevHandler}>prev</button>
-          <button disabled={!isDirty} onClick={clickedNextHandler}>next
-          </button>
+        <div className="c-btn__wrapper">
+          <Button 
+            click={clickedPrevHandler}
+            direction="Previous"
+          />
+          <Button 
+            click={clickedNextHandler}
+            direction="Next"
+            disabled={!isDirty}
+          />
         </div>
       </div>
       

@@ -10,6 +10,7 @@ import {
   CLICKED_NEXT,
   CLICKED_PREV,
   CLICKED_START_OVER,
+  CLICKED_PREV_TO_JOURNEY
 } from "./constants";
 
 const initialStateData = {
@@ -96,6 +97,15 @@ export const requestData = (state = initialStateData, action = {}) => {
         step: (state.step -= 1),
         choiceID: "",
       };
+
+    case CLICKED_PREV_TO_JOURNEY:
+      return{
+        ...state,
+        order: [],
+        step: (state.step -= 1),
+        choiceID: "",
+      };
+
     case CLICKED_START_OVER:
       return {
         ...state,

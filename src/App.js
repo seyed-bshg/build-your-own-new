@@ -43,7 +43,6 @@ function App() {
       <div className="o-wrap">
         <div className="o-container">
           <Header />
-          
           <nav>
             <ul className="c-nav o-list-unstyled">
               {order
@@ -71,6 +70,7 @@ function App() {
                   key={listValue.listItemID}
                   name={listValue.listName}
                   items={listValue.listItems}
+                  listDescription={listValue.listDescription}
                 />
               </Route>
             ))}
@@ -87,9 +87,6 @@ function App() {
           </Switch>
         </div>
       </div>
-      
-
-      
     </div>
   );
 }

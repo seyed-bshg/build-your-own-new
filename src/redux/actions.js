@@ -8,6 +8,7 @@ import {
   CLICKED_NEXT,
   CLICKED_PREV,
   CLICKED_START_OVER,
+  CLICKED_PREV_TO_JOURNEY,
 } from "./constants";
 
 import Axios from "axios";
@@ -48,6 +49,11 @@ export const clickedPrev = () => ({
   type: CLICKED_PREV,
   payload: null,
 });
+
+export const clickedPrevToJourney = () =>({
+  type: CLICKED_PREV_TO_JOURNEY,
+  payload: null,
+})
 
 export const clickedStartOver = () => ({
   type: CLICKED_START_OVER,
