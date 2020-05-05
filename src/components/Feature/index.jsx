@@ -32,6 +32,7 @@ const Feature = ({ name, keyName, items, listDescription }) => {
 
   //Seleting an Option
   const onSelectChoice = (e) => {
+
     const value = Number(e.target.value);
     // Needs to set choiceCopy and choiceImage
     dispatch(selectedOption(value));
@@ -43,6 +44,7 @@ const Feature = ({ name, keyName, items, listDescription }) => {
   };
 
   const clickedNextHandler = () => {
+
     let reducedProductList = productList.filter(
       (product) => product[`${keyName}`] === choice
     );
