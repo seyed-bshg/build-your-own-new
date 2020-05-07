@@ -107,8 +107,9 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
 
           }
           </div>
+          <p>{choiceCopy}</p>
         </div>
-        <p>{choiceCopy}</p>
+        
         {/* Button would be its own component */}
         <div className="c-btn__wrapper">
           <Button 
