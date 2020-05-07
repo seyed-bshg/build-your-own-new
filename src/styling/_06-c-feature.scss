@@ -10,6 +10,18 @@
 	margin: 0 14px;
 }
 
+.c-feature__wrapper > p {
+	position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 aut0;
+  width: 90%;
+}
+
+.c-feature__wrapper {
+	position: relative;
+}
+
 .c-feature__options {
 	display: flex;
 	flex-direction: column;
@@ -73,6 +85,10 @@
 	height: 100%;
 	position: relative;
 	z-index: 10;
+}
+
+.c-feature__img {
+	margin-bottom: 15px;
 }
 
 .c-feature__description-text-wrapper  {
