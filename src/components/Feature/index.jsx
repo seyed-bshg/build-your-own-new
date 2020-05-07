@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import imgURL from '../../uri-constants';
 import Option from "../../components/Option";
 import Button from "../../components/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { selectedOption, clickedNext, clickedPrev, clickedPrevToJourney } from "../../redux/actions";
 
-const Feature = ({ name, keyName, items, listDescription }) => {
+const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
+  console.log('meta ', meta)
   const [choiceCopy, setChoiceCopy] = useState("");
   const [choiceImage, setChoiceImage] = useState("");
   let isDirty = useSelector((state) => state.requestData.isDirty);
@@ -20,9 +22,10 @@ const Feature = ({ name, keyName, items, listDescription }) => {
   //ComponentDidMount() and ComponentShouldUpdate() Equivalent
   // Getting the feature copy on selecting an option
   useEffect(() => {
-    console.log('items ', items)
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
+      console.log('items ', items);
+      console.log('selectedChoice ', selectedChoice);
       const { listTxt, listImg  } = selectedChoice[0];
       setChoiceCopy(listTxt);
       setChoiceImage(listImg);
@@ -32,7 +35,6 @@ const Feature = ({ name, keyName, items, listDescription }) => {
 
   //Seleting an Option
   const onSelectChoice = (e) => {
-
     const value = Number(e.target.value);
     // Needs to set choiceCopy and choiceImage
     dispatch(selectedOption(value));
@@ -71,7 +73,11 @@ const Feature = ({ name, keyName, items, listDescription }) => {
     <div className="c-feature">
       <div className="c-feature__options">
         <fieldset className="c-feature__description">
-          <p>{listDescription}</p>
+          <div className="c-feature__description-text-wrapper">
+            <span className="c-feature__description-text">
+              {listDescription}
+            </span>
+          </div>
           <span style={{display: 'none'}}>{name}</span>
         </fieldset>
         {items.map((item) => (
@@ -88,8 +94,18 @@ const Feature = ({ name, keyName, items, listDescription }) => {
       <div className="c-feature__wrapper">
         <div className="c-feature__img">
           <div className="o-aspect o-aspect--536x590 u-spacing-flush">
-            <img src="https://via.placeholder.com/540x590" alt="placeholder" />
-            <p>{choiceImage}</p>
+          {
+           choiceImage
+              ? <div>
+                  <img className="u-img-respond" src={CDN_URI + choiceImage} />
+                </div>
+              : 
+              <div>
+                <h1>DFAULT FALLBACK IMAGE</h1>
+                <img className="u-img-respond" src="https://via.placeholder.com/540x590" alt="placeholder" />
+              </div>
+
+          }
           </div>
         </div>
         <p>{choiceCopy}</p>

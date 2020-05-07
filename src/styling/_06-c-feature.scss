@@ -45,6 +45,17 @@
 	border-radius: 8px;
 }
 
+.c-feature__description {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background-color: #E8E9E9;
+  border-radius: 8px;
+}
+
 .c-feature__option:not(:last-child) {
 	margin-bottom: 12px;
 }
@@ -55,12 +66,21 @@
 //   top: 50%;
 // }
 
-.c-feature__label {
+.c-feature__label,
+.c-feature__description-text-wrapper {
 	cursor: pointer;
 	width: 100%;
 	height: 100%;
 	position: relative;
 	z-index: 10;
+}
+
+.c-feature__description-text-wrapper  {
+	cursor: default;
+}
+
+.c-feature__description  {
+	margin-bottom: 12px;
 }
 
 .c-feature__label input {
@@ -85,6 +105,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
 	font-size: 14px;
+	width: 100%;
+  padding: 0 20px;
+
+	@include media('sm') {
+		font-size: 22px;
+	}
+}
+
+.c-feature__description-text {
+	font-family: $base-font-family;
+	font-size: 14px;
+	width: 100%;
+  padding: 0 20px;
 
 	@include media('sm') {
 		font-size: 22px;

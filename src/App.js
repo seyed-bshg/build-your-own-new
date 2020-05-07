@@ -8,6 +8,7 @@ import NavMobile from "./components/NavMobile";
 import Feature from "./components/Feature";
 import Header from "./components/Header";
 import Summary from "./components/Summary";
+import * as constants from "./uri-constants";
 import json from "./what.json";
 import "./App.scss";
 
@@ -18,7 +19,6 @@ function App() {
   /**************** COMMENTED CODE BELOW  IS USED FOR CALLING THE API*************************/
   const onRequestData = useCallback(() => dispatch(requestData()), [dispatch]);
   useEffect(() => {
-    console.log(onRequestData);
     onRequestData();
   }, [onRequestData]);
   /*******************************************************************************************/
@@ -66,6 +66,8 @@ function App() {
             {listValues.map((listValue) => (
               <Route key={listValue.listItemID} exact path={`/${listValue.listID}`}>
                 <Feature
+                  CDN_URI={constants.CDN_URI}
+                  meta={listValue}
                   keyName={listValue.keyName}
                   key={listValue.listItemID}
                   name={listValue.listName}
