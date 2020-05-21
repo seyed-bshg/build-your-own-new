@@ -108,13 +108,16 @@
 .c-btn__wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .c-btn {
+  color: white;
   background-color: #E8E9E9;
-  padding: 23px 20px;
+  padding: 10px 5px;
   width: 100%;
   border-radius: 8px;
+  max-width: 210px;
 }
 
 .c-btn:first-child {
@@ -124,4 +127,10 @@
 .c-btn > span {
   font-family: $base-font-family;
   font-size: 22px;
+}
+
+.c-btn--active {
+  background-color: #707070;
+  cursor: pointer;
+  
 }

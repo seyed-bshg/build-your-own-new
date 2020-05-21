@@ -18,10 +18,10 @@ const Logo = () => {
     <header className="c-header">
        <Link to="/" className="c-header__wrapper" onClick={onStartOverHandler}>
           <div className="c-header__logo-link--desktop">
-            <img alt="Bosch build your own dishwasher logo" className="u-img-respond c-header__img" src={logoDesktop} />
+            <img alt="Bosch build your own dishwasher logo" className="u-img-respond c-header__img u-spacing-none" src={logoDesktop} />
           </div>
           <div className="c-header__logo-link--mobile">
-            <img alt="Bosch build your own dishwasher logo" className="u-img-respond c-header__img" src={logoMobile} />
+            <img alt="Bosch build your own dishwasher logo" className="u-img-respond c-header__img u-spacing-none" src={logoMobile} />
           </div>
        </Link>
     </header>

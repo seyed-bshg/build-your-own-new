@@ -44,7 +44,8 @@ function App() {
         <div className="o-container">
           <Header />
           <nav>
-            <ul className="c-nav o-list-unstyled">
+
+            <ul className={`c-nav o-list-unstyled ${order && step > 0 ? '' : 'u-hidden'}`}>
               {order
                 ? order.map((order, index) => {
                   let listThing = listValues.filter(listValue => listValue.listID === order);

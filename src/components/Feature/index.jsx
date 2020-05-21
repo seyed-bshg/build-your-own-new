@@ -56,6 +56,12 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
     step > order.length - 1 ? history.push("summary") : history.push(`${order[step]}`);
   };
 
+  function createMarkup(text) {
+    return {
+       __html: text   };
+ }; 
+
+
   // Helping logic to find disabled options
   // Disabling all of the options that you are unable to choose after making your selection and moving on to the next screen
   let disabledItems = [];
@@ -93,21 +99,27 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
       </div>
       <div className="c-feature__wrapper">
         <div className="c-feature__img">
-          <div className="o-aspect o-aspect--536x590 u-spacing-flush">
+          <div className="o-aspect o-aspect--536x590 u-spacing-flush u-text-center">
           {
            choiceImage
               ? <div>
-                  <img className="u-img-respond" src={CDN_URI + choiceImage} />
+                  <img className="u-img-respond u-img-respond--80" src={CDN_URI + choiceImage} />
                 </div>
               : 
               <div>
-                <h1>DFAULT FALLBACK IMAGE</h1>
-                <img className="u-img-respond" src="https://via.placeholder.com/540x590" alt="placeholder" />
+                <img className="u-img-respond u-img-respond--80" src="https://via.placeholder.com/540x590" alt="placeholder" />
               </div>
 
           }
           </div>
-          <p>{choiceCopy}</p>
+          {
+            choiceCopy
+            ? <div className="c-description__wrapper">
+              <p className="c-description__text u-spacing-flush" dangerouslySetInnerHTML={createMarkup(choiceCopy)}></p>
+            </div>
+            : null
+          }
+          
         </div>
         
         {/* Button would be its own component */}
