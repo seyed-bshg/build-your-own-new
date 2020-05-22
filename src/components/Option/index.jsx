@@ -1,4 +1,5 @@
 import React from "react";
+import helpers from "../../helpers";
 
 const Option = ({ value, label, name, clicked, disabled }) => {
   return (
@@ -13,7 +14,7 @@ const Option = ({ value, label, name, clicked, disabled }) => {
           disabled={disabled}
         />
         <div className="c-feature__label-bg"></div>
-        <span className="c-feature__label-text">{label}</span>
+        <span className="c-feature__label-text" dangerouslySetInnerHTML={helpers.createMarkup(label)}></span>
       </label>
     </fieldset>
   );

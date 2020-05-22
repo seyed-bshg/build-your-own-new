@@ -4,6 +4,8 @@ import imgURL from '../../uri-constants';
 import Option from "../../components/Option";
 import Button from "../../components/Button";
 import { useSelector, useDispatch } from "react-redux";
+import helpers from "../../helpers";
+
 import { selectedOption, clickedNext, clickedPrev, clickedPrevToJourney } from "../../redux/actions";
 
 const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
@@ -56,11 +58,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
     step > order.length - 1 ? history.push("summary") : history.push(`${order[step]}`);
   };
 
-  function createMarkup(text) {
-    return {
-       __html: text   };
- }; 
-
 
   // Helping logic to find disabled options
   // Disabling all of the options that you are unable to choose after making your selection and moving on to the next screen
@@ -99,7 +96,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
       </div>
       <div className="c-feature__wrapper">
         <div className="c-feature__img">
-          <div className="o-aspect o-aspect--536x590 u-spacing-flush u-text-center">
+          <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center">
           {
            choiceImage
               ? <div>
@@ -115,7 +112,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
           {
             choiceCopy
             ? <div className="c-description__wrapper">
-              <p className="c-description__text u-spacing-flush" dangerouslySetInnerHTML={createMarkup(choiceCopy)}></p>
+              <p className="c-description__text u-spacing-flush" dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}></p>
             </div>
             : null
           }

@@ -118,9 +118,10 @@
   width: 100%;
   border-radius: 8px;
   max-width: 210px;
+  cursor: pointer;
 }
 
-.c-btn:first-child {
+.c-btn:not(:last-child) {
   margin-right: 10px;
 }
 
@@ -133,4 +134,16 @@
   background-color: #707070;
   cursor: pointer;
   
+}
+
+.c-btn__summary-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.c-btn--summary {
+  color: #4484A6;
+  background-color: transparent;
+  border: 1px solid #4484A6;
 }

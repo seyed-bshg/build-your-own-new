@@ -14,7 +14,7 @@
 	@include media('md') {
 		min-width: 50%;
 		flex-basis: 50%;
-    padding-right: 13%;
+    padding-right: 8%;
 	}
 }
 
@@ -72,5 +72,14 @@
 
 .c-journey__option input {
 	display: none;
+}
+
+.c-journey__intro > ul {
+    @include list-unstyled();
+}
+
+
+.c-journey__intro > ul > li {
+    padding-bottom: 20px;
 }
 

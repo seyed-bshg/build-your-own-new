@@ -36,7 +36,7 @@ function App() {
 
   // Viewing the state
   const data = useSelector((state) => state.requestData);
-  
+  console.log(order, 'order')
   return (
     
     <div className="App">
@@ -64,7 +64,11 @@ function App() {
           </nav>
           <Switch>
             {/* Dynamically creating routes */}
+            {listValues.map((l, index) => {
+              // console.log('listValues ', l.keyName)
+            })}
             {listValues.map((listValue) => (
+
               <Route key={listValue.listItemID} exact path={`/${listValue.listID}`}>
                 <Feature
                   CDN_URI={constants.CDN_URI}

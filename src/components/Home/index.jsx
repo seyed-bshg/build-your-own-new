@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectedJourney } from "../../redux/actions";
+import helpers from "../../helpers";
 
 import Journey from "../Journey";
 
@@ -23,11 +24,13 @@ function Home() {
     history.push('10');
   };
 
+
+
   return (
     <div className="c-journey">
       <div className="c-journey__text-wrapper">
         <h1 className="c-heading-44">{meta.header}</h1>
-        <p className="c-heading-26">{meta.description}</p>
+        <div className="c-heading-26 c-journey__intro" dangerouslySetInnerHTML={helpers.createMarkup(meta.description)}></div>
       </div>
       {/*  4 Main Journeys to choose from:  Flexibility, Design, etc.*/}
       <div className="c-journey__option-wrapper">

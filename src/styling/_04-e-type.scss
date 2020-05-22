@@ -68,6 +68,10 @@ a {
     }
 }
 
+button:focus {
+    outline: none;
+}
+
 
 // WEBPACK FOOTER //
 // ./src/scss/global/_04-e-type.scss
