@@ -57,7 +57,7 @@ function App() {
                 : null}
               {order && step > 0 ? (
                 <li className={step > order.length ? "c-nav__item c-nav__item--active" : "c-nav__item"}>
-                  summary
+                  Summary
                 </li>
               ) : null}
             </ul>
