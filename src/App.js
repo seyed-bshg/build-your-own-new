@@ -36,6 +36,7 @@ function App() {
 
   // Viewing the state
   const data = useSelector((state) => state.requestData);
+  // console.log(data, 'data');
   console.log(order, 'order')
   return (
     
@@ -69,7 +70,7 @@ function App() {
             })}
             {listValues.map((listValue) => (
 
-              <Route key={listValue.listItemID} exact path={`/${listValue.listID}`}>
+              <Route key={listValue.listItemID} exact path={`/${listValue.keyName}`}>
                 <Feature
                   CDN_URI={constants.CDN_URI}
                   meta={listValue}

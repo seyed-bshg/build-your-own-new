@@ -11,20 +11,15 @@ import Journey from "../Journey";
 function Home() {
   const meta = useSelector((state) => state.requestData.meta);
   const groups = useSelector((state) => state.requestData.groups);
-  
   const dispatch = useDispatch();
   const history = useHistory();
-
-  console.log(groups, "groups");
 
   const onChoiceHandler = (e) => {
     const selectedGroup = groups[e.target.value - 1];
     console.log('selectedGroup', selectedGroup);
     dispatch(selectedJourney(selectedGroup));
-    history.push('10');
+    history.push('priceRange');
   };
-
-
 
   return (
     <div className="c-journey">

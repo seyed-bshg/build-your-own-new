@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import imgURL from '../../uri-constants';
+import imgURL from "../../uri-constants";
 import Option from "../../components/Option";
 import Button from "../../components/Button";
 import { useSelector, useDispatch } from "react-redux";
 import helpers from "../../helpers";
 
-import { selectedOption, clickedNext, clickedPrev, clickedPrevToJourney } from "../../redux/actions";
+import {
+  selectedOption,
+  clickedNext,
+  clickedPrev,
+  clickedPrevToJourney,
+} from "../../redux/actions";
 
 const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
-  console.log('meta ', meta)
+  console.log("meta ", meta);
   const [choiceCopy, setChoiceCopy] = useState("");
   const [choiceImage, setChoiceImage] = useState("");
   let isDirty = useSelector((state) => state.requestData.isDirty);
@@ -17,6 +22,8 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
   let step = useSelector((state) => state.requestData.step);
   let choice = useSelector((state) => state.requestData.choiceID);
   let productList = useSelector((state) => state.requestData.reducedProducts);
+  let listValues = useSelector((state) => state.requestData.listValues);
+  console.log(listValues, "listValues");
   const dispatch = useDispatch();
   //React Router for Prev/Next buttons
   const history = useHistory();
@@ -26,13 +33,12 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
   useEffect(() => {
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
-      console.log('items ', items);
-      console.log('selectedChoice ', selectedChoice);
-      const { listTxt, listImg  } = selectedChoice[0];
+      console.log("items ", items);
+      console.log("selectedChoice ", selectedChoice);
+      const { listTxt, listImg } = selectedChoice[0];
       setChoiceCopy(listTxt);
       setChoiceImage(listImg);
     }
-
   }, [choice, items, isDirty]);
 
   //Seleting an Option
@@ -43,21 +49,30 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
   };
 
   const clickedPrevHandler = () => {
-     step > 1 ? dispatch(clickedPrev()) : dispatch(clickedPrevToJourney());
+    step > 1 ? dispatch(clickedPrev()) : dispatch(clickedPrevToJourney());
     history.goBack();
   };
 
   const clickedNextHandler = () => {
-
     let reducedProductList = productList.filter(
       (product) => product[`${keyName}`] === choice
     );
     dispatch(clickedNext(reducedProductList, productList));
     setChoiceCopy("");
     setChoiceImage("");
-    step > order.length - 1 ? history.push("summary") : history.push(`${order[step]}`);
-  };
 
+    let nextURL = null;
+    if (step < order.length) {
+      let reducedListValues = listValues.filter(
+        (listValue) => listValue.listID === order[step]
+      );
+      nextURL = reducedListValues[0].keyName;
+    }
+
+    step > order.length - 1
+      ? history.push("summary")
+      : history.push(`${nextURL}`);
+  };
 
   // Helping logic to find disabled options
   // Disabling all of the options that you are unable to choose after making your selection and moving on to the next screen
@@ -81,7 +96,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
               {listDescription}
             </span>
           </div>
-          <span style={{display: 'none'}}>{name}</span>
+          <span style={{ display: "none" }}>{name}</span>
         </fieldset>
         {items.map((item) => (
           <Option
@@ -97,42 +112,43 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
       <div className="c-feature__wrapper">
         <div className="c-feature__img">
           <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center">
-          {
-           choiceImage
-              ? <div>
-                  <img className="u-img-respond u-img-respond--80" src={CDN_URI + choiceImage} />
-                </div>
-              : 
+            {choiceImage ? (
               <div>
-                <img className="u-img-respond u-img-respond--80" src="https://via.placeholder.com/540x590" alt="placeholder" />
+                <img
+                  className="u-img-respond u-img-respond--80"
+                  src={CDN_URI + choiceImage}
+                />
               </div>
-
-          }
+            ) : (
+              <div>
+                <img
+                  className="u-img-respond u-img-respond--80"
+                  src="https://via.placeholder.com/540x590"
+                  alt="placeholder"
+                />
+              </div>
+            )}
           </div>
-          {
-            choiceCopy
-            ? <div className="c-description__wrapper">
-              <p className="c-description__text u-spacing-flush" dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}></p>
+          {choiceCopy ? (
+            <div className="c-description__wrapper">
+              <p
+                className="c-description__text u-spacing-flush"
+                dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}
+              ></p>
             </div>
-            : null
-          }
-          
+          ) : null}
         </div>
-        
+
         {/* Button would be its own component */}
         <div className="c-btn__wrapper">
-          <Button 
-            click={clickedPrevHandler}
-            direction="Previous"
-          />
-          <Button 
+          <Button click={clickedPrevHandler} direction="Previous" />
+          <Button
             click={clickedNextHandler}
             direction="Next"
             disabled={!isDirty}
           />
         </div>
       </div>
-      
     </div>
   );
 };
