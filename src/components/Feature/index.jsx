@@ -14,7 +14,6 @@ import {
 } from "../../redux/actions";
 
 const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
-  console.log("meta ", meta);
   const [choiceCopy, setChoiceCopy] = useState("");
   const [choiceImage, setChoiceImage] = useState("");
   let isDirty = useSelector((state) => state.requestData.isDirty);
@@ -23,7 +22,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
   let choice = useSelector((state) => state.requestData.choiceID);
   let productList = useSelector((state) => state.requestData.reducedProducts);
   let listValues = useSelector((state) => state.requestData.listValues);
-  console.log(listValues, "listValues");
   const dispatch = useDispatch();
   //React Router for Prev/Next buttons
   const history = useHistory();
@@ -33,8 +31,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
   useEffect(() => {
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
-      console.log("items ", items);
-      console.log("selectedChoice ", selectedChoice);
       const { listTxt, listImg } = selectedChoice[0];
       setChoiceCopy(listTxt);
       setChoiceImage(listImg);
@@ -88,66 +84,125 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
   }
 
   return (
-    <div className="c-feature">
-      <div className="c-feature__options">
-        <fieldset className="c-feature__description">
-          <div className="c-feature__description-text-wrapper">
-            <span className="c-feature__description-text">
-              {listDescription}
-            </span>
-          </div>
-          <span style={{ display: "none" }}>{name}</span>
-        </fieldset>
-        {items.map((item) => (
-          <Option
-            key={item.listItemID}
-            name={name}
-            value={item.listItemID}
-            label={item.listItemValue}
-            clicked={onSelectChoice}
-            disabled={step > 1 ? !disabledItems.includes(item) : false}
-          />
-        ))}
-      </div>
-      <div className="c-feature__wrapper">
-        <div className="c-feature__img">
-          <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center">
-            {choiceImage ? (
-              <div>
-                <img
-                  className="u-img-respond u-img-respond--80"
-                  src={CDN_URI + choiceImage}
-                />
-              </div>
-            ) : (
-              <div>
-                <img
-                  className="u-img-respond u-img-respond--80"
-                  src="https://via.placeholder.com/540x590"
-                  alt="placeholder"
-                />
-              </div>
-            )}
-          </div>
-          {choiceCopy ? (
-            <div className="c-description__wrapper">
-              <p
-                className="c-description__text u-spacing-flush"
-                dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}
-              ></p>
+    <div>
+      <div className="c-feature">
+        <div className="c-feature__options">
+          <fieldset className="c-feature__description c-feature__description--mobile">
+            <div className="c-feature__description-text-wrapper">
+              <span className="c-feature__description-text">
+                {listDescription}
+              </span>
             </div>
-          ) : null}
+            <span style={{ display: "none" }}>{name}</span>
+          </fieldset>
         </div>
+      </div>
+      <div className="c-feature">
+        
+        <div className="c-feature__options c-feature__options--desktop">
+          <fieldset className="c-feature__description c-feature__description--desktop">
+            <div className="c-feature__description-text-wrapper">
+              <span className="c-feature__description-text">
+                {listDescription}
+              </span>
+            </div>
+            <span style={{ display: "none" }}>{name}</span>
+          </fieldset>
+          {items.map((item) => (
+            <Option
+              key={item.listItemID}
+              name={name}
+              value={item.listItemID}
+              label={item.listItemValue}
+              clicked={onSelectChoice}
+              disabled={step > 1 ? !disabledItems.includes(item) : false}
+            />
+          ))}
+        </div>
+        <div className="c-feature__wrapper">
+          <div className="c-feature__img">
+            <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center c-feature__img-desktop">
+              {choiceImage ? (
+                <div>
+                  <img
+                    className="u-img-respond u-img-respond--80"
+                    src={CDN_URI + choiceImage}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <img
+                    className="u-img-respond u-img-respond--80"
+                    src="https://via.placeholder.com/540x590"
+                    alt="placeholder"
+                  />
+                </div>
+              )}
+            </div>
 
-        {/* Button would be its own component */}
-        <div className="c-btn__wrapper">
-          <Button click={clickedPrevHandler} direction="Previous" />
-          <Button
-            click={clickedNextHandler}
-            direction="Next"
-            disabled={!isDirty}
-          />
+            <div className="c-feature__img-mobile">
+              {choiceImage ? (
+                  <img
+                    className="u-img-respond u-spacing-none"
+                    src={CDN_URI + choiceImage}
+                  />
+              ) : (
+                  <img
+                    className="u-img-respond u-spacing-none"
+                    src="https://via.placeholder.com/540x590"
+                    alt="placeholder"
+                  />
+              )}
+            </div>
+            {choiceCopy ? (
+              <div className="c-description__wrapper">
+                <p
+                  className="c-description__text u-spacing-none"
+                  dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}
+                ></p>
+              </div>
+            ) : null}
+          </div>
+
+          {/* Button would be its own component */}
+          <div className="c-btn__wrapper c-btn__wrapper--desktop">
+            <Button click={clickedPrevHandler} direction="Previous" />
+            <Button
+              click={clickedNextHandler}
+              direction="Next"
+              disabled={!isDirty}
+            />
+          </div>
         </div>
+        <div className="c-feature__options c-feature__options--mobile">
+          <fieldset className="c-feature__description c-feature__description--desktop">
+            <div className="c-feature__description-text-wrapper">
+              <span className="c-feature__description-text">
+                {listDescription}
+              </span>
+            </div>
+            <span style={{ display: "none" }}>{name}</span>
+          </fieldset>
+          {items.map((item) => (
+            <Option
+              key={item.listItemID}
+              name={name}
+              value={item.listItemID}
+              label={item.listItemValue}
+              clicked={onSelectChoice}
+              disabled={step > 1 ? !disabledItems.includes(item) : false}
+            />
+          ))}
+        </div>
+        {/* Button would be its own component */}
+          <div className="c-btn__wrapper c-btn__wrapper--mobile">
+            <Button click={clickedPrevHandler} direction="Previous" />
+            <Button
+              click={clickedNextHandler}
+              direction="Next"
+              disabled={!isDirty}
+            />
+          </div>
       </div>
     </div>
   );

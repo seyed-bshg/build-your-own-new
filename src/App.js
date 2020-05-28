@@ -13,6 +13,7 @@ import json from "./what.json";
 import "./App.scss";
 
 function App() {
+
   // REACT REDUX HOOK
   const dispatch = useDispatch();
 
@@ -37,62 +38,83 @@ function App() {
   // Viewing the state
   const data = useSelector((state) => state.requestData);
   // console.log(data, 'data');
-  console.log(order, 'order')
+  console.log(step , 'step ')
+  console.log(order , 'order ')
+  console.log(listValues , 'listValues ')
   return (
     
     <div className="App">
+     
       <div className="o-wrap">
         <div className="o-container">
           <Header />
-          <nav>
 
-            <ul className={`c-nav o-list-unstyled ${order && step > 0 ? '' : 'u-hidden'}`}>
-              {order
-                ? order.map((order, index) => {
-                  let listThing = listValues.filter(listValue => listValue.listID === order);
-                  return(
-                    <li key={index} className={index + 1 === step ? "c-nav__item c-nav__item--active" : "c-nav__item"}>
-                      {listThing[0].listName}
-                    </li>
-                )} )
-                : null}
-              {order && step > 0 ? (
-                <li className={step > order.length ? "c-nav__item c-nav__item--active" : "c-nav__item"}>
-                  Summary
-                </li>
+            <nav className="c-nav__desktop-wrapper">
+
+              <ul className={`c-nav__desktop o-list-unstyled ${order && step > 0 ? '' : 'u-hidden'}`}>
+                {order
+                  ? order.map((order, index) => {
+                    let listThing = listValues.filter(listValue => listValue.listID === order);
+                    return(
+                      <li key={index} className={index + 1 === step ? "c-nav__desktop-item c-nav__desktop-item--active" : "c-nav__desktop-item"}>
+                        {listThing[0].listName}
+                      </li>
+                  )} )
+                  : null}
+                {order && step > 0 ? (
+                  <li className={step > order.length ? "c-nav__desktop-item c-nav__desktop-item--active" : "c-nav__desktop-item"}>
+                    Summary
+                  </li>
+                ) : null}
+              </ul>
+            </nav>
+             <nav className="c-nav__mobile-wrapper">
+
+              <ul className={`c-nav__mobile o-list-unstyled ${order && step > 0 ? '' : 'u-hidden'}`}>
+                {order
+                  ? order.map((order, index) => {
+                    let listThing = listValues.filter(listValue => listValue.listID === order);
+                    return(
+                      <li key={index} className={index + 1 === step ? "c-nav__mobile-item c-nav__mobile-item--active" : "c-nav__mobile-item"}>
+                        {listThing[0].listName}
+                      </li>
+                  )} )
+                  : null}
+                {order && step > 0 ? (
+                  <li className={step > order.length ? "c-nav__mobile-item c-nav__mobile-item--active" : "c-nav__mobile-item"}>
+                    Summary
+                  </li>
+                ) : null}
+              </ul>
+            </nav>
+            <Switch>
+              {/* Dynamically creating routes */}
+              {listValues.map((listValue) => (
+
+                <Route key={listValue.listItemID} exact path={`/${listValue.keyName}`}>
+                  <Feature
+                    CDN_URI={constants.CDN_URI}
+                    meta={listValue}
+                    keyName={listValue.keyName}
+                    key={listValue.listItemID}
+                    name={listValue.listName}
+                    items={listValue.listItems}
+                    listDescription={listValue.listDescription}
+                  />
+                </Route>
+              ))}
+              {step > 9 ? (
+                <Route path="/summary">
+                  <Summary />
+                </Route>
               ) : null}
-            </ul>
-          </nav>
-          <Switch>
-            {/* Dynamically creating routes */}
-            {listValues.map((l, index) => {
-              // console.log('listValues ', l.keyName)
-            })}
-            {listValues.map((listValue) => (
+              {/* HOME ROUTE */}
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Redirect to="/" />
+            </Switch>
 
-              <Route key={listValue.listItemID} exact path={`/${listValue.keyName}`}>
-                <Feature
-                  CDN_URI={constants.CDN_URI}
-                  meta={listValue}
-                  keyName={listValue.keyName}
-                  key={listValue.listItemID}
-                  name={listValue.listName}
-                  items={listValue.listItems}
-                  listDescription={listValue.listDescription}
-                />
-              </Route>
-            ))}
-            {step > 9 ? (
-              <Route path="/summary">
-                <Summary />
-              </Route>
-            ) : null}
-            {/* HOME ROUTE */}
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Redirect to="/" />
-          </Switch>
         </div>
       </div>
     </div>

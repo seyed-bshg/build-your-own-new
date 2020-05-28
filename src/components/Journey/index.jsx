@@ -1,17 +1,49 @@
 import React from "react";
 import { CDN_URI } from '../../uri-constants';
+import {
+  Tooltip,
+} from 'react-tippy';
+import 'react-tippy/dist/tippy.css'
 
 const Journey = ({ groupID, groupName, description, clicked }) => {
 	const bgImage = `${CDN_URI + groupName.toLowerCase() + '-journey' + '.jpg'}`;
-  return (
+  let tooltipDescription = '';
+  switch (groupName.toLowerCase()) {
+    case 'flexibility':
+      tooltipDescription = "Bosch offers several third rack designs based on your loading needs.";
+      break;
+    case 'drying':
+      tooltipDescription = "Bosch offers several innovative drying technologies that make hand drying a thing of the past.";
+      break;
+    case 'designer':
+       tooltipDescription = "A variety of sleek handle styles and finishes that suit different tastes.";
+      break;
+    case 'noise':
+      tooltipDescription = "Bosch is the quietest brand of dishwashers in the US";
+      break;
+    default:
+      tooltipDescription = ''
+  }
 
-    <div className="c-journey__option col-6" >
+  return (
+   
+    <div className="c-journey__option col-6" style={{position: 'relative'}} >
+     <Tooltip
+      // options
+      theme="dark"
+      title={tooltipDescription}
+      position="top"
+      trigger="mouseenter"
+      arrow="true"
+      followCursor="true"
+    >
+    
     	<img src={bgImage} className="u-img-respond" />
     	<label>
       	<input type="radio" value={groupID} name="journey" onClick={clicked}/>
       		{description}
       	</label>
-
+    </Tooltip>
     </div>
   );
 };

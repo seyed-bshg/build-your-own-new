@@ -76,6 +76,10 @@
 
 .c-journey__intro > ul {
     @include list-unstyled();
+
+    @include media('md') {
+    	display: none;
+    }
 }
 
 

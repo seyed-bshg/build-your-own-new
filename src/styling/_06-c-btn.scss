@@ -147,3 +147,53 @@
   background-color: transparent;
   border: 1px solid #4484A6;
 }
+
+.c-btn__wrapper--mobile {
+  display: flex;
+
+  @include media('md') {
+    display: none;
+  }
+}
+
+.c-btn__wrapper--desktop {
+  display: none;
+
+  @include media('md') {
+    display: flex;
+  }
+}
+
+
+.c-btn__mobile-text {
+  display: none;
+
+  @include media('md') {
+    display: inline-block;
+  }
+}
+
+.c-btn__mobile-img {
+  display: inline-block;
+
+  @include media('md') {
+    display: none;
+  }
+}
+
+.c-btn-summary__img {
+  display: inline;
+
+  @include media('md') {
+    display: none;
+  }
+}
+
+.c-btn-summary__text {
+  display: none;
+
+  @include media('md') {
+    display: inline;
+  }
+}
+

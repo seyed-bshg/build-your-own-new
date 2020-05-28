@@ -16,7 +16,6 @@ function Home() {
 
   const onChoiceHandler = (e) => {
     const selectedGroup = groups[e.target.value - 1];
-    console.log('selectedGroup', selectedGroup);
     dispatch(selectedJourney(selectedGroup));
     history.push('priceRange');
   };
@@ -25,6 +24,7 @@ function Home() {
     <div className="c-journey">
       <div className="c-journey__text-wrapper">
         <h1 className="c-heading-44">{meta.header}</h1>
+        {/*  4 Main Journeys to choose from:  Flexibility, Design, etc.*/}
         <div className="c-heading-26 c-journey__intro" dangerouslySetInnerHTML={helpers.createMarkup(meta.description)}></div>
       </div>
       {/*  4 Main Journeys to choose from:  Flexibility, Design, etc.*/}

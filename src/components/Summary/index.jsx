@@ -3,37 +3,35 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clickedStartOver } from "../../redux/actions";
+import searchIcon from '../../img/icons/search-icon.svg';
+import startIcon from '../../img/icons/start-over-icon.svg';
+import whereIcon from '../../img/icons/where-to-buy-icon.svg';
 import helpers from "../../helpers";
 
 const Summary = () => {
-  console.log(helpers)
   // Should only have one product when we come to this component
   // Will put into useState hook
   let finalProduct = useSelector((state) => state.requestData.reducedProducts);
 
+
   finalProduct = finalProduct[0];
   const dispatch = useDispatch();
-  console.log('finalProduct ', finalProduct)
   // Restting State Values
   const onStartOverHandler = () => {
-    console.log('onStartOverHandler ')
     dispatch(clickedStartOver());
   };
 
   const opennewone = (type, SKU) => {
-    console.log('type ', type)
-    console.log('SKU ', SKU)
     let BASE_URI = 'https://www.bosch-home.com/us/';
     let link = '';
     if(type === "dealer") {
       link = `dealer-locator?product=${SKU}`
     } else if(type === "learn") {
-      link = `search-result?search=${SKU}`
+      link = `productslist/${SKU}`
     } else {
       link = ''
     }
     let fullLink = BASE_URI + link;
-    console.log()
     window.open(`${fullLink}`, "_blank")
   };
 
@@ -98,7 +96,7 @@ const Summary = () => {
           </div>
       <div className="c-feature__wrapper">
         <div className="c-summary__price-wrapper">
-          <p className="c-summary__price">{`${helpers.formatter.format(finalProduct.MSRP)}`}</p>
+          <p className="c-summary__price u-type-bold">{`${helpers.formatter.format(finalProduct.MSRP)}`}</p>
         </div>
         <div className="c-summary__img-wrapper">
           <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center">
@@ -109,9 +107,18 @@ const Summary = () => {
 
         <div className="c-btn__summary-wrapper">
           
-          <button className="c-btn c-btn--summary" onClick={onStartOverHandler}>Start Over</button>
-          <button className="c-btn c-btn--summary" onClick={() => opennewone('learn', `${finalProduct.SKU}`)}>Learn more</button>
-          <button className="c-btn c-btn--summary" onClick={() => opennewone('dealer', `${finalProduct.SKU}`)}>Where to buy</button>
+          <button className="c-btn c-btn--summary" onClick={onStartOverHandler}>
+            <div className="c-btn-summary__text">Start Over</div>
+            <img className="c-btn-summary__img u-img-respond u-spacing-none" src={startIcon} />
+          </button>
+          <button className="c-btn c-btn--summary" onClick={() => opennewone('learn', `${finalProduct.SKU}`)}>
+            <div className="c-btn-summary__text">Learn more</div>
+            <img className="c-btn-summary__img u-img-respond u-spacing-none" src={searchIcon} />
+          </button>
+          <button className="c-btn c-btn--summary" onClick={() => opennewone('dealer', `${finalProduct.SKU}`)}>
+            <div className="c-btn-summary__text">Where to buy</div>
+            <img className="c-btn-summary__img u-img-respond u-spacing-none" src={whereIcon} />
+          </button>
         </div>
         
       </div>
