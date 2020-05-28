@@ -53,6 +53,13 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
     let reducedProductList = productList.filter(
       (product) => product[`${keyName}`] === choice
     );
+    
+    if (step === 1){
+       reducedProductList = productList.filter(
+        (product) => product[`${keyName}`] <= choice
+      );
+    }
+
     dispatch(clickedNext(reducedProductList, productList));
     setChoiceCopy("");
     setChoiceImage("");

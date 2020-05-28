@@ -37,10 +37,11 @@ function App() {
 
   // Viewing the state
   const data = useSelector((state) => state.requestData);
-  // console.log(data, 'data');
-  console.log(step , 'step ')
-  console.log(order , 'order ')
-  console.log(listValues , 'listValues ')
+  console.log(data, 'data');
+  // console.log(step , 'step ')
+  // console.log(order , 'order ')
+  // console.log(listValues , 'listValues ')
+
   return (
     
     <div className="App">
