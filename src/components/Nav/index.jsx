@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Nav = (step, listValues, order) => {  
-  console.log('order ', order)
   return (
     <nav className="order-wrapper">
       {order
