@@ -13,6 +13,7 @@ const Summary = () => {
   // Will put into useState hook
   let finalProduct = useSelector((state) => state.requestData.reducedProducts);
 
+  console.log('finalProduct ', finalProduct);
 
   finalProduct = finalProduct[0];
   const dispatch = useDispatch();
