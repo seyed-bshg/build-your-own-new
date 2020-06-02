@@ -15,6 +15,7 @@ function Home() {
   const history = useHistory();
 
   const onChoiceHandler = (e) => {
+    window.scrollTo(0, 0)
     const selectedGroup = groups[e.target.value - 1];
     dispatch(selectedJourney(selectedGroup));
     history.push('priceRange');

@@ -1,0 +1,7 @@
+.row {
+	padding-bottom: 30px !important;
+
+	@include media('md') {
+		padding-bottom: 50px !important;
+	}
+}

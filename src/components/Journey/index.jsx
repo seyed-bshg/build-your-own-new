@@ -3,7 +3,6 @@ import { CDN_URI } from '../../uri-constants';
 import {
   Tooltip,
 } from 'react-tippy';
-import 'react-tippy/dist/tippy.css'
 
 const Journey = ({ groupID, groupName, description, clicked }) => {
 	const bgImage = `${CDN_URI + groupName.toLowerCase() + '-journey' + '.jpg'}`;
@@ -27,7 +26,7 @@ const Journey = ({ groupID, groupName, description, clicked }) => {
 
   return (
    
-    <div className="c-journey__option col-6" style={{position: 'relative'}} >
+    <div className="c-journey__option col-12 col-md-6">
      <Tooltip
       // options
       theme="dark"

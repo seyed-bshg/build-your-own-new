@@ -50,6 +50,8 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
   };
 
   const clickedNextHandler = () => {
+    window.scrollTo(0, 0);
+
     let reducedProductList = productList.filter(
       (product) => product[`${keyName}`] === choice
     );
@@ -100,7 +102,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
                 {listDescription}
               </span>
             </div>
-            <span style={{ display: "none" }}>{name}</span>
           </fieldset>
         </div>
       </div>
@@ -113,7 +114,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
                 {listDescription}
               </span>
             </div>
-            <span style={{ display: "none" }}>{name}</span>
           </fieldset>
           {items.map((item) => (
             <Option

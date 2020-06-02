@@ -19,10 +19,18 @@ $container-top-padding: 40px;
 //
 .o-container {
     position: relative;
-    padding: 0 $container-padding-l-r $container-top-padding;
+    padding: 0 20px 20px;
     margin: 0 auto;
     width: 100%;
     max-width: $container-padding-l-r + $container-width + $container-padding-l-r;
+
+    @include media('sm') {
+    	padding: 0 30px;
+    }
+
+    @include media('md') {
+    	padding: 0 36px 30px;
+    }
 }
 
 // WEBPACK FOOTER //

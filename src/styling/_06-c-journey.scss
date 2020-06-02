@@ -31,11 +31,26 @@
 }
 
 .c-journey__option {
+	position: relative;
   max-height: 290px;
   width: 100%;
   background-position: top left;
   background-size: cover;
   background-repeat: no-repeat;
+  text-align: center;
+  margin-bottom: 20px;
+
+  @include media('sm') {
+  	margin-bottom: none;
+  }
+}
+
+.c-journey__option label {
+	font-size: 11px;
+
+	@include media('sm') {
+		font-size: inherit;
+	}
 }
 
 .c-journey__option-wrapper .row:first-child {

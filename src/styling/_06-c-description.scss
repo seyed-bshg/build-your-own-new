@@ -6,7 +6,12 @@
 }
 
 .c-description__text {
-	font-size: 18px;
-	padding: 10px 36px;
+	font-size: 12px;
+	padding: 10px 20px;
+
+	@include media('md') {
+		font-size: 18px;
+		padding: 10px 36px;
+	}
 }
 

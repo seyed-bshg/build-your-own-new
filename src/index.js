@@ -3,6 +3,10 @@
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 
+// library css imports
+import 'react-tippy/dist/tippy.css'
+
+
 // React
 import React from "react";
 import ReactDOM from "react-dom";
