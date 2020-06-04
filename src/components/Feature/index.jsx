@@ -5,6 +5,7 @@ import Option from "../../components/Option";
 import Button from "../../components/Button";
 import { useSelector, useDispatch } from "react-redux";
 import helpers from "../../helpers";
+import doubleArrow from '../../img/icons/double-down-arrow.png';
 
 import {
   selectedOption,
@@ -17,6 +18,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
   const [choiceCopy, setChoiceCopy] = useState("");
   const [choiceImage, setChoiceImage] = useState("");
   const [choiceVideo, setChoiceVideo] = useState("");
+  const [isToggled, setToggled] = useState(false);
   let isDirty = useSelector((state) => state.requestData.isDirty);
   let order = useSelector((state) => state.requestData.order);
   let step = useSelector((state) => state.requestData.step);
@@ -28,6 +30,8 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
   //React Router for Prev/Next buttons
   const history = useHistory();
 
+  // text toggle
+  const toggleTrueFalse = () => setToggled(!isToggled);
 
   //ComponentDidMount() and ComponentShouldUpdate() Equivalent
   // Getting the feature copy on selecting an option
@@ -232,13 +236,17 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
 
 
             {choiceCopy ? (
-              <div className="c-description__wrapper">
-                <p
-                  className="c-description__text u-spacing-none"
-                  dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}
-                ></p>
-              </div>
-            ) : null}
+                <div className="c-description__wrapper">
+                  <div className="c-description__toggle" onClick={toggleTrueFalse}><img src={doubleArrow} /></div>
+                  <p
+                    className="c-description__text u-spacing-none"
+                    dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}
+                  >
+                  
+                  </p>
+
+                </div>
+              ) : null}
           </div>
 
           {/* Button would be its own component */}

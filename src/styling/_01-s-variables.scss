@@ -49,6 +49,9 @@ $z-index-config: (
 );
 
 
+///
+// breakpoints;
+///
 $breakpoints-master-config: (
     'xs':  500px,
     'sm':  768px,
@@ -56,3 +59,8 @@ $breakpoints-master-config: (
     'lg':  1200px,
     'xl':  1500px,
 );
+
+///
+// Border radius
+///
+$site-radious: 0px;
