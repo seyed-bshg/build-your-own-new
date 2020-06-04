@@ -11,17 +11,23 @@ import {
   CLICKED_START_OVER
 } from "./constants";
 
-import Axios from "axios";
+import axios from 'axios'
 
 export const requestData = () => (dispatch) => {
   dispatch({ type: REQUEST_DATA_PENDING });
-  Axios.get("https://bshpersona.com/personaAPI/data/GetBYOData")
-    .then((res) =>
-      dispatch({
-        type: REQUEST_DATA_SUCCESS,
-        payload: res.data.ProductBuilder,
-      })
-    )
+
+  axios({
+    method: 'get',
+    url: 'https://bshpersona.com/personaAPI/data/GetBYOData',
+    dataType: 'json',
+    contentType: 'application/json; charset=utf-8'
+  })
+  .then((res) =>
+    dispatch({
+      type: REQUEST_DATA_SUCCESS,
+      payload: res.data.ProductBuilder,
+    })
+  )
     .catch((error) => dispatch({ type: REQUEST_DATA_FAILED, payload: error }));
 };
 

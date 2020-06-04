@@ -141,7 +141,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
             <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center c-feature__img-desktop">
               
               {defaultGroupVideo ? (
-                  <video controls autoPlay loop={true} key={defaultGroupVideo}>
+                  <video controls autoPlay loop={true} key={defaultGroupVideo} style={{top: '-25%'}}>
                      {console.log('defaultGroupVideo ', defaultGroupVideo)}
                     <source src={CDN_URI_VIDEO + defaultGroupVideo}
                             type="video/mp4" />
@@ -150,7 +150,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
                 </video>
                 ) : (
                   choiceVideo ? (
-                    <video controls autoPlay loop={true} key={choiceVideo}>
+                    <video controls autoPlay loop={true} key={choiceVideo} style={{top: '-25%'}}>
                       {console.log('choiceVideo ', choiceVideo)}
                       <source src={CDN_URI_VIDEO + choiceVideo}
                               type="video/mp4" />

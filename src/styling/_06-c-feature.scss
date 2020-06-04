@@ -27,7 +27,7 @@
 	position: relative;
 	@include media('md') {
 		max-height: 70vh;
-    // overflow-y: scroll;
+    overflow-y: scroll;
 	}
 }
 
