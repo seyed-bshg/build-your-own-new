@@ -37,21 +37,13 @@ function App() {
 
   // Viewing the state
   const data = useSelector((state) => state.requestData);
-  // console.log(data, 'data');
-  // console.log(step , 'step ')
-  // console.log(order , 'order ')
-  // console.log(listValues , 'listValues ')
 
   return (
-    
     <div className="App">
-     
       <div className="o-wrap">
         <div className="o-container">
           <Header />
-
             <nav className="c-nav__desktop-wrapper">
-
               <ul className={`c-nav__desktop o-list-unstyled ${order && step > 0 ? '' : 'u-hidden'}`}>
                 {order
                   ? order.map((order, index) => {
@@ -90,20 +82,25 @@ function App() {
             </nav>
             <Switch>
               {/* Dynamically creating routes */}
-              {listValues.map((listValue) => (
-
-                <Route key={listValue.listItemID} exact path={`/${listValue.keyName}`}>
-                  <Feature
-                    CDN_URI={constants.CDN_URI}
-                    meta={listValue}
-                    keyName={listValue.keyName}
-                    key={listValue.listItemID}
-                    name={listValue.listName}
-                    items={listValue.listItems}
-                    listDescription={listValue.listDescription}
-                  />
-                </Route>
-              ))}
+              {listValues.map((listValue) => {
+                return (
+                  <Route key={listValue.listItemID} exact path={`/${listValue.keyName}`}>
+                    <Feature
+                      CDN_URI={constants.CDN_URI}
+                      CDN_URI_VIDEO={constants.CDN_URI_VIDEO}
+                      meta={listValue}
+                      keyName={listValue.keyName}
+                      key={listValue.listItemID}
+                      name={listValue.listName}
+                      items={listValue.listItems}
+                      listDescription={listValue.listDescription}
+                      defaultGroupImage={listValue.listGroupImg}
+                      defaultGroupVideo={listValue.listGroupvideoID}
+                    />
+                  </Route>
+                  )
+              } 
+              )}
               {step > 9 ? (
                 <Route path="/summary">
                   <Summary />

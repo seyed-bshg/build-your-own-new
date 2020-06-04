@@ -13,27 +13,33 @@ import {
   clickedPrevToJourney,
 } from "../../redux/actions";
 
-const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
+const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI_VIDEO, defaultGroupImage, defaultGroupVideo }) => {
   const [choiceCopy, setChoiceCopy] = useState("");
   const [choiceImage, setChoiceImage] = useState("");
+  const [choiceVideo, setChoiceVideo] = useState("");
   let isDirty = useSelector((state) => state.requestData.isDirty);
   let order = useSelector((state) => state.requestData.order);
   let step = useSelector((state) => state.requestData.step);
   let choice = useSelector((state) => state.requestData.choiceID);
   let productList = useSelector((state) => state.requestData.reducedProducts);
   let listValues = useSelector((state) => state.requestData.listValues);
+
   const dispatch = useDispatch();
   //React Router for Prev/Next buttons
   const history = useHistory();
 
+
   //ComponentDidMount() and ComponentShouldUpdate() Equivalent
   // Getting the feature copy on selecting an option
+  // console.log('items ======================== \n ', items);
   useEffect(() => {
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
-      const { listTxt, listImg } = selectedChoice[0];
+      // console.log('selectedChoice ', selectedChoice)
+      const { listTxt, listImg, listVd } = selectedChoice[0];
       setChoiceCopy(listTxt);
       setChoiceImage(listImg);
+      setChoiceVideo(listVd);
     }
   }, [choice, items, isDirty]);
 
@@ -65,6 +71,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
     dispatch(clickedNext(reducedProductList, productList));
     setChoiceCopy("");
     setChoiceImage("");
+    setChoiceVideo("");
 
     let nextURL = null;
     if (step < order.length) {
@@ -81,6 +88,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
 
   // Helping logic to find disabled options
   // Disabling all of the options that you are unable to choose after making your selection and moving on to the next screen
+  let setImage = defaultGroupImage;
   let disabledItems = [];
   if (step > 1) {
     let values = [];
@@ -106,7 +114,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
         </div>
       </div>
       <div className="c-feature">
-        
         <div className="c-feature__options c-feature__options--desktop">
           <fieldset className="c-feature__description c-feature__description--desktop">
             <div className="c-feature__description-text-wrapper">
@@ -129,25 +136,53 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
         <div className="c-feature__wrapper">
           <div className="c-feature__img">
             <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center c-feature__img-desktop">
-              {choiceImage ? (
-                <div>
-                  <img
-                    className="u-img-respond u-img-respond--80"
-                    src={CDN_URI + choiceImage}
-                  />
-                </div>
-              ) : (
-                <div>
-                  <img
-                    className="u-img-respond u-img-respond--80"
-                    src="https://via.placeholder.com/540x590"
-                    alt="placeholder"
-                  />
-                </div>
-              )}
+              
+              {defaultGroupVideo ? (
+                  <video controls autoPlay loop={true}>
+
+                    <source src={CDN_URI_VIDEO + defaultGroupVideo}
+                            type="video/mp4" />
+
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+                ) : (
+                  choiceVideo ? (
+                    <video controls autoPlay loop={true}>
+                      {console.log('choiceVideo ', choiceVideo)}
+                      <source src={CDN_URI_VIDEO + choiceVideo}
+                              type="video/mp4" />
+
+                      Sorry, your browser doesn't support embedded videos.
+                  
+                  </video>
+
+                  ) : (
+                    choiceImage ? (
+                      <div>
+                        {console.log('choiceImage ', choiceImage)}
+                        <img
+                          className="u-img-respond u-img-respond--80"
+                          src={CDN_URI + choiceImage}
+                        />
+                      </div>
+                    ) : (
+                      <div>
+                        {console.log('defaultGroupImage ', defaultGroupImage)}
+                        <img
+                          className="u-img-respond u-img-respond--80"
+                          src={CDN_URI + defaultGroupImage}
+                          alt="placeholder"
+                        />
+                      </div>
+                    )
+                  )
+                )
+              }
+
             </div>
 
             <div className="c-feature__img-mobile">
+
               {choiceImage ? (
                   <img
                     className="u-img-respond u-spacing-none"
@@ -156,11 +191,14 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
               ) : (
                   <img
                     className="u-img-respond u-spacing-none"
-                    src="https://via.placeholder.com/540x590"
+                    src={CDN_URI + defaultGroupImage}
                     alt="placeholder"
                   />
               )}
             </div>
+
+
+
             {choiceCopy ? (
               <div className="c-description__wrapper">
                 <p
@@ -180,6 +218,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI }) => {
               disabled={!isDirty}
             />
           </div>
+
         </div>
         <div className="c-feature__options c-feature__options--mobile">
           <fieldset className="c-feature__description c-feature__description--desktop">
