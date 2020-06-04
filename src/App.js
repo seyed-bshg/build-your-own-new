@@ -37,6 +37,7 @@ function App() {
 
   // Viewing the state
   const data = useSelector((state) => state.requestData);
+  console.log(data);
 
   return (
     <div className="App">

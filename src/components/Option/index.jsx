@@ -1,6 +1,7 @@
 import React from "react";
 import helpers from "../../helpers";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import {
   Tooltip,
 } from 'react-tippy';
@@ -10,13 +11,14 @@ import { clickedStartOver } from "../../redux/actions";
 
 const Option = ({ value, label, name, clicked, disabled }) => {
 
+  const history = useHistory();
   const dispatch = useDispatch();
-
    const onStartOverHandler = () => {
     dispatch(clickedStartOver());
+    history.push('/')
   };
 
-  const unavailableText = 'This combination is not available with the options you previously selected.';
+  const unavailableText = `This combination is not available with the options you previously selected. `;
 
   return (
     <React.Fragment>
@@ -30,7 +32,7 @@ const Option = ({ value, label, name, clicked, disabled }) => {
           trigger="mouseenter"
           arrow="true"
           className="c-feature__option"
-          html={(<div><p>{unavailableText}</p></div>)}>
+          html={(<div><p >{unavailableText}</p><button onClick={onStartOverHandler}>Click on me to start over</button></div>)}>
               <label htmlFor={name + value} className="c-feature__label">
                 <input
                   type="radio"
