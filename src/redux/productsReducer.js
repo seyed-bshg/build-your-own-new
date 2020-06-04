@@ -92,6 +92,7 @@ export const requestData = (state = initialStateData, action = {}) => {
     case CLICKED_PREV:
       return {
         ...state,
+        isDirty: false,
         reducedProducts: state.productsHistory.pop(),
         productsHistory: state.productsHistory,
         step: (state.step -= 1),
@@ -101,6 +102,7 @@ export const requestData = (state = initialStateData, action = {}) => {
     case CLICKED_PREV_TO_JOURNEY:
       return{
         ...state,
+        isDirty: false,
         order: [],
         step: (state.step -= 1),
         choiceID: "",

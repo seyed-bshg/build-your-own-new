@@ -51,6 +51,9 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
   };
 
   const clickedPrevHandler = () => {
+    setChoiceImage("");
+    setChoiceCopy("");
+    setChoiceVideo("");
     step > 1 ? dispatch(clickedPrev()) : dispatch(clickedPrevToJourney());
     history.goBack();
   };
