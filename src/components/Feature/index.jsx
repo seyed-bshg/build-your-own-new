@@ -148,7 +148,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
                 ) : (
                   choiceVideo ? (
                     <video controls autoPlay loop={true}>
-                      {console.log('choiceVideo ', choiceVideo)}
                       <source src={CDN_URI_VIDEO + choiceVideo}
                               type="video/mp4" />
 
@@ -159,7 +158,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
                   ) : (
                     choiceImage ? (
                       <div>
-                        {console.log('choiceImage ', choiceImage)}
                         <img
                           className="u-img-respond u-img-respond--80"
                           src={CDN_URI + choiceImage}
@@ -167,7 +165,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
                       </div>
                     ) : (
                       <div>
-                        {console.log('defaultGroupImage ', defaultGroupImage)}
                         <img
                           className="u-img-respond u-img-respond--80"
                           src={CDN_URI + defaultGroupImage}
@@ -183,18 +180,44 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
 
             <div className="c-feature__img-mobile">
 
-              {choiceImage ? (
-                  <img
-                    className="u-img-respond u-spacing-none"
-                    src={CDN_URI + choiceImage}
-                  />
-              ) : (
-                  <img
-                    className="u-img-respond u-spacing-none"
-                    src={CDN_URI + defaultGroupImage}
-                    alt="placeholder"
-                  />
-              )}
+              {defaultGroupVideo ? (
+                  <video controls autoPlay loop={true}>
+
+                    <source src={CDN_URI_VIDEO + defaultGroupVideo}
+                            type="video/mp4" />
+
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+                ) : (
+                  choiceVideo ? (
+                    <video controls autoPlay loop={true}>
+                      <source src={CDN_URI_VIDEO + choiceVideo}
+                              type="video/mp4" />
+
+                      Sorry, your browser doesn't support embedded videos.
+                  
+                  </video>
+
+                  ) : (
+                    choiceImage ? (
+                      <div>
+                        <img
+                          className="u-img-respond u-img-respond--80"
+                          src={CDN_URI + choiceImage}
+                        />
+                      </div>
+                    ) : (
+                      <div>
+                        <img
+                          className="u-img-respond u-img-respond--80"
+                          src={CDN_URI + defaultGroupImage}
+                          alt="placeholder"
+                        />
+                      </div>
+                    )
+                  )
+                )
+              }
             </div>
 
 
