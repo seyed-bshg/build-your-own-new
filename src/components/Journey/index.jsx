@@ -4,8 +4,8 @@ import {
   Tooltip,
 } from 'react-tippy';
 
-const Journey = ({ groupID, groupName, description, clicked }) => {
-	const bgImage = `${CDN_URI + groupName.toLowerCase() + '-journey' + '.jpg'}`;
+const Journey = ({ groupID, groupName, description, clicked, img }) => {
+	const bgImage = `${CDN_URI + img}`;
   let tooltipDescription = '';
   switch (groupName.toLowerCase()) {
     case 'flexibility':
@@ -14,10 +14,10 @@ const Journey = ({ groupID, groupName, description, clicked }) => {
     case 'drying':
       tooltipDescription = "Bosch offers several innovative drying technologies that make hand drying a thing of the past.";
       break;
-    case 'designer':
+    case 'design':
        tooltipDescription = "A variety of sleek handle styles and finishes that suit different tastes.";
       break;
-    case 'noise':
+    case 'quiet':
       tooltipDescription = "Bosch is the quietest brand of dishwashers in the US";
       break;
     default:

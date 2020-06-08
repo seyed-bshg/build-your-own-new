@@ -13,6 +13,7 @@ function Home() {
   const groups = useSelector((state) => state.requestData.groups);
   const dispatch = useDispatch();
   const history = useHistory();
+  console.log(groups, 'groups')
 
   const onChoiceHandler = (e) => {
     window.scrollTo(0, 0)
@@ -35,6 +36,7 @@ function Home() {
             if(groupIndex < 2) {
               return (
                 <Journey
+                  img = {group.featureImage}
                   groupName={group.groupName}
                   key={group.groupID}
                   groupID={group.groupID}
@@ -51,6 +53,7 @@ function Home() {
             if(groupIndex >= 2) {
               return (
                 <Journey
+                  img={group.featureImage}
                   groupName={group.groupName}
                   key={group.groupID}
                   groupID={group.groupID}
