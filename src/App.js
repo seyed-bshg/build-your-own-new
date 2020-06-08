@@ -102,7 +102,7 @@ function App() {
                   )
               } 
               )}
-              {step > 9 ? (
+              {step > order.length - 1 ? (
                 <Route path="/summary">
                   <Summary />
                 </Route>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clickedStartOver } from "../../redux/actions";
 import searchIcon from '../../img/icons/search-icon.svg';
@@ -11,12 +11,14 @@ import helpers from "../../helpers";
 const Summary = () => {
   // Should only have one product when we come to this component
   // Will put into useState hook
+  const history = useHistory();
   let finalProducts = useSelector((state) => state.requestData.reducedProducts);
   console.log(finalProducts)
   // finalProduct = finalProduct[0];
   const dispatch = useDispatch();
   // Restting State Values
   const onStartOverHandler = () => {
+    history.push('/');
     dispatch(clickedStartOver());
   };
 
