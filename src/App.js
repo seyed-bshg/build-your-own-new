@@ -38,6 +38,7 @@ function App() {
   // Viewing the state
   const data = useSelector((state) => state.requestData);
   console.log(data);
+  console.log('order ', order);
 
   return (
     <div className="App">
@@ -49,14 +50,15 @@ function App() {
                 {order
                   ? order.map((order, index) => {
                     let listThing = listValues.filter(listValue => listValue.listID === order);
+                    console.log('listThing ', listThing)
                     return(
-                      <li key={index} className={index + 1 === step ? "c-nav__desktop-item c-nav__desktop-item--active" : "c-nav__desktop-item"}>
+                      <li key={index} className={index + 1 === step ? "c-nav__desktop-item c-nav__desktop-item--active u-type-bold" : "c-nav__desktop-item"}>
                         {listThing[0].listName}
                       </li>
                   )} )
                   : null}
                 {order && step > 0 ? (
-                  <li className={step > order.length ? "c-nav__desktop-item c-nav__desktop-item--active" : "c-nav__desktop-item"}>
+                  <li className={step > order.length ? "c-nav__desktop-item c-nav__desktop-item--active u-type-bold" : "c-nav__desktop-item"}>
                     Summary
                   </li>
                 ) : null}

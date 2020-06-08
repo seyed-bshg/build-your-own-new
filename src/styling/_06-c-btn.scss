@@ -117,7 +117,6 @@
   padding: 10px 5px;
   width: 100%;
   border-radius: $base-background;
-  max-width: 210px;
   cursor: pointer;
 }
 
@@ -131,7 +130,6 @@
 }
 
 .c-btn--active {
-  background-color: #707070;
   cursor: pointer;
   
 }
@@ -160,7 +158,17 @@
   display: none;
 
   @include media('md') {
+    width: 100%;
     display: flex;
+  }
+}
+
+.c-btn__wrapper--desktop .c-btn {
+  display: none;
+
+  @include media('md') {
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -197,3 +205,10 @@
   }
 }
 
+.c-btn--Next {
+  background-color: #4484A6;
+}
+
+.c-btn--Previous {
+  background-color: #707070;
+}

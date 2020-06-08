@@ -139,10 +139,19 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
               disabled={step > 1 ? !disabledItems.includes(item) : false}
             />
           ))}
+          {/* Button would be its own component */}
+          <div className="c-btn__wrapper c-btn__wrapper--desktop">
+            <Button click={clickedPrevHandler} direction="Previous" />
+            <Button
+              click={clickedNextHandler}
+              direction="Next"
+              disabled={!isDirty}
+            />
+          </div>
         </div>
         <div className="c-feature__wrapper">
           <div className="c-feature__img">
-            <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center c-feature__img-desktop">
+            <div className="o-aspect o-aspect--536x590 u-spacing-flush u-text-center c-feature__img-desktop">
               
               {defaultGroupVideo ? (
                   <video controls autoPlay loop={true} key={defaultGroupVideo} style={{top: '-25%'}}>
@@ -247,16 +256,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
 
                 </div>
               ) : null}
-          </div>
-
-          {/* Button would be its own component */}
-          <div className="c-btn__wrapper c-btn__wrapper--desktop">
-            <Button click={clickedPrevHandler} direction="Previous" />
-            <Button
-              click={clickedNextHandler}
-              direction="Next"
-              disabled={!isDirty}
-            />
           </div>
 
         </div>

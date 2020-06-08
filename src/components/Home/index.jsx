@@ -6,8 +6,6 @@ import helpers from "../../helpers";
 
 import Journey from "../Journey";
 
-// import Journey from "./../../components/Journey";
-
 function Home() {
   const meta = useSelector((state) => state.requestData.meta);
   const groups = useSelector((state) => state.requestData.groups);

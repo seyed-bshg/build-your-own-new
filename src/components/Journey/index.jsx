@@ -30,7 +30,7 @@ const Journey = ({ groupID, groupName, description, clicked, img }) => {
      <Tooltip
       // options
       theme="dark"
-      title={tooltipDescription}
+      title={description}
       position="top"
       trigger="mouseenter"
       arrow="true"
@@ -40,7 +40,7 @@ const Journey = ({ groupID, groupName, description, clicked, img }) => {
     	<img src={bgImage} className="u-img-respond" />
     	<label>
       	<input type="radio" value={groupID} name="journey" onClick={clicked}/>
-      		{description}
+      		{groupName}
       	</label>
     </Tooltip>
     </div>

@@ -67,7 +67,7 @@ export const requestData = (state = initialStateData, action = {}) => {
         ...state,
         journey: action.payload.groupID,
         order: [...action.payload.displayOrder],
-        step: (state.step += 1),
+        step: (state.step + 1),
       };
 
     case SELECTED_OPTION:
@@ -95,7 +95,7 @@ export const requestData = (state = initialStateData, action = {}) => {
         isDirty: false,
         reducedProducts: state.productsHistory.pop(),
         productsHistory: state.productsHistory,
-        step: (state.step -= 1),
+        step: (state.step - 1),
         choiceID: "",
       };
 
@@ -104,7 +104,7 @@ export const requestData = (state = initialStateData, action = {}) => {
         ...state,
         isDirty: false,
         order: [],
-        step: (state.step -= 1),
+        step: (state.step - 1),
         choiceID: "",
       };
 
