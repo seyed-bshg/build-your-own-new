@@ -33,12 +33,17 @@ function App() {
   const listValues = useSelector((state) => state.requestData.listValues);
 
   const order = useSelector((state) => state.requestData.order);
+
+  const newOrder = order.slice(0,-1);
+
   const step = useSelector((state) => state.requestData.step);
 
   // Viewing the state
   const data = useSelector((state) => state.requestData);
-  console.log(data);
+  // console.log(data);
 
+  
+  console.log(listValues, 'listValues');
   return (
     <div className="App">
       <div className="o-wrap">
@@ -47,7 +52,7 @@ function App() {
             <nav className="c-nav__desktop-wrapper">
               <ul className={`c-nav__desktop o-list-unstyled ${order && step > 0 ? '' : 'u-hidden'}`}>
                 {order
-                  ? order.map((order, index) => {
+                  ? newOrder.map((order, index) => {
                     let listThing = listValues.filter(listValue => listValue.listID === order);
                     return(
                       <li key={index} className={index + 1 === step ? "c-nav__desktop-item c-nav__desktop-item--active" : "c-nav__desktop-item"}>
@@ -56,7 +61,7 @@ function App() {
                   )} )
                   : null}
                 {order && step > 0 ? (
-                  <li className={step > order.length ? "c-nav__desktop-item c-nav__desktop-item--active" : "c-nav__desktop-item"}>
+                  <li className={step > newOrder.length ? "c-nav__desktop-item c-nav__desktop-item--active" : "c-nav__desktop-item"}>
                     Summary
                   </li>
                 ) : null}
@@ -66,8 +71,9 @@ function App() {
 
               <ul className={`c-nav__mobile o-list-unstyled ${order && step > 0 ? '' : 'u-hidden'}`}>
                 {order
-                  ? order.map((order, index) => {
+                  ? newOrder.map((order, index) => {
                     let listThing = listValues.filter(listValue => listValue.listID === order);
+                    console.log(listThing, 'listThing');
                     return(
                       <li key={index} className={index + 1 === step ? "c-nav__mobile-item c-nav__mobile-item--active" : "c-nav__mobile-item"}>
                         {listThing[0].listName}
@@ -75,7 +81,7 @@ function App() {
                   )} )
                   : null}
                 {order && step > 0 ? (
-                  <li className={step > order.length ? "c-nav__mobile-item c-nav__mobile-item--active" : "c-nav__mobile-item"}>
+                  <li className={step > newOrder.length ? "c-nav__mobile-item c-nav__mobile-item--active" : "c-nav__mobile-item"}>
                     Summary
                   </li>
                 ) : null}
@@ -102,7 +108,7 @@ function App() {
                   )
               } 
               )}
-              {step > 9 ? (
+              {step > newOrder.length - 1 ? (
                 <Route path="/summary">
                   <Summary />
                 </Route>

@@ -26,6 +26,8 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
   let productList = useSelector((state) => state.requestData.reducedProducts);
   let listValues = useSelector((state) => state.requestData.listValues);
 
+  const newOrder = order.slice(0,-1);
+  console.log('newORder from Feature',newOrder);
   const dispatch = useDispatch();
   //React Router for Prev/Next buttons
   const history = useHistory();
@@ -81,14 +83,16 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
     setChoiceVideo("");
 
     let nextURL = null;
-    if (step < order.length) {
+    if (step < newOrder.length) {
       let reducedListValues = listValues.filter(
-        (listValue) => listValue.listID === order[step]
+        (listValue) => listValue.listID === newOrder[step]
       );
       nextURL = reducedListValues[0].keyName;
     }
 
-    step > order.length - 1
+    console.log('step', step);
+
+    step > newOrder.length -1
       ? history.push("summary")
       : history.push(`${nextURL}`);
   };
