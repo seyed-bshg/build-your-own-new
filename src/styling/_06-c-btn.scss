@@ -146,6 +146,12 @@
   border: 1px solid #4484A6;
 }
 
+.c-btn--summary-learnmore {
+  color: white;
+  background-color: #4484A6;
+  border: 1px solid #4484A6;
+}
+
 .c-btn__wrapper--mobile {
   display: flex;
 
@@ -204,10 +210,17 @@
     display: inline;
   }
 }
+.c-btn--Next:disabled {
+  background-color: #E8E9E9;
+  color: #B1B1B1;
+}
 
 .c-btn--Next {
   background-color: #4484A6;
+  color: white;
 }
+
+
 
 .c-btn--Previous {
   background-color: #707070;

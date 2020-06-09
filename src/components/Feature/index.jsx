@@ -49,6 +49,8 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
 
   //Seleting an Option
   const onSelectChoice = (e) => {
+    // window.scrollTo(0, 0)
+    
     const value = Number(e.target.value);
     // Needs to set choiceCopy and choiceImage
     dispatch(selectedOption(value));

@@ -13,7 +13,7 @@ const Summary = () => {
   // Will put into useState hook
   const history = useHistory();
   let finalProducts = useSelector((state) => state.requestData.reducedProducts);
-  console.log(finalProducts)
+  const meta = useSelector((state) => state.requestData.meta);
   // finalProduct = finalProduct[0];
   const dispatch = useDispatch();
   // Restting State Values
@@ -45,7 +45,7 @@ const Summary = () => {
               <div className="c-feature__options c-feature__options--summary">
                 <div className="c-feature__description">
                   <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
-                    <p className="c-feature__description-text c-feature__description-text--summary">We think this dishwasher suits you best!</p>
+                    <p className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(meta.summaryHeader)}></p>
                     <span className="u-type-bold">
                       {finalProduct.productTitle}
                       </span>
@@ -99,12 +99,12 @@ const Summary = () => {
                     
                   </div>
               <div className="c-feature__wrapper">
-                <div className="c-summary__price-wrapper">
-                  <p className="c-summary__price u-type-bold">{`${helpers.formatter.format(finalProduct.MSRP)}`}</p>
-                </div>
                 <div className="c-summary__img-wrapper">
                   <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center">
                     <div className="c-summary__img" style={{backgroundImage: `url(http://media3.bosch-home.com/Product_Shots/900x506/${finalProduct.productImage})`}} alt="dishwasher" />
+                  </div>
+                  <div className="c-summary__price-wrapper">
+                    <p className="c-summary__price u-type-bold">{`${helpers.formatter.format(finalProduct.MSRP)}`}</p>
                   </div>
                 </div>
                 
@@ -112,15 +112,15 @@ const Summary = () => {
                 <div className="c-btn__summary-wrapper">
                   
                   <button className="c-btn c-btn--summary" onClick={onStartOverHandler}>
-                    <div className="c-btn-summary__text">Start Over</div>
+                    <div className="c-btn-summary__text">{meta.startOverText}</div>
                     <img className="c-btn-summary__img u-img-respond u-spacing-none" src={startIcon} />
                   </button>
-                  <button className="c-btn c-btn--summary" onClick={() => opennewone('learn', `${finalProduct.SKU}`)}>
-                    <div className="c-btn-summary__text">Learn more</div>
+                  <button className="c-btn c-btn--summary-learnmore" onClick={() => opennewone('learn', `${finalProduct.SKU}`)}>
+                    <div className="c-btn-summary__text">{meta.learnMoreText}</div>
                     <img className="c-btn-summary__img u-img-respond u-spacing-none" src={searchIcon} />
                   </button>
                   <button className="c-btn c-btn--summary" onClick={() => opennewone('dealer', `${finalProduct.SKU}`)}>
-                    <div className="c-btn-summary__text">Where to buy</div>
+                    <div className="c-btn-summary__text">{meta.where2BuyText}</div>
                     <img className="c-btn-summary__img u-img-respond u-spacing-none" src={whereIcon} />
                   </button>
                 </div>

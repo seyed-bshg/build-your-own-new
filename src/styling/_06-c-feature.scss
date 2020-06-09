@@ -25,11 +25,13 @@
 
 .c-feature__wrapper {
 	position: relative;
+	// margin-left: 0px;
+
 	@include media('md') {
-		max-height: 70vh;
+		// max-height: 70vh;
     // overflow-y: scroll;
+    
 	}
-	margin-left: 0px;
 }
 
 .c-feature__options {
@@ -39,7 +41,12 @@
 	@include media('md') {
 		// max-height: 70vh;
 	}
-	margin-left: 0px;
+	// margin-left: 0px;
+}
+
+.c-feature__link {
+	color: lightblue;
+	padding-bottom: 5px;
 }
 
 .c-feature__options--summary {

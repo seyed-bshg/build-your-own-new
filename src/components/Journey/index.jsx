@@ -6,23 +6,6 @@ import {
 
 const Journey = ({ groupID, groupName, description, clicked, img }) => {
 	const bgImage = `${CDN_URI + img}`;
-  let tooltipDescription = '';
-  switch (groupName.toLowerCase()) {
-    case 'flexibility':
-      tooltipDescription = "Bosch offers several third rack designs based on your loading needs.";
-      break;
-    case 'drying':
-      tooltipDescription = "Bosch offers several innovative drying technologies that make hand drying a thing of the past.";
-      break;
-    case 'design':
-       tooltipDescription = "A variety of sleek handle styles and finishes that suit different tastes.";
-      break;
-    case 'quiet':
-      tooltipDescription = "Bosch is the quietest brand of dishwashers in the US";
-      break;
-    default:
-      tooltipDescription = ''
-  }
 
   return (
    

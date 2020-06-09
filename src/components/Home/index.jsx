@@ -11,7 +11,7 @@ function Home() {
   const groups = useSelector((state) => state.requestData.groups);
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(groups, 'groups')
+
 
   const onChoiceHandler = (e) => {
     window.scrollTo(0, 0)
@@ -26,11 +26,18 @@ function Home() {
         <h1 className="c-heading-44">{meta.header}</h1>
         {/*  4 Main Journeys to choose from:  Flexibility, Design, etc.*/}
         <div className="c-heading-26 c-journey__intro" dangerouslySetInnerHTML={helpers.createMarkup(meta.description)}></div>
+        <ul className="c-journey__list-mobile o-list-unstyled ">
+        {groups.map((group, groupIndex) => {
+          return <li className="c-journey__list-item" dangerouslySetInnerHTML={helpers.createMarkup(group.description)}></li>
+        })}
+      </ul>
       </div>
+      
       {/*  4 Main Journeys to choose from:  Flexibility, Design, etc.*/}
       <div className="c-journey__option-wrapper">
         <div className="row">
           {groups.map((group, groupIndex) => {
+            console.log('group ', group)
             if(groupIndex < 2) {
               return (
                 <Journey

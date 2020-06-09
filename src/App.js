@@ -37,8 +37,6 @@ function App() {
 
   // Viewing the state
   const data = useSelector((state) => state.requestData);
-  console.log(data);
-  console.log('order ', order);
 
   return (
     <div className="App">
@@ -104,11 +102,12 @@ function App() {
                   )
               } 
               )}
-              {step > order.length - 1 ? (
+              {order.length && step > order.length - 1 ? (
                 <Route path="/summary">
                   <Summary />
                 </Route>
-              ) : null}
+              ) :  null
+              }
               {/* HOME ROUTE */}
               <Route exact path="/">
                 <Home />

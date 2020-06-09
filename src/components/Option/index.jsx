@@ -24,7 +24,6 @@ const Option = ({ value, label, name, clicked, disabled }) => {
     <React.Fragment>
       {disabled 
         ? <Tooltip 
-        // options
           delay={[100, 300]}
           interactive="true"
           theme="dark"
@@ -32,7 +31,7 @@ const Option = ({ value, label, name, clicked, disabled }) => {
           trigger="mouseenter"
           arrow="true"
           className="c-feature__option"
-          html={(<div><p >{unavailableText}</p><button onClick={onStartOverHandler}>Click on me to start over</button></div>)}>
+          html={(<div><p className="u-spacing-none">{unavailableText}</p><a className="c-feature__link" href="#" onClick={onStartOverHandler}>Click here to start over</a></div>)}>
               <label htmlFor={name + value} className="c-feature__label">
                 <input
                   type="radio"
