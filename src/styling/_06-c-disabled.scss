@@ -1,0 +1,37 @@
+.c-disabled--desktop {
+	display: none;
+
+	@include media('md') {
+		display: block;
+	}
+}
+
+.c-disabled {
+  display: flex;
+  flex-direction: column-reverse;
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+
+.c-disabled {
+	font-size: 0.8rem;
+	padding-top: 15px;
+}
+
+.c-feature__label:hover .c-disabled--desktop {
+	@include media('md') {
+		display: block;
+		height: 100%;
+	  width: 100%;
+	  background: black;
+	  color: white;
+	  z-index: 100;
+	}
+}
+
+.c-disabled__link {
+	text-decoration: underline;
+	color: #007bff !important;
+}

@@ -26,7 +26,6 @@ function App() {
 
   /* MADE MINOR EDITS TO API, BROUGHT IN JSON LOCALLY*/
   // useEffect(() => {
-  //   // console.log(json.ProductBuilder)
   //   dispatch(requestJSON(json.ProductBuilder));
   // }, [dispatch]);
 
@@ -48,7 +47,6 @@ function App() {
                 {order
                   ? order.map((order, index) => {
                     let listThing = listValues.filter(listValue => listValue.listID === order);
-                    console.log('listThing ', listThing)
                     return(
                       <li key={index} className={index + 1 === step ? "c-nav__desktop-item c-nav__desktop-item--active u-type-bold" : "c-nav__desktop-item"}>
                         {listThing[0].listName}
@@ -83,9 +81,9 @@ function App() {
             </nav>
             <Switch>
               {/* Dynamically creating routes */}
-              {listValues.map((listValue) => {
+              {listValues.map((listValue, listValueIndex) => {
                 return (
-                  <Route key={listValue.listItemID} exact path={`/${listValue.keyName}`}>
+                  <Route key={listValue.listValueIndex} exact path={`/${listValue.keyName}`}>
                     <Feature
                       CDN_URI={constants.CDN_URI}
                       CDN_URI_VIDEO={constants.CDN_URI_VIDEO}
@@ -102,7 +100,7 @@ function App() {
                   )
               } 
               )}
-              {order.length && step > order.length - 1 ? (
+              {step > order.length - 1 ? (
                 <Route path="/summary">
                   <Summary />
                 </Route>

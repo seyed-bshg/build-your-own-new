@@ -21,3 +21,23 @@
     letter-spacing: -1px;
 	}
 }
+
+.c-heading-28 {
+	font-size: 22px;
+	line-height: 21px;
+  letter-spacing: -1px;
+
+	@include media('sm') {
+		font-size: 28px;
+    line-height: 20px;
+    letter-spacing: -1px;
+	}
+}
+
+.c-heading-18 {
+	font-size: 16px;
+
+	@include media('sm') {
+		font-size: 18px;
+	}
+}

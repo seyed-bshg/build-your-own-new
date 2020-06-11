@@ -69,7 +69,9 @@ $aspect-config: (
 }
 
 .o-aspect--600x338 {
-    min-height: 526px;
+    @include media('md') {
+        min-height: 526px;
+    }
 }
 
 // WEBPACK FOOTER //

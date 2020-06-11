@@ -1,5 +1,7 @@
 import React from "react";
 
+import SurveyModal from '../SurveyModal';
+
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clickedStartOver } from "../../redux/actions";
@@ -16,6 +18,7 @@ const Summary = () => {
   const meta = useSelector((state) => state.requestData.meta);
   // finalProduct = finalProduct[0];
   const dispatch = useDispatch();
+
   // Restting State Values
   const onStartOverHandler = () => {
     history.push('/');
@@ -30,103 +33,124 @@ const Summary = () => {
     } else if(type === "learn") {
       link = `productslist/${SKU}`
     } else {
-      link = ''
+      link = BASE_URI
     }
     let fullLink = BASE_URI + link;
     window.open(`${fullLink}`, "_blank")
   };
 
+  setTimeout(() => {
+    console.log('set time')
+  }, 3000);
+  //
+  //ADD SURVEY HERE USING LOCAL STATE
+
   return (
     <div>
+      <div>
+        <p className="c-heading-28 u-spacing-40" dangerouslySetInnerHTML={helpers.createMarkup(meta.summaryHeader)}></p>
+      </div>
       {
         finalProducts.map((finalProduct, finalProductsIndex) => {
           return (
-            <div className="c-feature">
-              <div className="c-feature__options c-feature__options--summary">
-                <div className="c-feature__description">
-                  <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
-                    <p className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(meta.summaryHeader)}></p>
-                    <span className="u-type-bold">
-                      {finalProduct.productTitle}
-                      </span>
-                  </div>
-                  
-                </div>
-                {/* USPs came with <strong> tags */}
-                {/* Component USP's? */}
-                {/* Some USPs retrieved from XML are null. */}
-                    {finalProduct.usp_1
-                    ? <div className="c-feature__description">
-                        <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
-                          <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_1.replace(/(<([^>]+)>)/gi, ""))}>
-                          </span>
-                        </div>
-                      </div>
-                    : null}
+            <div className="u-spacing-40">
+              <div className="u-position-align-self" style={{paddingBottom: '30px'}}>
+                <span className="u-type-bold c-heading-18">
+                  {finalProduct.productTitle}
+                </span>
+              </div>
 
-                    {finalProduct.usp_2
-                    ? <div className="c-feature__description">
-                        <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
-                          <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_2.replace(/(<([^>]+)>)/gi, ""))}>
-                          </span>
-                        </div>
-                      </div>
-                    : null}
-                    {finalProduct.usp_3
-                    ? <div className="c-feature__description">
-                        <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
-                          <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_3.replace(/(<([^>]+)>)/gi, ""))}>
-                          </span>
-                        </div>
-                      </div>
-                    : null}
-                    {finalProduct.usp_4
-                    ? <div className="c-feature__description">
-                        <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
-                          <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_4.replace(/(<([^>]+)>)/gi, ""))}>
-                          </span>
-                        </div>
-                      </div>
-                    : null}
-                    {finalProduct.usp_5
-                    ? <div className="c-feature__description">
-                        <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
-                          <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_5.replace(/(<([^>]+)>)/gi, ""))}>
-                          </span>
-                        </div>
-                      </div>
-                    : null}
+              <div className="c-feature" key={finalProductsIndex}>
+                <div className="c-feature__options c-feature__options--summary">
+                  
+                {/* 
+                  <div className="c-feature__description">
+                    <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
+                      <p className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(meta.summaryHeader)}></p>
+                      <span className="u-type-bold">
+                        {finalProduct.productTitle}
+                        </span>
+                    </div>
                     
                   </div>
-              <div className="c-feature__wrapper">
-                <div className="c-summary__img-wrapper">
-                  <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center">
-                    <div className="c-summary__img" style={{backgroundImage: `url(http://media3.bosch-home.com/Product_Shots/900x506/${finalProduct.productImage})`}} alt="dishwasher" />
-                  </div>
-                  <div className="c-summary__price-wrapper">
-                    <p className="c-summary__price u-type-bold">{`${helpers.formatter.format(finalProduct.MSRP)}`}</p>
-                  </div>
-                </div>
-                
+                  */}
+                  {/* USPs came with <strong> tags */}
+                  {/* Component USP's? */}
+                  {/* Some USPs retrieved from XML are null. */}
+                      {finalProduct.usp_1
+                      ? <div className="c-feature__description">
+                          <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
+                            <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_1.replace(/(<([^>]+)>)/gi, ""))}>
+                            </span>
+                          </div>
+                        </div>
+                      : null}
 
-                <div className="c-btn__summary-wrapper">
+                      {finalProduct.usp_2
+                      ? <div className="c-feature__description">
+                          <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
+                            <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_2.replace(/(<([^>]+)>)/gi, ""))}>
+                            </span>
+                          </div>
+                        </div>
+                      : null}
+                      {finalProduct.usp_3
+                      ? <div className="c-feature__description">
+                          <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
+                            <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_3.replace(/(<([^>]+)>)/gi, ""))}>
+                            </span>
+                          </div>
+                        </div>
+                      : null}
+                      {finalProduct.usp_4
+                      ? <div className="c-feature__description">
+                          <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
+                            <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_4.replace(/(<([^>]+)>)/gi, ""))}>
+                            </span>
+                          </div>
+                        </div>
+                      : null}
+                      {finalProduct.usp_5
+                      ? <div className="c-feature__description">
+                          <div className="c-feature__description-text-wrapper c-feature__description-text-wrapper--summary">
+                            <span className="c-feature__description-text c-feature__description-text--summary" dangerouslySetInnerHTML={helpers.createMarkup(finalProduct.usp_5.replace(/(<([^>]+)>)/gi, ""))}>
+                            </span>
+                          </div>
+                        </div>
+                      : null}
+                      
+                    </div>
+                <div className="c-feature__wrapper">
+                  <div className="c-summary__img-wrapper">
+                    <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center">
+                      <div className="c-summary__img" style={{backgroundImage: `url(http://media3.bosch-home.com/Product_Shots/900x506/${finalProduct.productImage})`}} alt="dishwasher" />
+                    </div>
+                    <div className="c-summary__price-wrapper">
+                      <p className="c-summary__price u-type-bold">{`${helpers.formatter.format(finalProduct.MSRP)}`}</p>
+                    </div>
+                  </div>
                   
-                  <button className="c-btn c-btn--summary" onClick={onStartOverHandler}>
-                    <div className="c-btn-summary__text">{meta.startOverText}</div>
-                    <img className="c-btn-summary__img u-img-respond u-spacing-none" src={startIcon} />
-                  </button>
-                  <button className="c-btn c-btn--summary-learnmore" onClick={() => opennewone('learn', `${finalProduct.SKU}`)}>
-                    <div className="c-btn-summary__text">{meta.learnMoreText}</div>
-                    <img className="c-btn-summary__img u-img-respond u-spacing-none" src={searchIcon} />
-                  </button>
-                  <button className="c-btn c-btn--summary" onClick={() => opennewone('dealer', `${finalProduct.SKU}`)}>
-                    <div className="c-btn-summary__text">{meta.where2BuyText}</div>
-                    <img className="c-btn-summary__img u-img-respond u-spacing-none" src={whereIcon} />
-                  </button>
+
+                  <div className="c-btn__summary-wrapper">
+                    
+                    <button className="c-btn c-btn--summary" onClick={onStartOverHandler}>
+                      <div className="c-btn-summary__text">{meta.startOverText}</div>
+                      <img className="c-btn-summary__img u-img-respond u-spacing-none" src={startIcon} />
+                    </button>
+                    <button className="c-btn c-btn--summary-learnmore" onClick={() => opennewone('learn', `${finalProduct.SKU}`)}>
+                      <div className="c-btn-summary__text">{meta.learnMoreText}</div>
+                      <img className="c-btn-summary__img u-img-respond u-spacing-none" src={searchIcon} />
+                    </button>
+                    <button className="c-btn c-btn--summary" onClick={() => opennewone('dealer', `${finalProduct.SKU}`)}>
+                      <div className="c-btn-summary__text">{meta.where2BuyText}</div>
+                      <img className="c-btn-summary__img u-img-respond u-spacing-none" src={whereIcon} />
+                    </button>
+                  </div>
+                  
                 </div>
-                
               </div>
             </div>
+            
           )
         })
       };

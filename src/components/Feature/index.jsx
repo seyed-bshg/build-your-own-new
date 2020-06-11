@@ -14,7 +14,7 @@ import {
   clickedPrevToJourney,
 } from "../../redux/actions";
 
-const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI_VIDEO, defaultGroupImage, defaultGroupVideo }) => {
+const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO, defaultGroupImage, defaultGroupVideo }) => {
   const [choiceCopy, setChoiceCopy] = useState("");
   const [choiceImage, setChoiceImage] = useState("");
   const [choiceVideo, setChoiceVideo] = useState("");
@@ -25,6 +25,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
   let choice = useSelector((state) => state.requestData.choiceID);
   let productList = useSelector((state) => state.requestData.reducedProducts);
   let listValues = useSelector((state) => state.requestData.listValues);
+  let meta = useSelector((state) => state.requestData.meta);
 
   const dispatch = useDispatch();
   //React Router for Prev/Next buttons
@@ -35,17 +36,17 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
 
   //ComponentDidMount() and ComponentShouldUpdate() Equivalent
   // Getting the feature copy on selecting an option
-  // console.log('items ======================== \n ', items);
+
   useEffect(() => {
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
-      // console.log('selectedChoice ', selectedChoice)
       const { listTxt, listImg, listVd } = selectedChoice[0];
       setChoiceCopy(listTxt);
       setChoiceImage(listImg);
       setChoiceVideo(listVd);
     }
   }, [choice, items, isDirty]);
+
 
   //Seleting an Option
   const onSelectChoice = (e) => {
@@ -156,17 +157,14 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
             <div className="o-aspect o-aspect--536x590 u-spacing-flush u-text-center c-feature__img-desktop">
               
               {defaultGroupVideo ? (
-                  <video controls autoPlay loop={true} key={defaultGroupVideo} style={{top: '-25%'}}>
-                     {console.log('defaultGroupVideo ', defaultGroupVideo)}
-                    <source src={CDN_URI_VIDEO + defaultGroupVideo}
+                <video controls autoPlay loop={true} key={defaultGroupVideo} style={{top: '-25%'}}>
+                  <source src={CDN_URI_VIDEO + defaultGroupVideo}
                             type="video/mp4" />
-
                     Sorry, your browser doesn't support embedded videos.
                 </video>
                 ) : (
                   choiceVideo ? (
                     <video controls autoPlay loop={true} key={choiceVideo} style={{top: '-25%'}}>
-                      {console.log('choiceVideo ', choiceVideo)}
                       <source src={CDN_URI_VIDEO + choiceVideo}
                               type="video/mp4" />
 
@@ -177,8 +175,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
                   ) : (
                     choiceImage ? (
                       <div>
-                        {console.log('choiceImage ', choiceImage)}
-
                         <img
                           className="u-img-respond u-img-respond--80"
                           src={CDN_URI + choiceImage}
@@ -187,7 +183,6 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
                       </div>
                     ) : (
                       <div>
-                      {console.log('defaultGroupImage ', defaultGroupImage)}
                         <img
                           className="u-img-respond u-img-respond--80"
                           src={CDN_URI + defaultGroupImage}
@@ -202,7 +197,7 @@ const Feature = ({ name, keyName, items, listDescription, meta, CDN_URI, CDN_URI
 
             </div>
 
-            <div className="c-feature__img-mobile">
+            <div className="c-feature__img-mobile o-aspect o-aspect--600x338">
 
               {defaultGroupVideo ? (
                   <video controls autoPlay loop={true}>

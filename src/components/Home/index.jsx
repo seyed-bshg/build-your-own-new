@@ -37,7 +37,6 @@ function Home() {
       <div className="c-journey__option-wrapper">
         <div className="row">
           {groups.map((group, groupIndex) => {
-            console.log('group ', group)
             if(groupIndex < 2) {
               return (
                 <Journey

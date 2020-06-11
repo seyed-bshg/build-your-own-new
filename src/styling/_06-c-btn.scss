@@ -116,7 +116,7 @@
   background-color: #E8E9E9;
   padding: 10px 5px;
   width: 100%;
-  border-radius: $base-background;
+  border-radius: $site-radius;
   cursor: pointer;
 }
 
@@ -147,9 +147,13 @@
 }
 
 .c-btn--summary-learnmore {
-  color: white;
-  background-color: #4484A6;
-  border: 1px solid #4484A6;
+  background-color: transparent;
+  border: 2px solid #4484A6;
+  @include media('md') {
+    color: white;
+    background-color: #4484A6;
+    border: 1px solid #4484A6;
+  }
 }
 
 .c-btn__wrapper--mobile {
