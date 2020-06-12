@@ -123,7 +123,7 @@ const Summary = () => {
                 <div className="c-feature__wrapper">
                   <div className="c-summary__img-wrapper">
                     <div className="o-aspect o-aspect--536x590 o-aspect--smaller u-spacing-flush u-text-center">
-                      <div className="c-summary__img" style={{backgroundImage: `url(http://media3.bosch-home.com/Product_Shots/900x506/${finalProduct.productImage})`}} alt="dishwasher" />
+                      <div className="c-summary__img" style={{backgroundImage: `url(https://media3.bosch-home.com/Product_Shots/900x506/${finalProduct.productImage})`}} alt="dishwasher" />
                     </div>
                     <div className="c-summary__price-wrapper">
                       <p className="c-summary__price u-type-bold">{`${helpers.formatter.format(finalProduct.MSRP)}`}</p>
