@@ -15,6 +15,20 @@ import axios from 'axios'
 
 export const requestData = () => (dispatch) => {
   dispatch({ type: REQUEST_DATA_PENDING });
+
+  axios({
+    method: 'get',
+    url: 'https://bshpersona.com/personaAPI/data/GetBYOData',
+    dataType: 'json',
+    contentType: 'application/json; charset=utf-8'
+  })
+  .then((res) =>
+    dispatch({
+      type: REQUEST_DATA_SUCCESS,
+      payload: res.data.ProductBuilder,
+    })
+  )
+    .catch((error) => dispatch({ type: REQUEST_DATA_FAILED, payload: error }));
 };
 
 export const requestJSON = (data) => ({
