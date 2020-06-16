@@ -1,6 +1,6 @@
 // These must be the first lines in src/index.js
 // cross browser polyfills
-import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/ie9';
 import 'react-app-polyfill/stable';
 
 // library css imports

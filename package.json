@@ -34,8 +34,11 @@
   },
   "browserslist": {
     "production": [
+      "ie 9", 
+      "ie 11", 
+      "not dead", 
+      "ie 10",
       "> 5%",
-      "dead",
       "not op_mini all"
     ],
     "development": [
