@@ -156,7 +156,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
           <div className="c-feature__img">
             <div className="o-aspect o-aspect--536x590 u-spacing-flush u-text-center c-feature__img-desktop">
               
-              {defaultGroupVideo ? (
+              {defaultGroupVideo && !isDirty ? (
                 <video controls autoPlay loop={true} key={defaultGroupVideo} style={{top: '-25%'}}>
                   <source src={CDN_URI_VIDEO + defaultGroupVideo}
                             type="video/mp4" />
@@ -182,14 +182,24 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
                         />
                       </div>
                     ) : (
-                      <div>
-                        <img
-                          className="u-img-respond u-img-respond--80"
-                          src={CDN_URI + defaultGroupImage}
-                          alt="placeholder"
-                          key={defaultGroupImage}
-                        />
-                      </div>
+                        defaultGroupVideo ? (
+                          <video controls autoPlay loop={true} key={defaultGroupVideo} style={{top: '-25%'}}>
+                            <source src={CDN_URI_VIDEO + defaultGroupVideo}
+                                      type="video/mp4" />
+                              Sorry, your browser doesn't support embedded videos.
+                          </video>
+                        ) : (
+
+                          <div>
+                            <img
+                              className="u-img-respond u-img-respond--80"
+                              src={CDN_URI + defaultGroupImage}
+                              alt="placeholder"
+                              key={defaultGroupImage}
+                            />
+                          </div>
+                        )
+                      
                     )
                   )
                 )
