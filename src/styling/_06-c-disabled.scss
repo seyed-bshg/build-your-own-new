@@ -25,7 +25,7 @@
 		display: block;
 		height: 100%;
 	  width: 100%;
-	  background: black;
+	  background: #707070;
 	  color: white;
 	  z-index: 100;
 	}
@@ -33,5 +33,5 @@
 
 .c-disabled__link {
 	text-decoration: underline;
-	color: #007bff !important;
+	color: blue;
 }

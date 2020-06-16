@@ -197,7 +197,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
 
             </div>
 
-            <div className="c-feature__img-mobile o-aspect o-aspect--600x338">
+            <div className="c-feature__img-mobile o-aspect o-aspect--536x590">
 
               {defaultGroupVideo ? (
                   <video controls autoPlay loop={true}>

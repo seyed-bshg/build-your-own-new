@@ -25,5 +25,9 @@ label {
     margin-bottom: 0;
 }
 
+p, span, div {
+    font-family: $base-font-family;
+}
+
 // WEBPACK FOOTER //
 // ./src/scss/global/_04-e-page.scss
