@@ -18,7 +18,7 @@ export const requestData = () => (dispatch) => {
 
   axios({
     method: 'get',
-    url: 'https://wwww.bshpersona.com/personaAPI/data/GetBYOData',
+    url: 'https://www.bshpersona.com/personaAPI/data/GetBYOData',
     dataType: 'json',
     contentType: 'application/json; charset=utf-8'
   })
