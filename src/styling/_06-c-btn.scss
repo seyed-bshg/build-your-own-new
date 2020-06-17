@@ -229,3 +229,9 @@
 .c-btn--Previous {
   background-color: #707070;
 }
+
+.row {
+  @include media('md') {
+    min-width: 100%;
+  }
+}
