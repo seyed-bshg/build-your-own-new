@@ -173,7 +173,8 @@
 	font-family: $base-font-family;
 	font-size: 14px;
 	width: 100%;
-  // padding: 0 20px;
+	height: 100%;
+  margin-bottom: 0;
 
 	@include media('sm') {
 		font-size: 20px;
@@ -293,7 +294,7 @@
 }
 
 .c-feature__img-mobile img {
-	max-height: 450px;
+	max-height:400px;
 	padding: 0 20px;
 
 	@include media('md') {

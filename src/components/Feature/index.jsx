@@ -116,9 +116,9 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
         <div className="c-feature__options">
           <fieldset className="c-feature__description c-feature__description--mobile">
             <div className="c-feature__description-text-wrapper">
-              <span className="c-feature__description-text">
+              <p className="c-feature__description-text">
                 {listDescription}
-              </span>
+              </p>
             </div>
           </fieldset>
         </div>
@@ -127,9 +127,9 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
         <div className="c-feature__options c-feature__options--desktop">
           <fieldset className="c-feature__description c-feature__description--desktop">
             <div className="c-feature__description-text-wrapper">
-              <span className="c-feature__description-text">
+              <p className="c-feature__description-text">
                 {listDescription}
-              </span>
+              </p>
             </div>
           </fieldset>
           {items.map((item) => (
@@ -207,7 +207,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
 
             </div>
 
-            <div className="c-feature__img-mobile o-aspect o-aspect--536x590">
+            <div className="c-feature__img-mobile">
 
               {defaultGroupVideo ? (
                   <video controls autoPlay loop={true}>
@@ -269,9 +269,9 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
         <div className="c-feature__options c-feature__options--mobile">
           <fieldset className="c-feature__description c-feature__description--desktop">
             <div className="c-feature__description-text-wrapper">
-              <span className="c-feature__description-text">
+              <p className="c-feature__description-text">
                 {listDescription}
-              </span>
+              </p>
             </div>
             <span style={{ display: "none" }}>{name}</span>
           </fieldset>
