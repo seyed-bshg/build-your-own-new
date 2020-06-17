@@ -7,7 +7,7 @@ $aspect-config: (
     '16x9': percentage(9 / 16),
     'wallpaper-splash': percentage(944 / 1600),
     '540x960': percentage(960 / 540),
-    '536x590': 108.75%,
+    '536x590': percentage(590/536),
     '600x338': percentage(338 / 600)
 );
 
@@ -55,11 +55,24 @@ $aspect-config: (
 //
 // Loop through the config and build out additional sizes.
 //
+//
+
+
+
 @each $prop, $value in $aspect-config {
     .o-aspect--#{$prop} {
         &::before {
             padding-top: $value;
         }
+    }
+}
+
+
+.c-feature__img-mobile--video:before {
+    padding-top: 74.07463%;
+
+    @include media('md') {
+        padding-top: 110.07463%;
     }
 }
 
