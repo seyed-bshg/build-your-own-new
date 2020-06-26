@@ -72,6 +72,7 @@ const Summary = () => {
      })
      .then((res) => closeModal())
      .catch((error) => closeModal())
+     .then(() => closeModal())
     }
 
   Modal.setAppElement('html');
