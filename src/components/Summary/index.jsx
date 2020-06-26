@@ -64,20 +64,15 @@ const Summary = () => {
       bodyFormData.key = value;
     }
     console.log(bodyFormData);
-    // axios({
-    //   method: 'post',
-    //   url: 'http://bshpersona.com/personaAPI/data/SendSurveyData',
-    //   data: bodyFormData,
-    //   contentType: 'application/json; charset=utf-8'
-    // })
-    // .then((res) =>
-    //   dispatch({
-    //     type: REQUEST_DATA_SUCCESS,
-    //     payload: res.data.ProductBuilder,
-    //   })
-    // )
-    //   .catch((error) => dispatch({ type: REQUEST_DATA_FAILED, payload: error }));
-    };
+     axios({
+       method: 'post',
+       url: 'https://bshpersona.com/personaAPI/data/SendSurveyData',
+       data: bodyFormData,
+       contentType: 'application/json; charset=utf-8'
+     })
+     .then((res) => closeModal())
+     .catch((error) => closeModal())
+    }
 
   Modal.setAppElement('html');
 
@@ -166,11 +161,11 @@ const Summary = () => {
                     <h3 className="a-heading">Were you able to build the right dishwasher for you? </h3>
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="6" name="Q2" value="Yes" />
-                      <label htmlFor="6">Extremely Easy</label>
+                      <label htmlFor="6">Yes</label>
                     </div>
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="7" name="Q2" value="No" />
-                      <label htmlFor="7">Very Easy</label>
+                      <label htmlFor="7">No</label>
                     </div>
                   </fieldset>
               </li>
@@ -181,25 +176,25 @@ const Summary = () => {
                     <h3 className="a-heading">How likely are you to purchase the dishwasher(s) you built?</h3>
                     
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="8" name="Q3" value="Extremely Easy" />
-                      <label htmlFor="8">Extremely Easy</label>
+                      <input type="radio" id="8" name="Q3" value="Extremely likely" />
+                      <label htmlFor="8">Extremely likely</label>
                     </div>
 
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="9" name="Q3" value="Very Easy" />
-                      <label htmlFor="9">Very Easy</label>
+                      <label htmlFor="9">Very likely</label>
                     </div>
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="10" name="Q3" value="Somewhat Easy" />
-                    <label htmlFor="10">Somewhat Easy</label>
+                    <label htmlFor="10">Somewhat likely</label>
                     </div>
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="10" name="Q3" value="Somewhat Difficult" />
-                      <label htmlFor="10">Somewhat Difficult</label>
+                      <label htmlFor="10">Not very likely</label>
                     </div>
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="11" name="Q3" value="Very Difficult" />
-                      <label htmlFor="11">Very Difficult</label>
+                      <label htmlFor="11">Not at all likely</label>
                     </div>
 
                   </fieldset>
