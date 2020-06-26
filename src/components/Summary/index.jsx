@@ -104,7 +104,7 @@ const Summary = () => {
     <div>
     <div>
         <Modal
-          isOpen={modalIsOpen}
+          // isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onAfterClose={handleAfterCloseFunc}
           contentLabel="Example Modal"
