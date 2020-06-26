@@ -41,7 +41,10 @@ const Summary = () => {
   function closeModal(){
     setIsOpen(false);
     hasBeenOpened();
+  }
 
+  function testModal() {
+    console.log('test modal ')
   }
 
   function hasBeenOpened(){
@@ -93,7 +96,7 @@ const Summary = () => {
 
   if(!modalIsOpen && !modalHasBeenOpened) {
       setTimeout(() => {
-        openModal();
+        // openModal();
     }, 5000);
   }
   
@@ -103,6 +106,7 @@ const Summary = () => {
   return (
     <div>
     <div>
+        <button id="SummaryModal" onClick={openModal} className="modaltest">test modal modal</button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
