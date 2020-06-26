@@ -66,7 +66,7 @@ const Summary = () => {
     console.log(bodyFormData);
      axios({
        method: 'post',
-       url: 'https://bshpersona.com/personaAPI/data/SendSurveyData',
+       url: 'https://wwww.bshpersona.com/personaAPI/data/SendSurveyData',
        data: bodyFormData,
        contentType: 'application/json; charset=utf-8'
      })
