@@ -24,3 +24,15 @@
 	margin-bottom: 0;
 	margin-top: 20px;
 }
+
+
+.ReactModal__Content.ReactModal__Content--after-open > button {
+	float: right
+}
+
+
+.c-summary__form {
+	&.c-btn {
+		color: blue;
+	}
+}

@@ -100,7 +100,7 @@ function App() {
                   )
               } 
               )}
-              {order.length && step > order.length - 1 ? (
+              {step > order.length - 1 ? (
                 <Route path="/summary">
                   <Summary />
                 </Route>
