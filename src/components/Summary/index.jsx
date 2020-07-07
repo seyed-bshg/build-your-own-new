@@ -60,10 +60,6 @@ const Summary = () => {
     hasBeenOpened();
   }
 
-  function testModal() {
-    console.log('test modal ')
-  }
-
   function hasBeenOpened(){
     setHasBeenOpened(true);
   }

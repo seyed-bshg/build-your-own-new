@@ -17,7 +17,7 @@ function Home() {
   const onChoiceHandler = (e) => {
     window.scrollTo(0, 0)
     const selectedGroup = groups[e.target.value - 1];
-    console.log('selectedGroup ', selectedGroup)
+    // console.log('selectedGroup ', selectedGroup)
     axios.post(`${constants.LOG_URI}`, {
       logIID: `${selectedGroup.groupID}`,
       logdetails: `JOURNEY SELECTION, ${selectedGroup.groupName}, ${selectedGroup.groupID}`,
