@@ -11,6 +11,8 @@ import startIcon from '../../img/icons/start-over-icon.svg';
 import whereIcon from '../../img/icons/where-to-buy-icon.svg';
 import helpers from "../../helpers";
 import axios from 'axios';
+import * as constants from "../../uri-constants";
+
 
 
 const Summary = () => {
@@ -23,6 +25,21 @@ const Summary = () => {
   const [modalHasBeenOpened,setHasBeenOpened] = React.useState(false);
   // finalProduct = finalProduct[0];
   const dispatch = useDispatch();
+
+
+  React.useEffect(() => {
+    axios.post(`${constants.LOG_URI}`, {
+      logIID: '',
+      logdetails: `SUMMARY`,
+      loginName: ""
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
   // Restting State Values
   const onStartOverHandler = () => {
