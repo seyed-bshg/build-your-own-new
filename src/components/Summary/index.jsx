@@ -10,7 +10,7 @@ import searchIcon from '../../img/icons/search-icon.svg';
 import startIcon from '../../img/icons/start-over-icon.svg';
 import whereIcon from '../../img/icons/where-to-buy-icon.svg';
 import helpers from "../../helpers";
-import axios from 'axios'
+import axios from 'axios';
 
 
 const Summary = () => {
@@ -57,59 +57,52 @@ const Summary = () => {
   }
 
   function handleSubmit(event) {
-        event.preventDefault();
-        const data = new FormData(event.target);
-        console.log('data ', ...data);
-        let formData = new FormData(event.target);
+    event.preventDefault();
+    const data = new FormData(event.target);
+    let formData = new FormData(event.target);
 
-        const mydata = new FormData(event.target);
-        // NOTE: you access FormData fields with `data.get(fieldName)`    
-        const Q1 = mydata.get('Q1');
-        const Q2 = mydata.get('Q2');
-        const Q3 = mydata.get('Q3');
-        const Q4 = JSON.stringify(mydata.getAll('Q4'));
-        const Q5 = mydata.get('Q5');
-     
-        let bodyFormData = {};
-        let bodyidentifier = {
-            "typeID": 173,
-            "Q1": Q1,
-            "Q2": Q2,
-            "Q3": Q3,
-            "Q4": Q4,
-            "Q1Text": Q5
-        };
-        for (var [key, value] of formData.entries()) {
-            bodyFormData.key = value;
-        }
-       
-        console.log('formData', bodyidentifier);
-        console.log({
-          logIID: "2",
-          logdetails: "EVENT POST",
-          loginName: ""
-        })
-        // USE THE SAME API as bshpersona 
-        // 
-        axios({
-            method: 'post',
-            url: '/data/SendSurveyData',
-            data: bodyidentifier,
-            config: {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            },
-            contentType: 'application/json; charset=utf-8'
-        })
-            .then((res) => closeModal()
-         )
-          .catch((error) => closeModal())
-     
-    .then(() => closeModal())
-       
+    const mydata = new FormData(event.target);
+    // NOTE: you access FormData fields with `data.get(fieldName)`    
+    const Q1 = mydata.get('Q1') || '';
+    const Q2 = mydata.get('Q2') || '';
+    const Q3 = mydata.get('Q3') || '';
+    const Q4 = JSON.stringify(mydata.getAll('Q4')) || '';
+    const Q5 = mydata.get('Q5') || '';
+ 
+    let bodyFormData = {};
+    let bodyidentifier = {
+        "typeID": 173,
+        "Q1": Q1,
+        "Q2": Q2,
+        "Q3": Q3,
+        "Q4": Q4,
+        "Q1Text": Q5
     };
+    for (var [key, value] of formData.entries()) {
+        bodyFormData.key = value;
+        // console.log('key ', key)
+        // console.log('value ', value)
+    }
+
+    // console.log('JSON.stringify ', JSON.stringify(bodyidentifier))
+    // console.log('bodyidentifier ', bodyidentifier)
+
+    axios({
+      method: 'post',
+      url: '/data/SendSurveyData',
+      data: JSON.stringify(bodyidentifier),
+      config: {
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          }
+      },
+      contentType: 'application/json; charset=utf-8'
+      })
+    .then((res) => closeModal())
+    .catch((error) => closeModal())
+    .then(() => closeModal())
+  };
 
   Modal.setAppElement('html');
 
@@ -140,7 +133,7 @@ const Summary = () => {
   return (
     <div>
     <div>
-        <button id="SummaryModal" onClick={openModal} className="modaltest">test modal modal</button>
+        
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -154,41 +147,47 @@ const Summary = () => {
           <button onClick={closeModal}>close</button>
           <h2 className="c-heading-26">Please answer the following questions:</h2>
 
-          <form className="form-layout-col m-form c-summary__form" onSubmit={handleSubmit}>
+          <form className="c-form" 
+            onSubmit={handleSubmit}
+            onKeyDown={e => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
+            onFocus={e => e.stopPropagation()}
+            onMouseOver={e => e.stopPropagation()}
+            >
 
             <ol className="o-list-unstyled">
 
               <li>
                  
                   <fieldset className="form-row form-row-fullwidth">
-                    <h3 className="a-heading">How was the experience of building your dishwasher?</h3>
+                    <h3 className="a-heading">How was the experience of building your dishwasher? <sup>*</sup> </h3>
                    {/* http://bshpersona.com/personaAPI/data/SendSurveyData
                       data['typeID']='173';d
                       data[textarea]= x.value || ''; on ALL textfield as they are not required
 
                    */}
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="1" name="Q1" value="Extremely Easy" />
+                      <input required type="radio" id="1" name="Q1" value="Extremely Easy" />
                       <label htmlFor="1">Extremely Easy</label>
                     </div>
 
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="2" name="Q1" value="Very Easy" />
+                      <input required type="radio" id="2" name="Q1" value="Very Easy" />
                       <label htmlFor="2">Very Easy</label>
                     </div>
                    
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="3" name="Q1" value="Somewhat Easy" />
+                      <input required type="radio" id="3" name="Q1" value="Somewhat Easy" />
                       <label htmlFor="3">Somewhat Easy</label>
                     </div>
                  
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="4" name="Q1" value="Somewhat Difficult" />
+                      <input required type="radio" id="4" name="Q1" value="Somewhat Difficult" />
                       <label htmlFor="4">Somewhat Difficult</label>
                     </div>
 
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="5" name="Q1" value="Very Difficult" />
+                      <input required type="radio" id="5" name="Q1" value="Very Difficult" />
                       <label htmlFor="5">Very Difficult</label>
                     </div>
                   </fieldset>
@@ -197,13 +196,13 @@ const Summary = () => {
               <li>
                  
                   <fieldset className="form-row form-row-fullwidth">
-                    <h3 className="a-heading">Were you able to build the right dishwasher for you? </h3>
+                    <h3 className="a-heading">Were you able to build the right dishwasher for you? <sup>*</sup> </h3>
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="6" name="Q2" value="Yes" />
+                      <input required type="radio" id="6" name="Q2" value="Yes" />
                       <label htmlFor="6">Yes</label>
                     </div>
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="7" name="Q2" value="No" />
+                      <input required type="radio" id="7" name="Q2" value="No" />
                       <label htmlFor="7">No</label>
                     </div>
                   </fieldset>
@@ -212,27 +211,27 @@ const Summary = () => {
               <li>
                  
                   <fieldset className="form-row form-row-fullwidth">
-                    <h3 className="a-heading">How likely are you to purchase the dishwasher(s) you built?</h3>
+                    <h3 className="a-heading">How likely are you to purchase the dishwasher(s) you built? <sup>*</sup> </h3>
                    
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="8" name="Q3" value="Extremely likely" />
+                      <input required type="radio" id="8" name="Q3" value="Extremely likely" />
                       <label htmlFor="8">Extremely likely</label>
                     </div>
 
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="9" name="Q3" value="Very Easy" />
+                      <input required type="radio" id="9" name="Q3" value="Very Easy" />
                       <label htmlFor="9">Very likely</label>
                     </div>
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="10" name="Q3" value="Somewhat Easy" />
+                      <input required type="radio" id="10" name="Q3" value="Somewhat Easy" />
                     <label htmlFor="10">Somewhat likely</label>
                     </div>
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="10" name="Q3" value="Somewhat Difficult" />
+                      <input required type="radio" id="10" name="Q3" value="Somewhat Difficult" />
                       <label htmlFor="10">Not very likely</label>
                     </div>
                     <div className="m-forminput m-forminput-radio had-focus">
-                      <input type="radio" id="11" name="Q3" value="Very Difficult" />
+                      <input required type="radio" id="11" name="Q3" value="Very Difficult" />
                       <label htmlFor="11">Not at all likely</label>
                     </div>
 
@@ -241,7 +240,7 @@ const Summary = () => {
               <li>
                  
                   <fieldset className="form-row form-row-fullwidth">
-                    <h3 className="a-heading">What are your Top 5 categories when purchasing a dishwasher?</h3>
+                    <h3 className="a-heading">What are your Top 5 categories when purchasing a dishwasher? <sup>*</sup> </h3>
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="12" name="Q4" value="Flexibility" />
                       <label htmlFor="12">Flexibility</label>
@@ -295,7 +294,7 @@ const Summary = () => {
                   </fieldset>
                   <fieldset className="form-row form-row-fullwidth">
                     <h3 className="a-heading">Any additional comments or suggestions to help us improve the "Build Your Own" dishwasher?</h3>
-                    <textarea id="22" name="Q5" rows="4" cols="50" maxLength="1200" placeholder="Your feedback
+                    <textarea id="22" name="Q5" rows="4" cols="50" maxLength="800" placeholder="Your feedback
                       is appreciated">
                       </textarea>
                   </fieldset>

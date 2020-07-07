@@ -9,6 +9,7 @@ import Feature from "./components/Feature";
 import Header from "./components/Header";
 import Summary from "./components/Summary";
 import * as constants from "./uri-constants";
+import axios from "axios";
 import json from "./what.json";
 import "./App.scss";
 
@@ -28,7 +29,20 @@ function App() {
   // useEffect(() => {
   //   dispatch(requestJSON(json.ProductBuilder));
   // }, [dispatch]);
-
+  
+  useEffect(() => {
+    axios.post(`${constants.LOG_URI}`, {
+      logIID: "",
+      logdetails: "ONLOAD",
+      loginName: ""
+    })
+    .then(function (response) {
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }, [])
   const listValues = useSelector((state) => state.requestData.listValues);
 
   const order = useSelector((state) => state.requestData.order);

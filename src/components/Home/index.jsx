@@ -1,9 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import { selectedJourney } from "../../redux/actions";
 import helpers from "../../helpers";
-
+import * as constants from "../../uri-constants";
 import Journey from "../Journey";
 
 function Home() {
@@ -17,6 +18,17 @@ function Home() {
     window.scrollTo(0, 0)
     const selectedGroup = groups[e.target.value - 1];
     dispatch(selectedJourney(selectedGroup));
+    axios.post(`${constants.LOG_URI}`, {
+      logIID: "",
+      logdetails: `TAB SELECTION ${selectedGroup}`,
+      loginName: ""
+    })
+    .then(function (response) {
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     history.push('priceRange');
   };
 

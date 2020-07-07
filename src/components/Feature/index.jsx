@@ -4,6 +4,8 @@ import imgURL from "../../uri-constants";
 import Option from "../../components/Option";
 import Button from "../../components/Button";
 import { useSelector, useDispatch } from "react-redux";
+import * as constants from "../../uri-constants";
+import axios from "axios";
 import helpers from "../../helpers";
 import doubleArrow from '../../img/icons/double-down-arrow.png';
 
@@ -41,9 +43,21 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
       const { listTxt, listImg, listVd } = selectedChoice[0];
+      console.log('selectedChoice[0]; ', selectedChoice[0])
       setChoiceCopy(listTxt);
       setChoiceImage(listImg);
       setChoiceVideo(listVd);
+      axios.post(`${constants.LOG_URI}`, {
+        logIID: "",
+        logdetails: `FEATURE SELECTION ${selectedChoice[0].listItemID}`,
+        loginName: ""
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   }, [choice, items, isDirty]);
 
