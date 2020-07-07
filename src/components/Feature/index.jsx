@@ -48,8 +48,8 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
       setChoiceImage(listImg);
       setChoiceVideo(listVd);
       axios.post(`${constants.LOG_URI}`, {
-        logIID: "",
-        logdetails: `FEATURE SELECTION ${selectedChoice[0].listItemID}`,
+        logIID: `${selectedChoice[0].listItemID}`,
+        logdetails: `FEATURE SELECTION`,
         loginName: ""
       })
       .then(function (response) {
@@ -75,6 +75,24 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
     setChoiceImage("");
     setChoiceCopy("");
     setChoiceVideo("");
+    let reducedListValues = listValues.filter(
+      (listValue) => listValue.listID === order[step]
+    );
+
+    console.log(reducedListValues[0])
+    
+    axios.post(`${constants.LOG_URI}`, {
+      logIID: `${reducedListValues[0].listID}`,
+      logdetails: `PREVIOUS SELECTION`,
+      loginName: ""
+    })
+    .then(function (response) {
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
     step > 1 ? dispatch(clickedPrev()) : dispatch(clickedPrevToJourney());
     history.goBack();
   };
@@ -103,7 +121,22 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
         (listValue) => listValue.listID === order[step]
       );
       nextURL = reducedListValues[0].keyName;
+      console.log('reducedListValues[0] ', reducedListValues[0])
+
+      axios.post(`${constants.LOG_URI}`, {
+        logIID: `${reducedListValues[0].listID}`,
+        logdetails: `NEXT SELECTION`,
+        loginName: ""
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
+
+    
 
     step > order.length - 1
       ? history.push("summary")

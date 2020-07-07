@@ -66,8 +66,8 @@ const Summary = () => {
     const Q1 = mydata.get('Q1') || '';
     const Q2 = mydata.get('Q2') || '';
     const Q3 = mydata.get('Q3') || '';
-    const Q4 = JSON.stringify(mydata.getAll('Q4')) || '';
-    const Q5 = mydata.get('Q5') || '';
+    const Q4 = mydata.getAll('Q4').toString() || '';
+    const Q5 = mydata.get('Q5').toString() || '';
  
     let bodyFormData = {};
     let bodyidentifier = {
@@ -84,8 +84,8 @@ const Summary = () => {
         // console.log('value ', value)
     }
 
-    // console.log('JSON.stringify ', JSON.stringify(bodyidentifier))
-    // console.log('bodyidentifier ', bodyidentifier)
+    console.log('JSON.stringify ', JSON.stringify(bodyidentifier))
+    console.log('bodyidentifier ', bodyidentifier)
 
     axios({
       method: 'post',

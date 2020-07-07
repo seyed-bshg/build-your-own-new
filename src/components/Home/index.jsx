@@ -17,10 +17,9 @@ function Home() {
   const onChoiceHandler = (e) => {
     window.scrollTo(0, 0)
     const selectedGroup = groups[e.target.value - 1];
-    dispatch(selectedJourney(selectedGroup));
     axios.post(`${constants.LOG_URI}`, {
       logIID: "",
-      logdetails: `TAB SELECTION ${selectedGroup}`,
+      logdetails: `JOURNEY SELECTION ${selectedGroup.groupID}`,
       loginName: ""
     })
     .then(function (response) {
@@ -29,6 +28,8 @@ function Home() {
     .catch(function (error) {
       console.log(error);
     });
+    console.log('selectedGroup ', selectedGroup.groupID)
+    dispatch(selectedJourney(selectedGroup));
     history.push('priceRange');
   };
 
