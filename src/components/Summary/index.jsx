@@ -90,7 +90,7 @@ const Summary = () => {
     axios({
       method: 'post',
       url: '/data/SendSurveyData',
-      data: JSON.stringify(bodyidentifier),
+      data: bodyidentifier,
       config: {
           headers: {
               'Accept': 'application/json',
