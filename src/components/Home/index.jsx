@@ -28,7 +28,7 @@ function Home() {
     .catch(function (error) {
       console.log(error);
     });
-    console.log('selectedGroup ', selectedGroup.groupID)
+    // console.log('selectedGroup ', selectedGroup.groupID)
     dispatch(selectedJourney(selectedGroup));
     history.push('priceRange');
   };

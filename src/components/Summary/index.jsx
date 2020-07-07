@@ -35,7 +35,7 @@ const Summary = () => {
  
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    console.log('modal open afterOpenModal')
+    // console.log('modal open afterOpenModal')
   }
  
   function closeModal(){
@@ -84,8 +84,8 @@ const Summary = () => {
         // console.log('value ', value)
     }
 
-    console.log('JSON.stringify ', JSON.stringify(bodyidentifier))
-    console.log('bodyidentifier ', bodyidentifier)
+    // console.log('JSON.stringify ', JSON.stringify(bodyidentifier))
+    // console.log('bodyidentifier ', bodyidentifier)
 
     axios({
       method: 'post',

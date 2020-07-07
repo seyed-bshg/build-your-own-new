@@ -79,7 +79,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
       (listValue) => listValue.listID === order[step]
     );
 
-    console.log(reducedListValues[0])
+    // console.log(reducedListValues[0])
     
     axios.post(`${constants.LOG_URI}`, {
       logIID: `${reducedListValues[0].listID}`,
@@ -121,7 +121,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
         (listValue) => listValue.listID === order[step]
       );
       nextURL = reducedListValues[0].keyName;
-      console.log('reducedListValues[0] ', reducedListValues[0])
+      // console.log('reducedListValues[0] ', reducedListValues[0])
 
       axios.post(`${constants.LOG_URI}`, {
         logIID: `${reducedListValues[0].listID}`,
