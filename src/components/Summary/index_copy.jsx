@@ -50,66 +50,33 @@ const Summary = () => {
   function hasBeenOpened(){
     setHasBeenOpened(true);
   }
- 
+  
   function handleAfterCloseFunc(){
     setIsOpen(false);
     hasBeenOpened(true);
   }
 
   function handleSubmit(event) {
-        event.preventDefault();
-        const data = new FormData(event.target);
-        console.log('data ', ...data);
-        let formData = new FormData(event.target);
+    event.preventDefault();
+    const data = new FormData(event.target);
+    console.log('data ', ...data);
+    let formData = new FormData(event.target);
+    let bodyFormData = {};
 
-        const mydata = new FormData(event.target);
-        // NOTE: you access FormData fields with `data.get(fieldName)`    
-        const Q1 = mydata.get('Q1');
-        const Q2 = mydata.get('Q2');
-        const Q3 = mydata.get('Q3');
-        const Q4 = JSON.stringify(mydata.getAll('Q4'));
-        const Q5 = mydata.get('Q5');
-     
-        let bodyFormData = {};
-        let bodyidentifier = {
-            "typeID": 173,
-            "Q1": Q1,
-            "Q2": Q2,
-            "Q3": Q3,
-            "Q4": Q4,
-            "Q1Text": Q5
-        };
-        for (var [key, value] of formData.entries()) {
-            bodyFormData.key = value;
-        }
-       
-        console.log('formData', bodyidentifier);
-        console.log({
-          logIID: "2",
-          logdetails: "EVENT POST",
-          loginName: ""
-        })
-        // USE THE SAME API as bshpersona 
-        // 
-        axios({
-            method: 'post',
-            url: '/data/SendSurveyData',
-            data: bodyidentifier,
-            config: {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            },
-            contentType: 'application/json; charset=utf-8'
-        })
-            .then((res) => closeModal()
-         )
-          .catch((error) => closeModal())
-     
-    .then(() => closeModal())
-       
-    };
+    for (var [key, value] of formData.entries()) { 
+      bodyFormData.key = value;
+    }
+    console.log(bodyFormData);
+     axios({
+       method: 'post',
+       url: 'https://wwww.bshpersona.com/personaAPI/data/SendSurveyData',
+       data: bodyFormData,
+       contentType: 'application/json; charset=utf-8'
+     })
+     .then((res) => closeModal())
+     .catch((error) => closeModal())
+     .then(() => closeModal())
+    }
 
   Modal.setAppElement('html');
 
@@ -129,11 +96,10 @@ const Summary = () => {
 
   if(!modalIsOpen && !modalHasBeenOpened) {
       setTimeout(() => {
-         openModal();
-      }, 5000);
-      hasBeenOpened(true);
+        // openModal();
+    }, 5000);
   }
- 
+  
   //
   //ADD SURVEY HERE USING LOCAL STATE
 
@@ -159,10 +125,10 @@ const Summary = () => {
             <ol className="o-list-unstyled">
 
               <li>
-                 
+                  
                   <fieldset className="form-row form-row-fullwidth">
                     <h3 className="a-heading">How was the experience of building your dishwasher?</h3>
-                   {/* http://bshpersona.com/personaAPI/data/SendSurveyData
+                   {/* http://bshpersona.com/personaAPI/data/SendSurveyData 
                       data['typeID']='173';d
                       data[textarea]= x.value || ''; on ALL textfield as they are not required
 
@@ -170,7 +136,7 @@ const Summary = () => {
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="1" name="Q1" value="Extremely Easy" />
                       <label htmlFor="1">Extremely Easy</label>
-                    </div>
+                    </div> 
 
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="2" name="Q1" value="Very Easy" />
@@ -181,7 +147,7 @@ const Summary = () => {
                       <input type="radio" id="3" name="Q1" value="Somewhat Easy" />
                       <label htmlFor="3">Somewhat Easy</label>
                     </div>
-                 
+                  
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="4" name="Q1" value="Somewhat Difficult" />
                       <label htmlFor="4">Somewhat Difficult</label>
@@ -193,9 +159,9 @@ const Summary = () => {
                     </div>
                   </fieldset>
               </li>
-             
+              
               <li>
-                 
+                  
                   <fieldset className="form-row form-row-fullwidth">
                     <h3 className="a-heading">Were you able to build the right dishwasher for you? </h3>
                     <div className="m-forminput m-forminput-radio had-focus">
@@ -208,12 +174,12 @@ const Summary = () => {
                     </div>
                   </fieldset>
               </li>
-             
+              
               <li>
-                 
+                  
                   <fieldset className="form-row form-row-fullwidth">
                     <h3 className="a-heading">How likely are you to purchase the dishwasher(s) you built?</h3>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="radio" id="8" name="Q3" value="Extremely likely" />
                       <label htmlFor="8">Extremely likely</label>
@@ -239,63 +205,63 @@ const Summary = () => {
                   </fieldset>
               </li>
               <li>
-                 
+                  
                   <fieldset className="form-row form-row-fullwidth">
-                    <h3 className="a-heading">What are your Top 5 categories when purchasing a dishwasher?</h3>
+                    <h3 className="a-heading">How was the experience of building your dishwasher?</h3>
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="12" name="Q4" value="Flexibility" />
                       <label htmlFor="12">Flexibility</label>
                     </div>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="13" name="Q4" value="Quiet" />
                       <label htmlFor="13">Quiet</label>
                     </div>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="14" name="Q4" value="Drying" />
                       <label htmlFor="14">Drying</label>
                     </div>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="15" name="Q4" value="Design" />
                       <label htmlFor="15">Design</label>
                     </div>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="16" name="Q4" value="Price" />
                       <label htmlFor="16">Price</label>
                     </div>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="17" name="Q4" value="Energy Star" />
                       <label htmlFor="17">Energy Star</label>
                     </div>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="18" name="Q4" value="Consumer Reviews" />
                       <label htmlFor="18">Consumer Reviews</label>
                     </div>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="19" name="Q4" value="Smart Appliance/Connected Appliance" />
                       <label htmlFor="19">Smart Appliance/Connected Appliance</label>
                     </div>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="20" name="Q4" value="Brand" />
                       <label htmlFor="20">Brand</label>
                     </div>
-                   
+                    
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="21" name="Q4" value="Other" />
                       <label htmlFor="21">Other</label>
                     </div>
-                     
+                      
                   </fieldset>
                   <fieldset className="form-row form-row-fullwidth">
-                    <h3 className="a-heading">Any additional comments or suggestions to help us improve the "Build Your Own" dishwasher?</h3>
-                    <textarea id="22" name="Q5" rows="4" cols="50" maxLength="1200" placeholder="Your feedback
+                    <h3 className="a-heading">How was the experience of building your dishwasher?</h3>
+                    <textarea id="22" name="Q5" rows="4" cols="50" maxLength="1200" placeholder="Your feedback 
                       is appreciated">
                       </textarea>
                   </fieldset>
@@ -364,7 +330,7 @@ const Summary = () => {
                           </div>
                         </div>
                       : null}
-                     
+                      
                     </div>
                 <div className="c-feature__wrapper">
                   <div className="c-summary__img-wrapper">
@@ -375,10 +341,10 @@ const Summary = () => {
                       <p className="c-summary__price u-type-bold">{`${helpers.formatter.format(finalProduct.MSRP)}`}</p>
                     </div>
                   </div>
-                 
+                  
 
                   <div className="c-btn__summary-wrapper">
-                   
+                    
                     <button className="c-btn c-btn--summary" onClick={onStartOverHandler}>
                       <div className="c-btn-summary__text">{meta.startOverText}</div>
                       <img className="c-btn-summary__img u-img-respond u-spacing-none" src={startIcon} />
@@ -392,16 +358,16 @@ const Summary = () => {
                       <img className="c-btn-summary__img u-img-respond u-spacing-none" src={whereIcon} />
                     </button>
                   </div>
-                 
+                  
                 </div>
               </div>
             </div>
-           
+            
           )
         })
       }
     </div>
-   
+    
   );
 };
 

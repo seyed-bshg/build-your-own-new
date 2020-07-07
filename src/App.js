@@ -115,6 +115,24 @@ function App() {
 
         </div>
       </div>
+      <hr />
+      <footer className="c-footer o-container">
+        <ul className="c-footer__list o-list-unstyled">
+          <li className="c-footer__item">
+            <a href="https://www.bosch-home.com/us/about/imprint" target="_blank"><span>Imprint</span></a>
+          </li>
+          <li className="c-footer__item">
+            <a href="https://www.bosch-home.com/us/about/imprint/legal" target="_blank"><span>Legal</span></a>
+          </li>
+          <li className="c-footer__item">
+            <a href="https://www.bosch-home.com/us/about/imprint/privacypolicy" target="_blank"><span>Privacy Policy &amp; Data Protection Notice</span></a>
+          </li>
+          <li className="c-footer__item">
+            <a href="https://www.bosch-home.com/us/experience-bosch/report_a_vulnerability" target="_blank"><span>Report a Vulnerability</span></a>
+          </li>
+        </ul>
+          
+      </footer>
     </div>
   );
 }
