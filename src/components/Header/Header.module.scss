@@ -13,7 +13,7 @@
       margin-top: 32px;
       max-width: 200px;
       width: 14vw;
-      min-width: 160px;
+      min-width: 100px;
       //   height: 20%;
     }
 
@@ -24,13 +24,17 @@
   }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 991px) {
   .CustomHeaderContainer {
+    display: flex !important;
+    flex-direction: row-reverse;
     .ButtonContainer {
       height: auto;
+      padding-left: 1rem;
       .HeaderButton {
         margin-top: 16px;
         height: 3rem;
+        width: 100px;
         .HeaderButtonText {
           display: block;
         }
