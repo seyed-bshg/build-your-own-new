@@ -11,12 +11,12 @@ import 'react-tippy/dist/tippy.css'
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunkMiddleware from "redux-thunk";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { Provider } from "react-redux";
 import { requestData } from "./redux/productsReducer";
 
 const rootReducer = combineReducers({ requestData });
