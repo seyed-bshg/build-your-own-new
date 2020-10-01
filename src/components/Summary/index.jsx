@@ -135,7 +135,7 @@ const Summary = () => {
   if (!modalIsOpen && !modalHasBeenOpened) {
     setTimeout(() => {
       openModal();
-    }, 5000);
+    }, 15000);
     hasBeenOpened(true);
   }
 
