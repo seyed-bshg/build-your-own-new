@@ -20,6 +20,10 @@ function App() {
   /**************** COMMENTED CODE BELOW  IS USED FOR CALLING THE API*************************/
   const onRequestData = useCallback(() => dispatch(requestData()), [dispatch]);
   useEffect(() => {
+    if (localStorage.getItem("BoschDishwasherPopUp") != "true") {
+      localStorage.setItem("BoschDishwasherPopUp", false);
+    }
+
     onRequestData();
   }, [onRequestData]);
   /*******************************************************************************************/

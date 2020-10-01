@@ -23,6 +23,7 @@ const Summary = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [modalHasBeenOpened, setHasBeenOpened] = React.useState(false);
   // finalProduct = finalProduct[0];
+
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -132,9 +133,13 @@ const Summary = () => {
     window.open(`${fullLink}`, "_blank");
   };
 
-  if (!modalIsOpen && !modalHasBeenOpened) {
+  let hasSeenPopUp = localStorage.getItem("BoschDishwasherPopUp") == "true";
+
+  if (!modalIsOpen && !modalHasBeenOpened && !hasSeenPopUp) {
     setTimeout(() => {
       openModal();
+      localStorage.removeItem("BoschDishwasherPopUp");
+      localStorage.setItem("BoschDishwasherPopUp", true);
     }, 15000);
     hasBeenOpened(true);
   }
