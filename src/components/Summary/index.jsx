@@ -143,6 +143,9 @@ const Summary = () => {
     }, 15000);
     hasBeenOpened(true);
   }
+  let dealerTracking = "?cid=byodish|oth|||oth|websitecta|oth|dealersearch";
+  let learnMoreTracking = "?cid=byodish|oth|||oth|websitecta|oth|learnMore";
+  let startOverTracking = "?cid=byodish|oth|||oth|websitecta|oth|learnMore";
 
   //
   //ADD SURVEY HERE USING LOCAL STATE
@@ -544,7 +547,12 @@ const Summary = () => {
                     </button>
                     <button
                       className="c-btn c-btn--summary-learnmore"
-                      onClick={() => opennewone("learn", `${finalProduct.SKU}`)}
+                      onClick={() =>
+                        opennewone(
+                          "learn",
+                          `${finalProduct.SKU}/${learnMoreTracking}`
+                        )
+                      }
                     >
                       <div className="c-btn-summary__text">
                         {meta.learnMoreText}
@@ -557,7 +565,10 @@ const Summary = () => {
                     <button
                       className="c-btn c-btn--summary"
                       onClick={() =>
-                        opennewone("dealer", `${finalProduct.SKU}`)
+                        opennewone(
+                          "dealer",
+                          `${finalProduct.SKU}/${dealerTracking}`
+                        )
                       }
                     >
                       <div className="c-btn-summary__text">
