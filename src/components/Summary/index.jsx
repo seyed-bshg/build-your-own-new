@@ -126,7 +126,7 @@ const Summary = () => {
 
     let link = "";
     if (type === "dealer") {
-      link = `dealer-locator?product=${SKU}/${dealerTracking}`;
+      link = `dealer-locator?product=${SKU + dealerTracking}`;
     } else if (type === "learn") {
       link = `productslist/${SKU}/${learnMoreTracking}`;
     } else {
