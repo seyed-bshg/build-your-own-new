@@ -121,7 +121,7 @@ const Summary = () => {
 
   const opennewone = (type, SKU) => {
     let BASE_URI = "https://www.bosch-home.com/us/";
-    let dealerTracking = "?cid=byodish|oth|||oth|websitecta|oth|dealersearch";
+    let dealerTracking = "&cid=byodish|oth|||oth|websitecta|oth|dealersearch";
     let learnMoreTracking = "?cid=byodish|oth|||oth|websitecta|oth|learnMore";
 
     let link = "";
