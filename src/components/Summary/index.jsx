@@ -121,11 +121,14 @@ const Summary = () => {
 
   const opennewone = (type, SKU) => {
     let BASE_URI = "https://www.bosch-home.com/us/";
+    let dealerTracking = "?cid=byodish|oth|||oth|websitecta|oth|dealersearch";
+    let learnMoreTracking = "?cid=byodish|oth|||oth|websitecta|oth|learnMore";
+
     let link = "";
     if (type === "dealer") {
-      link = `dealer-locator?product=${SKU}`;
+      link = `dealer-locator?product=${SKU}/${dealerTracking}`;
     } else if (type === "learn") {
-      link = `productslist/${SKU}`;
+      link = `productslist/${SKU}/${learnMoreTracking}`;
     } else {
       link = BASE_URI;
     }
@@ -143,9 +146,6 @@ const Summary = () => {
     }, 15000);
     hasBeenOpened(true);
   }
-  let dealerTracking = "?cid=byodish|oth|||oth|websitecta|oth|dealersearch";
-  let learnMoreTracking = "?cid=byodish|oth|||oth|websitecta|oth|learnMore";
-  let startOverTracking = "?cid=byodish|oth|||oth|websitecta|oth|learnMore";
 
   //
   //ADD SURVEY HERE USING LOCAL STATE
@@ -547,12 +547,7 @@ const Summary = () => {
                     </button>
                     <button
                       className="c-btn c-btn--summary-learnmore"
-                      onClick={() =>
-                        opennewone(
-                          "learn",
-                          `${finalProduct.SKU}/${learnMoreTracking}`
-                        )
-                      }
+                      onClick={() => opennewone("learn", `${finalProduct.SKU}`)}
                     >
                       <div className="c-btn-summary__text">
                         {meta.learnMoreText}
@@ -565,10 +560,7 @@ const Summary = () => {
                     <button
                       className="c-btn c-btn--summary"
                       onClick={() =>
-                        opennewone(
-                          "dealer",
-                          `${finalProduct.SKU}/${dealerTracking}`
-                        )
+                        opennewone("dealer", `${finalProduct.SKU}`)
                       }
                     >
                       <div className="c-btn-summary__text">
