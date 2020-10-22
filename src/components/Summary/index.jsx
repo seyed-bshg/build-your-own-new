@@ -287,9 +287,9 @@ const Summary = () => {
                       type="radio"
                       id="9"
                       name="Q3"
-                      value="Very Easy"
+                      value="Extremely unlikely"
                     />
-                    <label htmlFor="9">Very likely</label>
+                    <label htmlFor="9">Extremely unlikely</label>
                   </div>
                   <div className="m-forminput m-forminput-radio had-focus">
                     <input
@@ -297,9 +297,9 @@ const Summary = () => {
                       type="radio"
                       id="10"
                       name="Q3"
-                      value="Somewhat Easy"
+                      value="May consider purchasing"
                     />
-                    <label htmlFor="10">Somewhat likely</label>
+                    <label htmlFor="10">May consider purchasing</label>
                   </div>
                   <div className="m-forminput m-forminput-radio had-focus">
                     <input
@@ -307,9 +307,11 @@ const Summary = () => {
                       type="radio"
                       id="10"
                       name="Q3"
-                      value="Somewhat Difficult"
+                      value="Not sure if it's the right dishwasher"
                     />
-                    <label htmlFor="10">Not very likely</label>
+                    <label htmlFor="10">
+                      Not sure if it's the right dishwasher
+                    </label>
                   </div>
                   <div className="m-forminput m-forminput-radio had-focus">
                     <input
@@ -317,9 +319,9 @@ const Summary = () => {
                       type="radio"
                       id="11"
                       name="Q3"
-                      value="Very Difficult"
+                      value="Not Ready to purchase"
                     />
-                    <label htmlFor="11">Not at all likely</label>
+                    <label htmlFor="11">Not ready to purchase</label>
                   </div>
                 </fieldset>
               </li>
