@@ -189,7 +189,9 @@ const Summary = () => {
                       data[textarea]= x.value || ''; on ALL textfield as they are not required
 
                    */}
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -200,7 +202,9 @@ const Summary = () => {
                     <label htmlFor="1">Extremely Easy</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -211,7 +215,9 @@ const Summary = () => {
                     <label htmlFor="2">Very Easy</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -222,7 +228,9 @@ const Summary = () => {
                     <label htmlFor="3">Somewhat Easy</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -233,7 +241,9 @@ const Summary = () => {
                     <label htmlFor="4">Somewhat Difficult</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -252,11 +262,15 @@ const Summary = () => {
                     Were you able to build the right dishwasher for you?{" "}
                     <sup>*</sup>{" "}
                   </h3>
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input required type="radio" id="6" name="Q2" value="Yes" />
                     <label htmlFor="6">Yes</label>
                   </div>
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input required type="radio" id="7" name="Q2" value="No" />
                     <label htmlFor="7">No</label>
                   </div>
@@ -270,7 +284,9 @@ const Summary = () => {
                     <sup>*</sup>{" "}
                   </h3>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -281,7 +297,9 @@ const Summary = () => {
                     <label htmlFor="8">Extremely likely</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -291,7 +309,9 @@ const Summary = () => {
                     />
                     <label htmlFor="9">Extremely unlikely</label>
                   </div>
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -301,7 +321,9 @@ const Summary = () => {
                     />
                     <label htmlFor="10">May consider purchasing</label>
                   </div>
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -313,7 +335,9 @@ const Summary = () => {
                       Not sure if it's the right dishwasher
                     </label>
                   </div>
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       required
                       type="radio"
@@ -331,7 +355,9 @@ const Summary = () => {
                     What are your Top 5 categories when purchasing a dishwasher?{" "}
                     <sup>*</sup>{" "}
                   </h3>
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       type="checkbox"
                       id="12"
@@ -341,27 +367,37 @@ const Summary = () => {
                     <label htmlFor="12">Flexibility</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input type="checkbox" id="13" name="Q4" value="Quiet" />
                     <label htmlFor="13">Quiet</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input type="checkbox" id="14" name="Q4" value="Drying" />
                     <label htmlFor="14">Drying</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input type="checkbox" id="15" name="Q4" value="Design" />
                     <label htmlFor="15">Design</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input type="checkbox" id="16" name="Q4" value="Price" />
                     <label htmlFor="16">Price</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       type="checkbox"
                       id="17"
@@ -371,7 +407,9 @@ const Summary = () => {
                     <label htmlFor="17">Energy Star</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       type="checkbox"
                       id="18"
@@ -381,7 +419,9 @@ const Summary = () => {
                     <label htmlFor="18">Consumer Reviews</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input
                       type="checkbox"
                       id="19"
@@ -393,12 +433,16 @@ const Summary = () => {
                     </label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input type="checkbox" id="20" name="Q4" value="Brand" />
                     <label htmlFor="20">Brand</label>
                   </div>
 
-                  <div className="m-forminput m-forminput-radio had-focus">
+                  <div
+                    className={`m-forminput m-forminput-radio had-focus ${styles.fields}`}
+                  >
                     <input type="checkbox" id="21" name="Q4" value="Other" />
                     <label htmlFor="21">Other</label>
                   </div>
