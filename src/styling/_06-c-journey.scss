@@ -1,37 +1,37 @@
 .c-journey {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
-	@include media('md') {
-		flex-direction: row;
-	}
+  @include media("md") {
+    flex-direction: row;
+  }
 }
 
 .c-journey__text-wrapper {
-	width: 100%;
+  width: 100%;
 
-	@include media('md') {
-		min-width: 50%;
-		flex-basis: 50%;
+  @include media("md") {
+    min-width: 50%;
+    flex-basis: 50%;
     padding-right: 8%;
-	}
+  }
 }
 
 .c-journey__option-wrapper {
-	width: 100%;
+  width: 100%;
   display: flex;
   flex-flow: column;
   align-items: center;
-  
-	@include media('md') {
-		min-width: 50%;
-		flex-basis: 50%;
-	}
+
+  @include media("md") {
+    min-width: 50%;
+    flex-basis: 50%;
+  }
 }
 
 .c-journey__option {
-	position: relative;
+  position: relative;
   max-height: 290px;
   width: 100%;
   background-position: top left;
@@ -40,81 +40,79 @@
   text-align: center;
   margin-bottom: 20px;
 
-  @include media('sm') {
-  	margin-bottom: none;
+  @include media("sm") {
+    margin-bottom: none;
   }
 }
 
 .c-journey__option label {
-	font-size: 11px;
+  font-size: 11px;
 
-	@include media('sm') {
-		font-size: inherit;
-	}
+  @include media("sm") {
+    font-size: inherit;
+  }
 }
 
 .c-journey__option-wrapper .row:first-child {
-	padding-bottom: 50px;
+  padding-bottom: 0px;
 }
 
 .c-journey__option {
-	position: relative;
+  position: relative;
 }
 
 .c-journey__option label {
-    position: absolute;
-    left: 0;
-		right: 0;
-		margin: auto;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    width: 100%;
-    max-width: 180px;
-    text-align: center;
-    padding: 16px 20px;
-    background-color: rgba(68,132,166, 0.7);
-    border-radius: 50px;
-		font-family: 'boschsans-bold';
-		color: white;
-		cursor: pointer;
-		transition: background-color 200ms ease;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 100%;
+  max-width: 180px;
+  text-align: center;
+  padding: 16px 20px;
+  background-color: rgba(68, 132, 166, 0.7);
+  border-radius: 50px;
+  font-family: "boschsans-bold";
+  color: white;
+  cursor: pointer;
+  transition: background-color 200ms ease;
 }
 
 .c-journey__option label:hover {
-	background-color: rgba(68,132,166, 1);
+  background-color: rgba(68, 132, 166, 1);
 }
 
 .c-journey__option input {
-	display: none;
+  display: none;
 }
 
 .c-journey__intro > ul {
-    @include list-unstyled();
+  @include list-unstyled();
 
-    @include media('md') {
-    	display: none;
-    }
+  @include media("md") {
+    display: none;
+  }
 }
 
-
 .c-journey__intro > ul > li {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .c-journey__list-mobile {
-	display: block;
+  display: block;
 
-	@include media('md') {
-		display: none;
-	}
+  @include media("md") {
+    display: none;
+  }
 }
 
 .c-journey__list-item {
-	font-size: 16px;
+  font-size: 16px;
 }
 
-
 .c-journey__list-item:not(:first-child) {
- padding-bottom: 20px;
+  padding-bottom: 20px;
 }

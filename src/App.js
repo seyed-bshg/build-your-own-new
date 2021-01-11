@@ -14,13 +14,16 @@ import json from "./what.json";
 import "./App.scss";
 
 function App() {
-
   // REACT REDUX HOOK
   const dispatch = useDispatch();
 
   /**************** COMMENTED CODE BELOW  IS USED FOR CALLING THE API*************************/
   const onRequestData = useCallback(() => dispatch(requestData()), [dispatch]);
   useEffect(() => {
+    if (localStorage.getItem("BoschDishwasherPopUp") != "true") {
+      localStorage.setItem("BoschDishwasherPopUp", false);
+    }
+
     onRequestData();
   }, [onRequestData]);
   /*******************************************************************************************/
@@ -29,20 +32,21 @@ function App() {
   // useEffect(() => {
   //   dispatch(requestJSON(json.ProductBuilder));
   // }, [dispatch]);
-  
+
   useEffect(() => {
-    axios.post(`${constants.LOG_URI}`, {
-      logIID: "",
-      logdetails: "ONLOAD",
-      loginName: ""
-    })
-    .then(function (response) {
-      console.log(response)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }, [])
+    axios
+      .post(`${constants.LOG_URI}`, {
+        logIID: "",
+        logdetails: "ONLOAD",
+        loginName: "",
+      })
+      .then(function (response) {
+        // console.log(response);
+      })
+      .catch(function (error) {
+        // console.log(error);
+      });
+  }, []);
   const listValues = useSelector((state) => state.requestData.listValues);
 
   const order = useSelector((state) => state.requestData.order);
@@ -55,97 +59,156 @@ function App() {
     <div className="App">
       <div className="o-wrap">
         <div className="o-container">
-          <Header />
-            <nav className="c-nav__desktop-wrapper">
-              <ul className={`c-nav__desktop o-list-unstyled ${order && step > 0 ? '' : 'u-hidden'}`}>
-                {order
-                  ? order.map((order, index) => {
-                    let listThing = listValues.filter(listValue => listValue.listID === order);
-                    return(
-                      <li key={index} className={index + 1 === step ? "c-nav__desktop-item c-nav__desktop-item--active u-type-bold" : "c-nav__desktop-item"}>
+          <Header step={step} />
+          <nav className="c-nav__desktop-wrapper">
+            <ul
+              className={`c-nav__desktop o-list-unstyled ${
+                order && step > 0 ? "" : "u-hidden"
+              }`}
+            >
+              {order
+                ? order.map((order, index) => {
+                    let listThing = listValues.filter(
+                      (listValue) => listValue.listID === order
+                    );
+                    return (
+                      <li
+                        key={index}
+                        className={
+                          index + 1 === step
+                            ? "c-nav__desktop-item c-nav__desktop-item--active u-type-bold"
+                            : "c-nav__desktop-item"
+                        }
+                      >
                         {listThing[0].listName}
                       </li>
-                  )} )
-                  : null}
-                {order && step > 0 ? (
-                  <li className={step > order.length ? "c-nav__desktop-item c-nav__desktop-item--active u-type-bold" : "c-nav__desktop-item"}>
-                    Summary
-                  </li>
-                ) : null}
-              </ul>
-            </nav>
-             <nav className="c-nav__mobile-wrapper">
-
-              <ul className={`c-nav__mobile o-list-unstyled ${order && step > 0 ? '' : 'u-hidden'}`}>
-                {order
-                  ? order.map((order, index) => {
-                    let listThing = listValues.filter(listValue => listValue.listID === order);
-                    return(
-                      <li key={index} className={index + 1 === step ? "c-nav__mobile-item c-nav__mobile-item--active" : "c-nav__mobile-item"}>
+                    );
+                  })
+                : null}
+              {order && step > 0 ? (
+                <li
+                  className={
+                    step > order.length
+                      ? "c-nav__desktop-item c-nav__desktop-item--active u-type-bold"
+                      : "c-nav__desktop-item"
+                  }
+                >
+                  Summary
+                </li>
+              ) : null}
+            </ul>
+          </nav>
+          <nav className="c-nav__mobile-wrapper">
+            <ul
+              className={`c-nav__mobile o-list-unstyled ${
+                order && step > 0 ? "" : "u-hidden"
+              }`}
+            >
+              {order
+                ? order.map((order, index) => {
+                    let listThing = listValues.filter(
+                      (listValue) => listValue.listID === order
+                    );
+                    return (
+                      <li
+                        key={index}
+                        className={
+                          index + 1 === step
+                            ? "c-nav__mobile-item c-nav__mobile-item--active"
+                            : "c-nav__mobile-item"
+                        }
+                      >
                         {listThing[0].listName}
                       </li>
-                  )} )
-                  : null}
-                {order && step > 0 ? (
-                  <li className={step > order.length ? "c-nav__mobile-item c-nav__mobile-item--active" : "c-nav__mobile-item"}>
-                    Summary
-                  </li>
-                ) : null}
-              </ul>
-            </nav>
-            <Switch>
-              {/* Dynamically creating routes */}
-              {listValues.map((listValue, listValueIndex) => {
-                return (
-                  <Route key={listValue.listValueIndex} exact path={`/${listValue.keyName}`}>
-                    <Feature
-                      CDN_URI={constants.CDN_URI}
-                      CDN_URI_VIDEO={constants.CDN_URI_VIDEO}
-                      meta={listValue}
-                      keyName={listValue.keyName}
-                      key={listValue.listItemID}
-                      name={listValue.listName}
-                      items={listValue.listItems}
-                      listDescription={listValue.listDescription}
-                      defaultGroupImage={listValue.listGroupImg}
-                      defaultGroupVideo={listValue.listGroupvideoID}
-                    />
-                  </Route>
-                  )
-              } 
-              )}
-              {step > order.length - 1 ? (
-                <Route path="/summary">
-                  <Summary />
+                    );
+                  })
+                : null}
+              {order && step > 0 ? (
+                <li
+                  className={
+                    step > order.length
+                      ? "c-nav__mobile-item c-nav__mobile-item--active"
+                      : "c-nav__mobile-item"
+                  }
+                >
+                  Summary
+                </li>
+              ) : null}
+            </ul>
+          </nav>
+          <Switch>
+            {/* Dynamically creating routes */}
+            {listValues.map((listValue, listValueIndex) => {
+              return (
+                <Route
+                  key={listValue.listValueIndex}
+                  exact
+                  path={`/${listValue.keyName}`}
+                >
+                  <Feature
+                    CDN_URI={constants.CDN_URI}
+                    CDN_URI_VIDEO={constants.CDN_URI_VIDEO}
+                    meta={listValue}
+                    keyName={listValue.keyName}
+                    key={listValue.listItemID}
+                    name={listValue.listName}
+                    items={listValue.listItems}
+                    listDescription={listValue.listDescription}
+                    defaultGroupImage={listValue.listGroupImg}
+                    defaultGroupVideo={listValue.listGroupvideoID}
+                  />
                 </Route>
-              ) :  null
-              }
-              {/* HOME ROUTE */}
-              <Route exact path="/">
-                <Home />
+              );
+            })}
+            {step > order.length - 1 ? (
+              <Route path="/summary">
+                <Summary />
               </Route>
-              <Redirect to="/" />
-            </Switch>
-
+            ) : null}
+            {/* HOME ROUTE */}
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Redirect to="/" />
+          </Switch>
         </div>
       </div>
       <hr />
       <footer className="c-footer o-container">
         <ul className="c-footer__list o-list-unstyled">
           <li className="c-footer__item">
-            <a href="https://www.bosch-home.com/us/about/imprint" target="_blank"><span>Imprint</span></a>
+            <a
+              href="https://www.bosch-home.com/us/about/imprint"
+              target="_blank"
+            >
+              <span>Imprint</span>
+            </a>
           </li>
           <li className="c-footer__item">
-            <a href="https://www.bosch-home.com/us/about/imprint/legal" target="_blank"><span>Legal</span></a>
+            <a
+              href="https://www.bosch-home.com/us/about/imprint/legal"
+              target="_blank"
+            >
+              <span>Legal</span>
+            </a>
           </li>
           <li className="c-footer__item">
-            <a href="https://www.bosch-home.com/us/about/imprint/privacypolicy" target="_blank"><span>Privacy Policy &amp; Data Protection Notice</span></a>
+            <a
+              href="https://www.bosch-home.com/us/about/imprint/privacypolicy"
+              target="_blank"
+            >
+              <span>Privacy Policy &amp; Data Protection Notice</span>
+            </a>
           </li>
           <li className="c-footer__item">
-            <a href="https://www.bosch-home.com/us/experience-bosch/report_a_vulnerability" target="_blank"><span>Report a Vulnerability</span></a>
+            <a
+              href="https://www.bosch-home.com/us/experience-bosch/report_a_vulnerability"
+              target="_blank"
+            >
+              <span>Report a Vulnerability</span>
+            </a>
           </li>
         </ul>
-          
       </footer>
     </div>
   );
