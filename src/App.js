@@ -41,10 +41,10 @@ function App() {
         loginName: "",
       })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       });
   }, []);
   const listValues = useSelector((state) => state.requestData.listValues);

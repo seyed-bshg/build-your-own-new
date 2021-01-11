@@ -54,7 +54,7 @@ const Feature = ({
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
       const { listTxt, listImg, listVd } = selectedChoice[0];
-      console.log("selectedChoice[0]; ", selectedChoice[0]);
+      // console.log("selectedChoice[0]; ", selectedChoice[0]);
       setChoiceCopy(listTxt);
       setChoiceImage(listImg);
       setChoiceVideo(listVd);
@@ -65,10 +65,10 @@ const Feature = ({
           loginName: "",
         })
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
         })
         .catch(function (error) {
-          console.log(error);
+          // console.log(error);
         });
     }
   }, [choice, items, isDirty]);
@@ -99,10 +99,10 @@ const Feature = ({
         loginName: "",
       })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       });
 
     step > 1 ? dispatch(clickedPrev()) : dispatch(clickedPrevToJourney());
@@ -142,10 +142,10 @@ const Feature = ({
           loginName: "",
         })
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
         })
         .catch(function (error) {
-          console.log(error);
+          // console.log(error);
         });
     }
 
