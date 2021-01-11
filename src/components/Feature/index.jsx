@@ -226,6 +226,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
                           className="u-img-respond u-img-respond--80"
                           src={CDN_URI + choiceImage}
                           key={choiceImage}
+                          alt={choiceImage}
                         />
                       </div>
                     ) : (

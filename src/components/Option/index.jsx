@@ -29,6 +29,8 @@ const Option = ({ value, label, name, clicked, disabled}) => {
     <div className={`c-feature__option ${disabled ? "c-feature__option--disabled" : ""}`}>
       <label htmlFor={name + value} className="c-feature__label">
         <input
+          aria-label={name + value}
+          aria-required="true"
           type="radio"
           value={value}
           name={name}

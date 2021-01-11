@@ -393,15 +393,15 @@ const Summary = () => {
                    
                     <button className="c-btn c-btn--summary" onClick={onStartOverHandler}>
                       <div className="c-btn-summary__text">{meta.startOverText}</div>
-                      <img className="c-btn-summary__img u-img-respond u-spacing-none" src={startIcon} />
+                      <img className="c-btn-summary__img u-img-respond u-spacing-none" src={startIcon} alt="start icon" />
                     </button>
                     <button className="c-btn c-btn--summary-learnmore" onClick={() => opennewone('learn', `${finalProduct.SKU}`)}>
                       <div className="c-btn-summary__text">{meta.learnMoreText}</div>
-                      <img className="c-btn-summary__img u-img-respond u-spacing-none" src={searchIcon} />
+                      <img className="c-btn-summary__img u-img-respond u-spacing-none" src={searchIcon} alt="Search Icon" />
                     </button>
                     <button className="c-btn c-btn--summary" onClick={() => opennewone('dealer', `${finalProduct.SKU}`)}>
                       <div className="c-btn-summary__text">{meta.where2BuyText}</div>
-                      <img className="c-btn-summary__img u-img-respond u-spacing-none" src={whereIcon} />
+                      <img className="c-btn-summary__img u-img-respond u-spacing-none" src={whereIcon} alt="Where Icon"/>
                     </button>
                   </div>
                  
