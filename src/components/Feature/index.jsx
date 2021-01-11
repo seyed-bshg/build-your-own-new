@@ -229,7 +229,7 @@ const Feature = ({
                   />
                   Sorry, your browser doesn't support embedded videos.
                 </video>
-<<<<<<< HEAD
+
                 ) : (
                   choiceVideo ? (
                     <video controls autoPlay loop={true} key={choiceVideo} style={{top: '-25%'}}>
