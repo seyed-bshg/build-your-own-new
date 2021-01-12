@@ -6,7 +6,6 @@ import { selectedJourney } from "../../redux/actions";
 import helpers from "../../helpers";
 import * as constants from "../../uri-constants";
 import Journey from "../Journey";
-import styles from "./Home.module.scss";
 
 function Home() {
   const meta = useSelector((state) => state.requestData.meta);
@@ -14,76 +13,62 @@ function Home() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+
   const onChoiceHandler = (e) => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
     const selectedGroup = groups[e.target.value - 1];
     // console.log('selectedGroup ', selectedGroup)
-    axios
-      .post(`${constants.LOG_URI}`, {
-        logIID: `${selectedGroup.groupID}`,
-        logdetails: `JOURNEY SELECTION, ${selectedGroup.groupName}, ${selectedGroup.groupID}`,
-        loginName: "",
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    axios.post(`${constants.LOG_URI}`, {
+      logIID: `${selectedGroup.groupID}`,
+      logdetails: `JOURNEY SELECTION, ${selectedGroup.groupName}, ${selectedGroup.groupID}`,
+      loginName: ""
+    })
+    .then(function (response) {
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     // console.log('selectedGroup ', selectedGroup.groupID)
     dispatch(selectedJourney(selectedGroup));
-    history.push("priceRange");
+    history.push('priceRange');
   };
 
   return (
     <div className="c-journey">
       <div className="c-journey__text-wrapper">
-        <h1 className={`c-heading-44 ${styles.HomeHeading}`}>{meta.header}</h1>
+        <h1 className="c-heading-44">{meta.header}</h1>
         {/*  4 Main Journeys to choose from:  Flexibility, Design, etc.*/}
-        <div
-          className="c-heading-26 c-journey__intro"
-          dangerouslySetInnerHTML={helpers.createMarkup(meta.description)}
-        ></div>
-        {/* <ul className="c-journey__list-mobile o-list-unstyled ">
-          {groups.map((group, groupIndex) => {
-            return (
-              <li
-                className="c-journey__list-item"
-                dangerouslySetInnerHTML={helpers.createMarkup(
-                  group.description
-                )}
-              ></li>
-            );
-          })}
-        </ul> */}
-        {groups.map((group) => (
-          <p
-            dangerouslySetInnerHTML={helpers.createMarkup(group.description)}
-          ></p>
-        ))}
+        <div className="c-heading-26 c-journey__intro" dangerouslySetInnerHTML={helpers.createMarkup(meta.description)}></div>
+        <ul className="c-journey__list-mobile o-list-unstyled ">
+        {groups.map((group, groupIndex) => {
+          return <li className="c-journey__list-item" dangerouslySetInnerHTML={helpers.createMarkup(group.description)}></li>
+        })}
+      </ul>
       </div>
-
+      
       {/*  4 Main Journeys to choose from:  Flexibility, Design, etc.*/}
       <div className="c-journey__option-wrapper">
-        <div className={`row ${styles.Row}`}>
+        <div className="row">
           {groups.map((group, groupIndex) => {
-            if (groupIndex < 2) {
+            if(groupIndex < 2) {
               return (
                 <Journey
-                  img={group.featureImage}
+                  img = {group.featureImage}
                   groupName={group.groupName}
                   key={group.groupID}
                   groupID={group.groupID}
                   description={group.description}
                   clicked={onChoiceHandler}
                 />
-              );
+              )
             }
-          })}
+          }
+        )}
         </div>
-        <div className={`row ${styles.Row}`}>
+        <div className="row">
           {groups.map((group, groupIndex) => {
-            if (groupIndex >= 2) {
+            if(groupIndex >= 2) {
               return (
                 <Journey
                   img={group.featureImage}
@@ -93,9 +78,10 @@ function Home() {
                   description={group.description}
                   clicked={onChoiceHandler}
                 />
-              );
+              )
             }
-          })}
+          }
+        )}
         </div>
       </div>
     </div>

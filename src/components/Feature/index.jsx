@@ -7,9 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as constants from "../../uri-constants";
 import axios from "axios";
 import helpers from "../../helpers";
-import doubleArrow from "../../img/icons/double-down-arrow.png";
-
-import styles from "./Feature.module.scss";
+import doubleArrow from '../../img/icons/double-down-arrow.png';
 
 import {
   selectedOption,
@@ -18,16 +16,7 @@ import {
   clickedPrevToJourney,
 } from "../../redux/actions";
 
-const Feature = ({
-  name,
-  keyName,
-  items,
-  listDescription,
-  CDN_URI,
-  CDN_URI_VIDEO,
-  defaultGroupImage,
-  defaultGroupVideo,
-}) => {
+const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO, defaultGroupImage, defaultGroupVideo }) => {
   const [choiceCopy, setChoiceCopy] = useState("");
   const [choiceImage, setChoiceImage] = useState("");
   const [choiceVideo, setChoiceVideo] = useState("");
@@ -54,29 +43,29 @@ const Feature = ({
     if (!!choice === true) {
       let selectedChoice = items.filter((item) => item.listItemID === choice);
       const { listTxt, listImg, listVd } = selectedChoice[0];
-      // console.log("selectedChoice[0]; ", selectedChoice[0]);
+      console.log('selectedChoice[0]; ', selectedChoice[0])
       setChoiceCopy(listTxt);
       setChoiceImage(listImg);
       setChoiceVideo(listVd);
-      axios
-        .post(`${constants.LOG_URI}`, {
-          logIID: `${selectedChoice[0].listItemID}`,
-          logdetails: `FEATURE SELECTION`,
-          loginName: "",
-        })
-        .then(function (response) {
-          // console.log(response);
-        })
-        .catch(function (error) {
-          // console.log(error);
-        });
+      axios.post(`${constants.LOG_URI}`, {
+        logIID: `${selectedChoice[0].listItemID}`,
+        logdetails: `FEATURE SELECTION`,
+        loginName: ""
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   }, [choice, items, isDirty]);
+
 
   //Seleting an Option
   const onSelectChoice = (e) => {
     // window.scrollTo(0, 0)
-
+    
     const value = Number(e.target.value);
     // Needs to set choiceCopy and choiceImage
     dispatch(selectedOption(value));
@@ -91,19 +80,18 @@ const Feature = ({
     );
 
     // console.log(reducedListValues[0])
-
-    axios
-      .post(`${constants.LOG_URI}`, {
-        logIID: `${reducedListValues[0].listID}`,
-        logdetails: `PREVIOUS SELECTION`,
-        loginName: "",
-      })
-      .then(function (response) {
-        // console.log(response);
-      })
-      .catch(function (error) {
-        // console.log(error);
-      });
+    
+    axios.post(`${constants.LOG_URI}`, {
+      logIID: `${reducedListValues[0].listID}`,
+      logdetails: `PREVIOUS SELECTION`,
+      loginName: ""
+    })
+    .then(function (response) {
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
     step > 1 ? dispatch(clickedPrev()) : dispatch(clickedPrevToJourney());
     history.goBack();
@@ -115,9 +103,9 @@ const Feature = ({
     let reducedProductList = productList.filter(
       (product) => product[`${keyName}`] === choice
     );
-
-    if (step === 1) {
-      reducedProductList = productList.filter(
+    
+    if (step === 1){
+       reducedProductList = productList.filter(
         (product) => product[`${keyName}`] <= choice
       );
     }
@@ -135,19 +123,20 @@ const Feature = ({
       nextURL = reducedListValues[0].keyName;
       // console.log('reducedListValues[0] ', reducedListValues[0])
 
-      axios
-        .post(`${constants.LOG_URI}`, {
-          logIID: `${reducedListValues[0].listID}`,
-          logdetails: `NEXT SELECTION`,
-          loginName: "",
-        })
-        .then(function (response) {
-          // console.log(response);
-        })
-        .catch(function (error) {
-          // console.log(error);
-        });
+      axios.post(`${constants.LOG_URI}`, {
+        logIID: `${reducedListValues[0].listID}`,
+        logdetails: `NEXT SELECTION`,
+        loginName: ""
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
+
+    
 
     step > order.length - 1
       ? history.push("summary")
@@ -174,20 +163,18 @@ const Feature = ({
         <div className="c-feature__options">
           <fieldset className="c-feature__description c-feature__description--mobile">
             <div className="c-feature__description-text-wrapper">
-              <p className={`c-feature__description-text `}>
+              <p className="c-feature__description-text">
                 {listDescription}
               </p>
             </div>
           </fieldset>
         </div>
       </div>
-      <div className={`c-feature ${styles.FeatureContainer}`}>
+      <div className="c-feature">
         <div className="c-feature__options c-feature__options--desktop">
           <fieldset className="c-feature__description c-feature__description--desktop">
             <div className="c-feature__description-text-wrapper">
-              <p
-                className={`c-feature__description-text ${styles.FeatureDescriptionText}`}
-              >
+              <p className="c-feature__description-text">
                 {listDescription}
               </p>
             </div>
@@ -213,23 +200,15 @@ const Feature = ({
           </div>
         </div>
         <div className="c-feature__wrapper">
-          <div className={`c-feature__img ${styles.ImageWrapper}`}>
+          <div className="c-feature__img">
             <div className="o-aspect o-aspect--536x590 u-spacing-flush u-text-center c-feature__img-desktop">
+              
               {defaultGroupVideo && !isDirty ? (
-                <video
-                  controls
-                  autoPlay
-                  loop={false}
-                  key={defaultGroupVideo}
-                  style={{ top: "-25%" }}
-                >
-                  <source
-                    src={CDN_URI_VIDEO + defaultGroupVideo}
-                    type="video/mp4"
-                  />
-                  Sorry, your browser doesn't support embedded videos.
+                <video controls autoPlay loop={true} key={defaultGroupVideo} style={{top: '-25%'}}>
+                  <source src={CDN_URI_VIDEO + defaultGroupVideo}
+                            type="video/mp4" />
+                    Sorry, your browser doesn't support embedded videos.
                 </video>
-
                 ) : (
                   choiceVideo ? (
                     <video controls autoPlay loop={true} key={choiceVideo} style={{top: '-25%'}}>
@@ -274,105 +253,73 @@ const Feature = ({
                 )
               }
 
-=======
-              ) : choiceVideo ? (
-                <video
-                  controls
-                  autoPlay
-                  loop={false}
-                  key={choiceVideo}
-                  style={{ top: "-25%" }}
-                >
-                  <source src={CDN_URI_VIDEO + choiceVideo} type="video/mp4" />
-                  Sorry, your browser doesn't support embedded videos.
-                </video>
-              ) : choiceImage ? (
-                <div>
-                  <img
-                    className="u-img-respond u-img-respond--80"
-                    src={CDN_URI + choiceImage}
-                    key={choiceImage}
-                  />
-                </div>
-              ) : defaultGroupVideo ? (
-                <video
-                  controls
-                  autoPlay
-                  loop={false}
-                  key={defaultGroupVideo}
-                  style={{ top: "-25%" }}
-                >
-                  <source
-                    src={CDN_URI_VIDEO + defaultGroupVideo}
-                    type="video/mp4"
-                  />
-                  Sorry, your browser doesn't support embedded videos.
-                </video>
-              ) : (
-                <div>
-                  <img
-                    className="u-img-respond u-img-respond--80"
-                    src={CDN_URI + defaultGroupImage}
-                    alt="placeholder"
-                    key={defaultGroupImage}
-                  />
-                </div>
-              )}
->>>>>>> ded327e9083e6226a43c664bcaa2f15d8d4038b4
             </div>
 
             <div className="c-feature__img-mobile">
+
               {defaultGroupVideo ? (
-                <video controls autoPlay loop={false}>
-                  <source
-                    src={CDN_URI_VIDEO + defaultGroupVideo}
-                    type="video/mp4"
-                  />
-                  Sorry, your browser doesn't support embedded videos.
+                  <video controls autoPlay loop={true}>
+
+                    <source src={CDN_URI_VIDEO + defaultGroupVideo}
+                            type="video/mp4" />
+
+                    Sorry, your browser doesn't support embedded videos.
                 </video>
-              ) : choiceVideo ? (
-                <video controls autoPlay loop={false}>
-                  <source src={CDN_URI_VIDEO + choiceVideo} type="video/mp4" />
-                  Sorry, your browser doesn't support embedded videos.
-                </video>
-              ) : choiceImage ? (
-                <div>
-                  <img
-                    className="u-img-respond u-img-respond--80"
-                    src={CDN_URI + choiceImage}
-                  />
-                </div>
-              ) : (
-                <div>
-                  <img
-                    className="u-img-respond u-img-respond--80"
-                    src={CDN_URI + defaultGroupImage}
-                    alt="placeholder"
-                  />
-                </div>
-              )}
+                ) : (
+                  choiceVideo ? (
+                    <video controls autoPlay loop={true}>
+                      <source src={CDN_URI_VIDEO + choiceVideo}
+                              type="video/mp4" />
+
+                      Sorry, your browser doesn't support embedded videos.
+                  
+                  </video>
+
+                  ) : (
+                    choiceImage ? (
+                      <div>
+                        <img
+                          className="u-img-respond u-img-respond--80"
+                          src={CDN_URI + choiceImage}
+                        />
+                      </div>
+                    ) : (
+                      <div>
+                        <img
+                          className="u-img-respond u-img-respond--80"
+                          src={CDN_URI + defaultGroupImage}
+                          alt="placeholder"
+                        />
+                      </div>
+                    )
+                  )
+                )
+              }
             </div>
 
+
+
             {choiceCopy ? (
-              <div className="c-description__wrapper">
-                <div
-                  className="c-description__toggle"
-                  onClick={toggleTrueFalse}
-                >
-                  <img src={doubleArrow} />
+                <div className="c-description__wrapper">
+                  <div className="c-description__toggle" onClick={toggleTrueFalse}><img src={doubleArrow} /></div>
+                  <p
+                    className="c-description__text u-spacing-none"
+                    dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}
+                  >
+                  
+                  </p>
+
                 </div>
-                <p
-                  className="c-description__text u-spacing-none"
-                  dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}
-                ></p>
-              </div>
-            ) : null}
+              ) : null}
           </div>
+
         </div>
         <div className="c-feature__options c-feature__options--mobile">
           <fieldset className="c-feature__description c-feature__description--desktop">
             <div className="c-feature__description-text-wrapper">
-              <p className="c-feature__description-text">{listDescription}</p>
+              <p className="c-feature__description-text">
+                {listDescription}
+              </p>
             </div>
             <span style={{ display: "none" }}>{name}</span>
           </fieldset>
@@ -388,14 +335,14 @@ const Feature = ({
           ))}
         </div>
         {/* Button would be its own component */}
-        <div className="c-btn__wrapper c-btn__wrapper--mobile">
-          <Button click={clickedPrevHandler} direction="Previous" />
-          <Button
-            click={clickedNextHandler}
-            direction="Next"
-            disabled={!isDirty}
-          />
-        </div>
+          <div className="c-btn__wrapper c-btn__wrapper--mobile">
+            <Button click={clickedPrevHandler} direction="Previous" />
+            <Button
+              click={clickedNextHandler}
+              direction="Next"
+              disabled={!isDirty}
+            />
+          </div>
       </div>
     </div>
   );
