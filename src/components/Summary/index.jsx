@@ -308,7 +308,7 @@ const Summary = () => {
                   <fieldset className="form-row form-row-fullwidth">
                     <h3 className="a-heading">Any additional comments or suggestions to help us improve the "Build Your Own" dishwasher?</h3>
                     <label for="22" className="u-sr-only">suggestions</label>
-                    <textarea id="22" name="Q5" rows="4" cols="50" maxLength="800" placeholder="Your feedback
+                    <textarea id="22"  fullWidth={true}  name="Q5" rows="4" cols="50" maxLength="800" placeholder="Your feedback
                       is appreciated">
                       </textarea>
                   </fieldset>
