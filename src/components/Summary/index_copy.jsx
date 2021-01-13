@@ -245,7 +245,7 @@ const Summary = () => {
                     
                     <div className="m-forminput m-forminput-radio had-focus">
                       <input type="checkbox" id="19" name="Q4" value="Smart Appliance/Connected Appliance" />
-                      <label htmlFor="19">Smart Appliance/Connected Appliance</label>
+                      <label htmlFor="19">Smart/connected appliance</label>
                     </div>
                     
                     <div className="m-forminput m-forminput-radio had-focus">
