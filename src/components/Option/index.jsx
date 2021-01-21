@@ -26,36 +26,37 @@ const Option = ({ value, label, name, clicked, disabled }) => {
     >
       {/* <label htmlFor={name + value} className="c-feature__label"> */}
       <div className="c-feature__label">
-        <input
-          aria-label={name + value}
-          aria-required="true"
-          type="radio"
-          value={value}
-          name={name}
-          id={name + value}
-          onClick={clicked}
-          disabled={disabled}
-        />
-        <div className="c-feature__label-bg"></div>
-        <span
-          className="c-feature__label-text"
-          dangerouslySetInnerHTML={helpers.createMarkup(label)}
-        ></span>
-        {disabled ? (
-          <p className="c-disabled c-disabled--desktop u-spacing-none">
-            {meta.optionNAText}
-            <br />
-            <a
-              className="c-disabled__link"
-              href="#"
-              onClick={onStartOverHandler}
-            >
-              {" "}
-              Click here to start over
-            </a>
-          </p>
-        ) : null}
-        {/* </label> */}
+        <label>
+          <input
+            aria-label={name + value}
+            aria-required="true"
+            type="radio"
+            value={value}
+            name={name}
+            id={name + value}
+            onClick={clicked}
+            disabled={disabled}
+          />
+          <div className="c-feature__label-bg"></div>
+          <span
+            className="c-feature__label-text"
+            dangerouslySetInnerHTML={helpers.createMarkup(label)}
+          ></span>
+          {disabled ? (
+            <p className="c-disabled c-disabled--desktop u-spacing-none">
+              {meta.optionNAText}
+              <br />
+              <a
+                className="c-disabled__link"
+                href="#"
+                onClick={onStartOverHandler}
+              >
+                {" "}
+                Click here to start over
+              </a>
+            </p>
+          ) : null}
+        </label>
       </div>
     </div>
   );
