@@ -42,7 +42,7 @@ function Home() {
         <div className="c-heading-26 c-journey__intro" dangerouslySetInnerHTML={helpers.createMarkup(meta.description)}></div>
         <ul className="c-journey__list-mobile o-list-unstyled ">
         {groups.map((group, groupIndex) => {
-          return <li className="c-journey__list-item" dangerouslySetInnerHTML={helpers.createMarkup(group.description)}></li>
+          return <li key={groupIndex} className="c-journey__list-item" dangerouslySetInnerHTML={helpers.createMarkup(group.description)}></li>
         })}
       </ul>
       </div>

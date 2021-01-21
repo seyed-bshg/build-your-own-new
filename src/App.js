@@ -97,7 +97,7 @@ function App() {
               {/* Dynamically creating routes */}
               {listValues.map((listValue, listValueIndex) => {
                 return (
-                  <Route key={listValue.listValueIndex} exact path={`/${listValue.keyName}`}>
+                  <Route key={listValueIndex} exact path={`/${listValue.keyName}`}>
                     <Feature
                       CDN_URI={constants.CDN_URI}
                       CDN_URI_VIDEO={constants.CDN_URI_VIDEO}
