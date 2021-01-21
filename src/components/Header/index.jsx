@@ -16,11 +16,13 @@ const Logo = ({ step }) => {
 
   return (
     <header className={`${styles.CustomHeaderContainer} c-header`}>
+    <h1>
       <Link
         to="/"
         className={` c-header__wrapper `}
         onClick={onStartOverHandler}
       >
+
         <div className={`c-header__logo-link--desktop  `}>
           <img
             alt="Bosch build your own dishwasher logo"
@@ -37,6 +39,7 @@ const Logo = ({ step }) => {
           />
         </div>
       </Link>
+      </h1>
 
       {step > 0 && step < order.length + 1 ? (
         <div className={styles.ButtonContainer}>

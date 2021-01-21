@@ -2,10 +2,10 @@
 // cross browser polyfills
 import 'react-app-polyfill/ie9';
 import 'react-app-polyfill/stable';
+import {Helmet} from "react-helmet";
 
 // library css imports
 import 'react-tippy/dist/tippy.css'
-
 
 // React
 import React from "react";
@@ -21,6 +21,21 @@ import { requestData } from "./redux/productsReducer";
 
 const rootReducer = combineReducers({ requestData });
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+
+
+class Application extends React.Component {
+  render () {
+    return (
+        <div className="application">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Bosch Dishwasher Builder</title>
+            </Helmet>
+            ...
+        </div>
+    );
+  }
+};
 
 ReactDOM.render(
   <React.StrictMode>
