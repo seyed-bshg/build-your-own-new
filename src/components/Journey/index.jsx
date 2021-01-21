@@ -26,14 +26,10 @@ const Journey = ({ groupID, groupName, description, clicked, img }) => {
         className={`u-img-respond ${styles.JourneyImages}`}
         alt={description}
       />
-      <fieldset>
-        <legend className="sr-only">{groupName}</legend>
-
       <label>
         <input type="radio" value={groupID} name="journey" onClick={clicked} />
         {groupName}
       </label>
-      </fieldset>
       {/* </Tooltip> */}
     </div>
   );

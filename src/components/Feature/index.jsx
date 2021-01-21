@@ -162,7 +162,6 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
       <div className="c-feature">
         <div className="c-feature__options">
           <fieldset className="c-feature__description c-feature__description--mobile">
-            <legend className="sr-only">{listDescription}</legend>
             <div className="c-feature__description-text-wrapper">
               <p className="c-feature__description-text">
                 {listDescription}
@@ -174,7 +173,6 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
       <div className="c-feature">
         <div className="c-feature__options c-feature__options--desktop">
           <fieldset className="c-feature__description c-feature__description--desktop">
-          <legend className="sr-only">{listDescription}</legend>
             <div className="c-feature__description-text-wrapper">
               <p className="c-feature__description-text">
                 {listDescription}
@@ -318,7 +316,6 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
         </div>
         <div className="c-feature__options c-feature__options--mobile">
           <fieldset className="c-feature__description c-feature__description--desktop">
-          <legend className="sr-only">{listDescription}</legend>
             <div className="c-feature__description-text-wrapper">
               <p className="c-feature__description-text">
                 {listDescription}

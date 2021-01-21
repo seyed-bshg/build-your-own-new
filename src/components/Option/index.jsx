@@ -27,14 +27,14 @@ const Option = ({ value, label, name, clicked, disabled}) => {
   return (
    
     <div className={`c-feature__option ${disabled ? "c-feature__option--disabled" : ""}`}>
-      <label htmlFor={name} className="c-feature__label">
+      <label htmlFor={name + value} className="c-feature__label">
         <input
-          aria-label={name}
+          aria-label={name + value}
           aria-required="true"
           type="radio"
           value={value}
           name={name}
-          id={name}
+          id={name + value}
           onClick={clicked}
           disabled={disabled}
         />
