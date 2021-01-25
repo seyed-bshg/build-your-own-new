@@ -1,7 +1,5 @@
 import React from "react";
-
 import SurveyModal from '../SurveyModal';
-
 import { Link, useHistory } from "react-router-dom";
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from "react-redux";
@@ -12,8 +10,8 @@ import whereIcon from '../../img/icons/where-to-buy-icon.svg';
 import helpers from "../../helpers";
 import axios from 'axios';
 import * as constants from "../../uri-constants";
-
-
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 const Summary = () => {
   // Should only have one product when we come to this component
@@ -47,21 +45,28 @@ const Summary = () => {
     dispatch(clickedStartOver());
   };
   function openModal() {
-    setIsOpen(true);
-  }
+    setIsOpen(true);  }
  
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    // console.log('modal open afterOpenModal')
-  }
- 
+    // cookies.set('loggedIn', loggedIn, { path: '/', maxAge: time );
+
+    // console.log(cookies);
+    // cookies.set('loggedIn', loggedIn, { path: '/', maxAge: time });
+    if(cookies.get('survey') === null ||  cookies.set('survey', { maxAge: '200', path: '/'}));
+    // console.log('afterOpenModal')
+    }
   function closeModal(){
     setIsOpen(false);
-    hasBeenOpened();
   }
 
   function hasBeenOpened(){
     setHasBeenOpened(true);
+    cookies.remove('survey');
+    if(cookies.get('survey') !== null) {
+      
+      closeModal();
+    }
   }
  
   function handleAfterCloseFunc(){
@@ -70,6 +75,7 @@ const Summary = () => {
   }
 
   function handleSubmit(event) {
+    // cookies.remove('survey');
     event.preventDefault();
     const data = new FormData(event.target);
     let formData = new FormData(event.target);
@@ -271,14 +277,14 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Not Very Likely</legend>
                       <input required type="radio" id="11" name="Q3" value="Somewhat Difficult" />
-                      <label htmlFor="10">Not very likely</label>
+                      <label htmlFor="11">Not very likely</label>
                       </fieldset>
                     </div>
                     <div className="m-forminput m-forminput-radio had-focus">
                       <fieldset>
                       <legend className="sr-only"> Not at all likely</legend>
                       <input required type="radio" id="12" name="Q3" value="Very Difficult" />
-                      <label htmlFor="11">Not at all likely</label>
+                      <label htmlFor="12">Not at all likely</label>
                       </fieldset>
                     </div>
 
@@ -292,7 +298,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Flexibility</legend>
                       <input type="checkbox" id="13" name="Q4" value="Flexibility" />
-                      <label htmlFor="12">Flexibility</label>
+                      <label htmlFor="13">Flexibility</label>
                       </fieldset>
                     </div>
                    
@@ -300,7 +306,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Quiet</legend>
                       <input type="checkbox" id="14" name="Q4" value="Quiet" />
-                      <label htmlFor="13">Quiet</label>
+                      <label htmlFor="14">Quiet</label>
                       </fieldset>
                     </div>
                    
@@ -308,7 +314,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Drying</legend>
                       <input type="checkbox" id="15" name="Q4" value="Drying" />
-                      <label htmlFor="14">Drying</label>
+                      <label htmlFor="15">Drying</label>
                       </fieldset>
                     </div>
                    
@@ -316,7 +322,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Design</legend>
                       <input type="checkbox" id="16" name="Q4" value="Design" />
-                      <label htmlFor="15">Design</label>
+                      <label htmlFor="16">Design</label>
                       </fieldset>
                     </div>
                    
@@ -324,7 +330,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Price</legend>
                       <input type="checkbox" id="17" name="Q4" value="Price" />
-                      <label htmlFor="16">Price</label>
+                      <label htmlFor="17">Price</label>
                       </fieldset>
                     </div>
                    
@@ -332,7 +338,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Energy Star</legend>
                       <input type="checkbox" id="18" name="Q4" value="Energy Star" />
-                      <label htmlFor="17">Energy Star</label>
+                      <label htmlFor="18">Energy Star</label>
                       </fieldset>
                     </div>
                    
@@ -340,7 +346,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Consumer Reviews</legend>
                       <input type="checkbox" id="19" name="Q4" value="Consumer Reviews" />
-                      <label htmlFor="18">Consumer Reviews</label>
+                      <label htmlFor="19">Consumer Reviews</label>
                       </fieldset>
                     </div>
                    
@@ -348,7 +354,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Smart Appliance/Connected Appliance</legend>
                       <input type="checkbox" id="20" name="Q4" value="Smart Appliance/Connected Appliance" />
-                      <label htmlFor="19">Smart Appliance/Connected Appliance</label>
+                      <label htmlFor="20">Smart Appliance/Connected Appliance</label>
                       </fieldset>
                     </div>
                    
@@ -356,7 +362,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Brand</legend>
                       <input type="checkbox" id="21" name="Q4" value="Brand" />
-                      <label htmlFor="20">Brand</label>
+                      <label htmlFor="21">Brand</label>
                       </fieldset>
                     </div>
                    
@@ -364,7 +370,7 @@ const Summary = () => {
                       <fieldset>
                       <legend className="sr-only">Other</legend>
                       <input type="checkbox" id="22" name="Q4" value="Other" />
-                      <label htmlFor="21">Other</label>
+                      <label htmlFor="22">Other</label>
                       </fieldset>
                     </div>
                      
@@ -372,8 +378,8 @@ const Summary = () => {
                   <fieldset className="form-row form-row-fullwidth">
                     <legend className="sr-only">Any additional comments or suggestions to help us improve the "Build Your Own" dishwasher?</legend>
                     <h2 className="a-heading">Any additional comments or suggestions to help us improve the "Build Your Own" dishwasher?</h2>
-                    <label htmlFor="22" className="u-sr-only">suggestions</label>
-                    <textarea id="22"  fullWidth={true}  name="Q5" rows="4" cols="50" maxLength="800" placeholder="Your feedback
+                    <label htmlFor="23" className="u-sr-only">suggestions</label>
+                    <textarea id="23"  fullWidth={true}  name="Q5" rows="4" cols="50" maxLength="800" placeholder="Your feedback
                       is appreciated">
                       </textarea>
                   </fieldset>

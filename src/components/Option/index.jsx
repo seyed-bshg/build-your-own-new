@@ -26,6 +26,8 @@ const Option = ({ value, label, name, clicked, disabled }) => {
     >
       {/* <label htmlFor={name + value} className="c-feature__label"> */}
       <div className="c-feature__label">
+        <fieldset>
+        <legend className="sr-only">{name + value}</legend>
         <label>
           <input
             aria-label={name + value}
@@ -37,6 +39,7 @@ const Option = ({ value, label, name, clicked, disabled }) => {
             onClick={clicked}
             disabled={disabled}
           />
+
           <div className="c-feature__label-bg"></div>
           <span
             className="c-feature__label-text"
@@ -51,12 +54,13 @@ const Option = ({ value, label, name, clicked, disabled }) => {
                 href="#"
                 onClick={onStartOverHandler}
               >
-                {" "}
-                Click here to start over
+                {" Start over your building guide "}
+               
               </a>
             </p>
           ) : null}
         </label>
+        </fieldset>
       </div>
       {/* </label> */}
     </div>

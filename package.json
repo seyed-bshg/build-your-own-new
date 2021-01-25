@@ -23,7 +23,8 @@
     "react-tippy": "^1.4.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "redux-undo": "^1.0.1"
+    "redux-undo": "^1.0.1",
+    "universal-cookie": "^4.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

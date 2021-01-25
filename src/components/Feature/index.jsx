@@ -9,6 +9,7 @@ import axios from "axios";
 import helpers from "../../helpers";
 import doubleArrow from '../../img/icons/double-down-arrow.png';
 
+
 import {
   selectedOption,
   clickedNext,
@@ -162,6 +163,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
       <div className="c-feature">
         <div className="c-feature__options">
           <fieldset className="c-feature__description c-feature__description--mobile">
+          <legend className="sr-only">{listDescription}</legend>
             <div className="c-feature__description-text-wrapper">
               <p className="c-feature__description-text">
                 {listDescription}
@@ -173,6 +175,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
       <div className="c-feature">
         <div className="c-feature__options c-feature__options--desktop">
           <fieldset className="c-feature__description c-feature__description--desktop">
+          <legend className="sr-only">{listDescription}</legend>
             <div className="c-feature__description-text-wrapper">
               <p className="c-feature__description-text">
                 {listDescription}
@@ -205,6 +208,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
               
               {defaultGroupVideo && !isDirty ? (
                 <video controls autoPlay loop={true} key={defaultGroupVideo} style={{top: '-25%'}}>
+                
                   <source src={CDN_URI_VIDEO + defaultGroupVideo}
                             type="video/mp4" />
                     Sorry, your browser doesn't support embedded videos.
@@ -281,6 +285,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
                         <img
                           className="u-img-respond u-img-respond--80"
                           src={CDN_URI + choiceImage}
+                          alt={"placeholder" + choiceImage}
                         />
                       </div>
                     ) : (
@@ -301,7 +306,7 @@ const Feature = ({ name, keyName, items, listDescription, CDN_URI, CDN_URI_VIDEO
 
             {choiceCopy ? (
                 <div className="c-description__wrapper">
-                  <div className="c-description__toggle" onClick={toggleTrueFalse}><img src={doubleArrow} /></div>
+                  <div className="c-description__toggle" onClick={toggleTrueFalse}><img src={doubleArrow} alt="double arrow"/></div>
                   <p
                     className="c-description__text u-spacing-none"
                     dangerouslySetInnerHTML={helpers.createMarkup(choiceCopy)}
