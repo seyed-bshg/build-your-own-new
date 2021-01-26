@@ -45,6 +45,7 @@ const Summary = () => {
     dispatch(clickedStartOver());
   };
   function openModal() {
+    document.body.classList.add('modal-open');                                                                               
     setIsOpen(true);  }
  
   function afterOpenModal() {
@@ -57,6 +58,8 @@ const Summary = () => {
     // console.log('afterOpenModal')
     }
   function closeModal(){
+    cookies.set('survey', { maxAge: '200', path: '/'});
+    document.body.classList.remove('modal-open');
     setIsOpen(false);
   }
 
@@ -64,7 +67,6 @@ const Summary = () => {
     setHasBeenOpened(true);
     cookies.remove('survey');
     if(cookies.get('survey') !== null) {
-      
       closeModal();
     }
   }
@@ -144,7 +146,7 @@ const Summary = () => {
   if(!modalIsOpen && !modalHasBeenOpened) {
       setTimeout(() => {
          openModal();
-      }, 5000);
+      }, 15000);
       hasBeenOpened(true);
   }
  
