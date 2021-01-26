@@ -108,7 +108,7 @@ const Summary = () => {
 
     axios({
       method: 'post',
-      url: '/data/SendSurveyData',
+      url: '/data/SendSurveyData?cid=campaignName~buildyourowndishwasher~2021~SendSurveyData~bsh',
       data: bodyidentifier,
       config: {
           headers: {
@@ -129,9 +129,11 @@ const Summary = () => {
     let BASE_URI = 'https://www.bosch-home.com/us/';
     let link = '';
     if(type === "dealer") {
-      link = `dealer-locator?product=${SKU}`
+      link = `dealer-locator?product=${SKU}?cid=campaignName~buildyourowndishwasher~2021~dealer-locator~bsh
+
+`
     } else if(type === "learn") {
-      link = `productslist/${SKU}`
+      link = `productslist/${SKU}?cid=campaignName~buildyourowndishwasher~2021~learn~bsh`
     } else {
       link = BASE_URI
     }
